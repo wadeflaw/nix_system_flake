@@ -15,19 +15,6 @@
     transmission-gtk
     libreoffice-fresh
 
-    #! cli
-    kitty
-    wget
-    unzip
-    calc
-    git
-    btop
-    fzf
-    timer
-    libnotify
-    lolcat
-    zathura
-
     #! media
     mpv
     playerctl

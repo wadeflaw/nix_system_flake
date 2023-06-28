@@ -1,0 +1,13 @@
+|TODO
+  ~ ( ) Colors configuration.
+  ~ ( ) Add automate laptop lock.
+  ~ ( ) Browser ( firefox or chrome) nix config.
+  ~ ( ) Neovim nix config.
+  ~ ( ) Make configuration more suckless, remove bloated stuff
+    - ( ) Pass insted keepassxc.
+      - ( ) Add secrets manager.
+      
+#Solved
+  ~ (x) Make home-manager config separated from main flake.
+  ~ (x) Add zsh plugins, and setup it.
+
