@@ -1,0 +1,15 @@
+#!/bin/bash
+
+    case "$1" in 
+      "area")
+          grimblast save area - | shadower | wl-copy
+          wl-paste > $HOME/Pictures/screenshots/screen.png
+          ;;
+      "screen")
+          grimblast save screen - | shadower | wl-copy
+          wl-paste > $HOME/Pictures/screenshots/screen.png
+          ;;
+        *)
+          echo noting
+          ;;
+    esac

@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+wl-paste --type text --watch cliphist store & #Stores only text data
+wl-paste --type image --watch cliphist store & #Stores only image data
+
+kwalletd5 &
+foot --server &
+
+# wallpaper
+if [[ ! `pidof swww-daemon` ]]; then
+        swww init &
+fi
+
+# notification daemon
+if [[ ! `pidof dunst` ]]; then
+        dunst &
+fi
+
+# autentification agent
+# if [[ ! `pidof polkit-gnome-authentication-agent-1` ]]; then
+#         /nix/var/nix/profiles/per-user/$USER/home-manager/home-path/libexec/polkit-gnome-authentication-agent-1 &
+# fi
+
+# sound
+# if [[ ! `pidof pipewire` ]]; then
+#         pipewire &
+# fi
+#
+# if [[ ! `pidof pipewire-pulse` ]]; then
+#         pipewire-pulse &
+# fi
+#
+# if [[ ! `pidof wireplumber` ]]; then
+#         wireplumber &
+# fi
+
+# themes
+hyprctl setcursor "LyraQ-cursors" 24
+notify-send "Hello glhost! 😈"
+
+if [[ ! `pidof waybar` ]]; then
+       waybar &
+fi
+
+# mpd
+if [[ ! `pidof mpd` ]]; then
+        mpd ~/.config/mpd/mpd.conf && mpDris2 -c ~/.config/mpDris2/mpDris2.conf &
+fi
+
+# if [[ ! `pidof hyprland-per-window-layout` ]]; then
+#         $HOME/.config/hypr/scripts/hyprland-per-window-layout &
+# fi
+
+# if [[ ! `pidof eww` ]]; then
+#     eww -c ~/.config/eww daemon && eww -c ~/.config/eww open bar &
+# fi
+
+# syncthing
+# if [[ ! `pidof syncthing` ]]; then
+#         syncthing &
+# fi
+

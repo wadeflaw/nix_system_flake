@@ -1,0 +1,7 @@
+{ ... }: {
+  imports = [
+    ./wm
+    ./telegram
+    ./firefox
+  ];
+}

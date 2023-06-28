@@ -1,0 +1,107 @@
+configuration{
+    location: 1;
+    modi: "drun";
+    lines: 5;
+    font: "Jost* 11";
+    show-icons: true;
+    icon-theme: "ePapirus-Dark";
+    terminal: "footclient";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    /* sidebar-mode: true; */
+    display-drun: "Apps";
+    /* display-run: "Run"; */
+    /* display-window: "Window"; */
+    location: 1;
+}
+
+@theme "themes/decayce"
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height:		 32%;
+    width:		 16%;
+    orientation: horizontal;
+    border: 1.7px;
+    border-color: @border-col;
+    border-radius: 0px;
+    background-color: @bg-col;
+    padding: 0px;
+    margin: 35px;
+}
+
+mainbox {
+    background-color: @bg-col;
+}
+
+inputbar {
+    children: [entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 0px 0px 0px 0px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 5px 0px 0px 5px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    margin: 10px 35px 0px 10px;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 2px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+}
+
+element-icon {
+    size: 20px;
+}
+
+element selected {
+    background-color:  @selected-col ;
+    text-color: @fg-col2  ;
+    border-radius: 10px;
+}
+
+mode-switcher {
+    spacing: -7;
+}
+
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @blue;
+}

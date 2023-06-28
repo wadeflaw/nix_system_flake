@@ -1,0 +1,123 @@
+@import "mocha.css";
+
+* {
+  font-family: "Jost *";
+  font-weight: bold;
+  font-size: 14px;
+}
+
+window#waybar {
+  background-color: @mantle;
+  margin-bottom: 40px;
+  /* border-bottom: 3px solid @crust; */
+  /* border-right: 3px solid @crust; */
+}
+
+#tray menu {
+  background: @base;
+  color: @fg;
+}
+
+tooltip {
+  background: @bg;
+  border: 1px solid @pink;
+}
+
+button {
+  border-radius: 12px 12px 12px 12px;
+  /* border-radius: 0; */
+}
+
+#workspaces {
+  padding-right: 10px;
+  border-right: 2px @crust;
+  padding: 0px 15px 0px 15px;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  color: @fg;
+  border-radius: 12px 12px 12px 12px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+#workspaces button:hover {
+  background: @bg;
+  color: @pink;
+  /* border-radius: 0px; */
+  border-radius: 12px 12px 12px 12px;
+  /* box-shadow: inset 0px -3px #ffffff; */
+}
+#workspaces button.active {
+  color: @mantle;
+  background-color: @pink;
+  border-radius: 12px 12px 12px 12px;
+  padding: 0px 15px 0px 15px;
+  /* color: @pink; */
+  /* border-top: 3px solid @pink; */
+}
+
+#workspaces button.focused {
+  background-color: @bg;
+  color: @pink;
+  border-radius: 12px 12px 12px 12px;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+  border-radius: 12px 12px 12px 12px;
+}
+
+#window {
+  padding-left: 30px;
+}
+
+#clock {
+  color: @base;
+  background-color: @pink;
+  font-style: initial;
+  border-right: 5px;
+  border-left: 5px;
+  border-radius: 12px 12px 12px 12px;
+  padding: 0px 15px 0px 15px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+/* #cpu, */
+#memory {
+  background-color: @pink;
+  color: @base;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+#language {
+  background-color: @pink;
+  color: @base;
+  padding: 0px 15px 0px 15px;
+  border-radius: 0px 12px 12px 0px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+/* #pulseaudio, */
+#wireplumber {
+  padding: 0px 15px 0px 15px;
+  background-color: @pink;
+  color: @base;
+  border-radius: 12px 0px 0px 12px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+#custom-separator {
+  color: @base;
+  background-color: @base;
+}
+
+#tray {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding: 0px 10px;
+  /* border-left: 2px solid #32393f; */
+}
