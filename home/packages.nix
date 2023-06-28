@@ -17,6 +17,7 @@
 
     #! media
     mpv
+    mpvpaper
     playerctl
     imv
     ffmpeg

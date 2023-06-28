@@ -12,6 +12,7 @@
     ];
 
     firewall = {
+      enable = true;
       allowedUDPPorts = [ 993 ];
     };
 
