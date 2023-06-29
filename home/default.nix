@@ -1,16 +1,24 @@
-{ lib
-, pkgs
-, config
-, inputs
-, outputs
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  outputs,
+  ...
 }: {
-  imports =
-    [
-      ./cli
-      ./desktop
-      ./packages.nix
-    ];
+  home = {
+    username = "ghost";
+    homeDirectory = "/home/${config.home.username}";
+    stateVersion = "23.11";
+  };
+
+  programs.home-manager.enable = true;
+
+  imports = [
+    ./cli
+    ./desktop
+    ./packages.nix
+  ];
   # ++ (builtins.attrValues outputs.homeManagerModules);
 
   manual = {
@@ -22,7 +30,7 @@
   nix = {
     package = lib.mkForce pkgs.nixUnstable;
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
     };
   };
@@ -38,13 +46,5 @@
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
-  };
-
-  programs.home-manager.enable = true;
-
-  home = {
-    username = "ghost";
-    homeDirectory = "/home/${config.home.username}";
-    stateVersion = "23.11";
   };
 }

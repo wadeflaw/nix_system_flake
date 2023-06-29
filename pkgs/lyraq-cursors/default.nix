@@ -1,20 +1,20 @@
 {
   lib,
   stdenv,
-  fetchzip,
   ...
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "lyraq-cursors";
   version = "1";
-  src = fetchzip {
-    url = "https://codeberg.org/ghosty/lyraq-cursors/archive/master.zip";
-    sha256 = "sha256-2h9jHvXbzFNCTCFOvXbs3ODXdzcxnzz6KAw010Bu/QQ=";
-  };
+  src = ./lyraq-cursors;
+
   installPhase = ''
     mkdir -p $out/share/icons/LyraQ-cursors
-    cp -r * $out/share/icons/LyraQ-cursors
+    cp -r $src/* $out/share/icons/LyraQ-cursors
   '';
+    runHook preInstall
+    runHook postInstall
+
   meta = {
     description = "LyraQ-Cursors";
     homepage = "https://github.com/yeyushengfan258/Lyra-Cursors";
@@ -23,5 +23,3 @@ stdenv.mkDerivation rec {
     maintainers = [lib.maintainers.yeyushengfan258];
   };
 }
-
-

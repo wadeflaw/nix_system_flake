@@ -18,6 +18,7 @@ in {
         startPlugins = with pkgs; [vimPlugins.nvim-surround];
         luaConfigRC.test = neovim.lib.nvim.dag.entryAnywhere ''
           require("nvim-surround").setup({})
+
         '';
         enableEditorconfig = true;
         debugMode = {
@@ -43,7 +44,10 @@ in {
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
-        nix.enable = true;
+        nix = {
+          enable = true;
+          format.enable = true;
+        };
         html.enable = true;
         clang = {
           enable = true;
@@ -177,7 +181,7 @@ in {
       };
 
       vim.terminal = {
-        toggleterm.enable = true;
+        toggleterm.enable = false;
       };
 
       vim.ui = {

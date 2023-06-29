@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}: {
+{pkgs, ...}: {
   boot = {
     tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
@@ -33,7 +30,7 @@
       kernelModules = [
         "amdgpu"
         "kvm-amd"
-        "acpi_call"
+        # "acpi_call"
       ];
       availableKernelModules = [
         "nvme"
@@ -49,8 +46,12 @@
         "sd_mod"
       ];
     };
-    kernelModules = [ "amdgpu" "kvm-amd" "acpi_call" ];
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    kernelModules = [
+      "amdgpu"
+      "kvm-amd"
+      # "acpi_call"
+    ];
+    # extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     consoleLogLevel = 0;
     kernelParams = [
       "acpi_call"

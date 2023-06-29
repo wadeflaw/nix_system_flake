@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
- xdg.configFile."zellij".source = ./config;
- programs.zellij.enable = true;
+_: {
+  xdg.configFile."zellij".source = ./config;
+  programs.zellij.enable = true;
 }
