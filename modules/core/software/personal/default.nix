@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   imports = [
     ./program.nix
     ./user.nix

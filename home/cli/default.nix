@@ -1,17 +1,15 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./shell
     ./neofetch
     ./zellij
     ./zathura
-    #   ./nvim
+    ./nvim
     ./btop
     ./cava
   ];
 
-  # extra packages 
+  # extra packages
   home.packages = with pkgs; [
     wget
     unzip
@@ -23,5 +21,4 @@
     libnotify
     lolcat
   ];
-
 }

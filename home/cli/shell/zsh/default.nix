@@ -1,14 +1,10 @@
-{ hostname
-, config
-, pkgs
-, ...
-}: {
+{pkgs, ...}: {
   xdg.configFile."zsh-plugins".source = ./zsh-plugins;
   programs = {
     zsh = {
       enable = true;
       dotDir = ".config/zsh";
-      sessionVariables = { LC_ALL = "en_US.UTF-8"; };
+      sessionVariables = {LC_ALL = "en_US.UTF-8";};
       profileExtra = ''
         [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
       '';
@@ -74,10 +70,10 @@
           };
         }
 
-        #    "esc/conda-zsh-completion"           
-        #    "Aloxaf/fzf-tab"                     
+        #    "esc/conda-zsh-completion"
+        #    "Aloxaf/fzf-tab"
         #    "joshskidmore/zsh-fzf-history-search"
-        #    "chitoku-k/fzf-zsh-completions"      
+        #    "chitoku-k/fzf-zsh-completions"
       ];
       dirHashes = {
         docs = "$HOME/Documents";
@@ -93,13 +89,12 @@
       initExtra = ''
         export AUTO_NOTIFY_THRESHOLD=20
         export AUTO_NOTIFY_TITLE="%command finished"
- 
+
         export PATH=$HOME/.cargo/bin/:$PATH
         export PATH=$HOME/.local/bin/:$PATH
- 
+
         source $HOME/.config/zsh-plugins/lplugins.zsh
       '';
     };
   };
 }
-

@@ -5,7 +5,7 @@
 }: {
   home.packages = (with pkgs; [
 
-    networkmanagerapplet
+    gparted
     # desktop
     keepassxc
     gtklock

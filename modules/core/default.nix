@@ -1,12 +1,4 @@
-{ inputs
-, nixpkgs
-, self
-, ...
-}:
-let
-  system = "x86_64-linux";
-in
-{
+_: {
   imports = [
     ./hardware/hardware.nix
     ./software/software.nix
