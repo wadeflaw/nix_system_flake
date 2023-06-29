@@ -37,7 +37,7 @@
 
   inputs = {
     # repos
-    master.url = github:nixos/nixpkgs/master;
+    # master.url = github:nixos/nixpkgs/master;
     stable.url = github:nixos/nixpkgs/nixos-23.05;
     unstable.url = github:nixos/nixpkgs/nixos-unstable;
     nur.url = github:nix-community/NUR;

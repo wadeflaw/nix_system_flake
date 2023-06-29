@@ -1,5 +1,8 @@
 { ... }: {
-  systemd.network.wait-online.enable = false;
+  systemd.network = {
+    enable = true;
+    wait-online.enable = false;
+  };
   networking = {
 
     hostName = "nixos";
@@ -16,6 +19,9 @@
       allowedUDPPorts = [ 993 ];
     };
 
+    wireguard = {
+      enable = true;
+    };
     wg-quick = {
       interfaces = {
         #       "Russian".configFile = "/etc/wireguard/wg0.conf";

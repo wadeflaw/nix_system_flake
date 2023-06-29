@@ -6,19 +6,31 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  fileSystems."/" =
-    {
+  fileSystems = {
+  "/" = {
       device = "/dev/disk/by-label/rootnix";
       fsType = "btrfs";
       options = [
-        "subvol=@"
+        "subvol=root"
         "compress=zstd"
         "noatime"
-        "ssd,space_cache=v2"
+        "ssd"
+	"space_cache=v2"
+      ];
+    };
+   "/home" = {
+      device = "/dev/disk/by-label/rootnix";
+      fsType = "btrfs";
+      options = [
+        "subvol=home"
+        "compress=zstd"
+        "noatime"
+        "ssd"
+        "space_cache=v2"
       ];
     };
 
-  fileSystems."/home/ghost/Disc" =
+  "/home/ghost/Disc" =
     {
       device = "/dev/disk/by-label/artix_root";
       fsType = "btrfs";
@@ -30,12 +42,37 @@
       ];
     };
 
-  fileSystems."/boot/efi" =
+  "/nix" = {
+      device = "/dev/disk/by-label/rootnix";
+      fsType = "btrfs";
+      options = [
+        "subvol=nix"
+        "compress=zstd"
+        "noatime"
+	"nodatacow"
+        "ssd"
+        "space_cache=v2"
+      ];
+    };
+
+   "/var/log" = {
+      device = "/dev/disk/by-label/rootnix";
+      fsType = "btrfs";
+      options = [
+        "subvol=log"
+        "compress=zstd"
+        "noatime"
+	"nodatacow"
+        "ssd"
+        "space_cache=v2"
+      ];
+    };
+  "/boot/efi" =
     {
       device = "/dev/disk/by-label/BOOTNIX";
       fsType = "vfat";
     };
-
+  };
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;

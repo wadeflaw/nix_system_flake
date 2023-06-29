@@ -94,7 +94,6 @@
         export AUTO_NOTIFY_THRESHOLD=20
         export AUTO_NOTIFY_TITLE="%command finished"
  
-        cat /home/ghost/Documents/learn/notes/rules/firstrule.norg
         export PATH=$HOME/.cargo/bin/:$PATH
         export PATH=$HOME/.local/bin/:$PATH
  
