@@ -4,10 +4,11 @@
   ~ ( ) Make configuration more suckless, remove bloated stuff
     - ( ) Pass insted keepassxc.
       - ( ) Add secrets manager.
+  ~ ( ) Make different configuration options for automation. 
+  ~ ( ) Neovim nix config.
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.
   ~ (x) Add zsh plugins, and setup it.
   ~ (x) Browser ( firefox or chrome) nix config.
-  ~ (x) Neovim nix config.
 

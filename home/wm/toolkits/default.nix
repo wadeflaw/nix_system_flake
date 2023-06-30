@@ -1,7 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
+{ inputs
+, pkgs
+, ...
 }: {
   home.packages = with pkgs; [
     twemoji-color-font
@@ -11,7 +10,7 @@
     jost
     noto-fonts-cjk
     noto-fonts-emoji
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
   fonts.fontconfig.enable = true;
   gtk = {
@@ -28,10 +27,10 @@
       name = "Papirus-Dark";
     };
     theme = {
-      name = "Catppuccin-Mocha-Standard-Pink-Dark";
+      name = "Catppuccin-Mocha-Compact-Mauve-dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
-        size = "standard";
+        accents = [ "mauve" ];
+        size = "compact";
         variant = "mocha";
       };
     };
