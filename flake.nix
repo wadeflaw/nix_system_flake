@@ -45,6 +45,8 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     neovim-flake = {
       url = "github:NotAShelf/neovim-flake?ref=release/v0.4";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -1,7 +1,10 @@
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs = {
     dconf.enable = true;
-    nm-applet.enable = true;
     zsh.enable = true;
     neovim.enable = true;
     gnupg.agent = {
@@ -19,4 +22,3 @@
     unzip
   ];
 }
-

@@ -1,12 +1,15 @@
-{pkgs, ...}: {
+{ pkgs
+, ...
+}: {
   xdg.configFile."zsh-plugins".source = ./zsh-plugins;
   programs = {
     zsh = {
       enable = true;
       dotDir = ".config/zsh";
-      sessionVariables = {LC_ALL = "en_US.UTF-8";};
+      sessionVariables = { LC_ALL = "en_US.UTF-8"; };
       profileExtra = ''
-        [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
+        # [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
+        Hyprland &
       '';
       plugins = with pkgs; [
         {

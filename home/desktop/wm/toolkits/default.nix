@@ -1,6 +1,7 @@
-{ inputs
-, pkgs
-, ...
+{
+  inputs,
+  pkgs,
+  ...
 }: {
   home.packages = with pkgs; [
     twemoji-color-font
@@ -10,7 +11,7 @@
     jost
     noto-fonts-cjk
     noto-fonts-emoji
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
   fonts.fontconfig.enable = true;
   gtk = {
@@ -29,9 +30,8 @@
     theme = {
       name = "Catppuccin-Mocha-Standard-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
+        accents = ["pink"];
         size = "standard";
-        tweaks = [ "rimless" ];
         variant = "mocha";
       };
     };
@@ -55,12 +55,12 @@
     x11.enable = true;
     gtk.enable = true;
   };
-  # qt = {
-  #   enable = true;
-  #   #   platformTheme = "gnome";
-  #   style = {
-  #     name = "adwaita-dark";
-  #     package = pkgs.adwaita-qt;
-  #   };
-  # };
+  qt = {
+    enable = true;
+    #   platformTheme = "gnome";
+    #style = {
+    #  name = "adwaita-dark";
+    #  package = pkgs.adwaita-qt;
+    #};
+  };
 }

@@ -1,9 +1,4 @@
-{ config
-, lib
-, cfg
-, pkgs
-, ...
-}: {
+{pkgs, ...}: {
   # programs.firefox =
   #   let
   #     userChrome = pkgs.substituteAll {
@@ -128,12 +123,11 @@
           ];
         };
 
-        ExtensionSettings =
-          let
-            mkForceInstalled =
-              builtins.mapAttrs
-                (name: cfg: { installation_mode = "force_installed"; } // cfg);
-          in
+        ExtensionSettings = let
+          mkForceInstalled =
+            builtins.mapAttrs
+            (name: cfg: {installation_mode = "force_installed";} // cfg);
+        in
           mkForceInstalled {
             "addon@darkreader.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
             "uBlock0@raymondhill.net".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";

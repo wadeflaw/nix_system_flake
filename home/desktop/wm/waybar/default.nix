@@ -1,11 +1,14 @@
-{ inputs, ... }: {
+{ inputs
+, pkgs
+, ...
+}: {
   programs.waybar = {
     enable = true;
     systemd = {
       enable = true;
       target = "graphical-session.target";
     };
-    package = inputs.stable.legacyPackages."x86_64-linux".waybar.overrideAttrs (oldAttrs: {
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
   };
@@ -16,4 +19,3 @@
     "waybar/config".source = ./config.jsonc;
   };
 }
-

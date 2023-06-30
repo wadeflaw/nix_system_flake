@@ -12,8 +12,6 @@ stdenv.mkDerivation {
     mkdir -p $out/share/icons/LyraQ-cursors
     cp -r $src/* $out/share/icons/LyraQ-cursors
   '';
-    runHook preInstall
-    runHook postInstall
 
   meta = {
     description = "LyraQ-Cursors";

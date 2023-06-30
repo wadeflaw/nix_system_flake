@@ -1,9 +1,8 @@
-{ self
-, pkgs
-, lib
-, inputs
-, outputs
-, ...
+{
+  self,
+  pkgs,
+  inputs,
+  ...
 }: {
   nix = {
     settings = {
@@ -27,7 +26,7 @@
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
     };
     gc = {
       automatic = true;
@@ -42,10 +41,6 @@
       inputs.chaotic.overlays.default
     ];
     config = {
-      permittedInsecurePackages = [
-        "openssl-1.1.1t"
-        "openssl-1.1.1u"
-      ];
       allowUnfree = true;
     };
   };
