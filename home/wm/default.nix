@@ -1,7 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }: {
   imports = [
     ./hyprland
@@ -32,6 +31,6 @@
     plasma5Packages.kwallet
     brightnessctl
     polkit
-    mate.mate-polkit
+    polkit_gnome
   ];
 }

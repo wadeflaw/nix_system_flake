@@ -8,9 +8,6 @@
       enable = true;
       target = "graphical-session.target";
     };
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    });
   };
 
   xdg.configFile = {
