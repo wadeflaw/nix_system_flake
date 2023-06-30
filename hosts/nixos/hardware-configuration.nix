@@ -7,7 +7,7 @@
     ];
 
   fileSystems = {
-  "/" = {
+    "/" = {
       device = "/dev/disk/by-label/rootnix";
       fsType = "btrfs";
       options = [
@@ -15,10 +15,11 @@
         "compress=zstd"
         "noatime"
         "ssd"
-	"space_cache=v2"
+        "space_cache=v2"
       ];
     };
-   "/home" = {
+
+    "/home" = {
       device = "/dev/disk/by-label/rootnix";
       fsType = "btrfs";
       options = [
@@ -30,8 +31,7 @@
       ];
     };
 
-  "/home/ghost/Disc" =
-    {
+    "/home/ghost/Disc" = {
       device = "/dev/disk/by-label/artix_root";
       fsType = "btrfs";
       options = [
@@ -42,36 +42,36 @@
       ];
     };
 
-  "/nix" = {
+    "/nix" = {
       device = "/dev/disk/by-label/rootnix";
       fsType = "btrfs";
       options = [
         "subvol=nix"
         "compress=zstd"
         "noatime"
-	"nodatacow"
+        "nodatacow"
         "ssd"
         "space_cache=v2"
       ];
     };
 
-   "/var/log" = {
+    "/var/log" = {
       device = "/dev/disk/by-label/rootnix";
       fsType = "btrfs";
       options = [
         "subvol=log"
         "compress=zstd"
         "noatime"
-	"nodatacow"
+        "nodatacow"
         "ssd"
         "space_cache=v2"
       ];
     };
-  "/boot/efi" =
-    {
-      device = "/dev/disk/by-label/BOOTNIX";
-      fsType = "vfat";
-    };
+    ${config.boot.loader.efi.efiSysMountPoint} =
+      {
+        device = "/dev/disk/by-label/BOOTNIX";
+        fsType = "vfat";
+      };
   };
   swapDevices = [ ];
 

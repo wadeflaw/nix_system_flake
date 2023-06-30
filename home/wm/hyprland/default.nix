@@ -20,12 +20,12 @@
   };
 
   xdg.configFile = {
-    "hypr/hyprland.conf".source = ./config/hyprland.conf;
-    "hypr/binds.conf".source = ./config/binds.conf;
-    "hypr/rules.conf".source = ./config/rules.conf;
-    "hypr/autostart".source = ./config/autostart;
-    "hypr/themes/mocha.conf".source = ./config/mocha.conf;
-    "hypr/themes/screenShader.frag".source = ./config/screenShader.frag;
-    "hypr/scripts".source = ./config/scripts;
+    "hypr/hyprland.conf".source = ./hyprland.conf;
+    "hypr/binds.conf".source = ./binds.conf;
+    "hypr/rules.conf".source = ./rules.conf;
+    "hypr/autostart".source = ./autostart;
+    "hypr/themes/mocha.conf".source = ./mocha.conf;
+    "hypr/themes/screenShader.frag".source = ./screenShader.frag;
+    "hypr/scripts".source = ./scripts;
   };
 }
