@@ -5,6 +5,6 @@ _: {
     ./pipewire.nix
     ./security.nix
     ./nix-settings.nix
-    ./nixvim.nix
+#   ./nixvim.nix
   ];
 }

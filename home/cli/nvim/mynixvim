@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }: {
   imports = [
+#   inputs.nixvim.nixosModules.nixvim
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
@@ -9,11 +10,19 @@
 
     options = {
       number = true;
+      wrap = true;
+      relativenumber = true;
       tabstop = 4;
       shiftwidth = 4;
       expandtab = true;
       laststatus = 3;
       termguicolors = true;
+    };
+    colorschemes = {
+      catppuccin = {
+        enable = true;
+        flavour = "mocha";
+      };
     };
 
     globals = {
@@ -99,6 +108,7 @@
       };
       treesitter = {
         enable = true;
+        ensureInstalled = [ "rust" "nix" "norg" "norg_meta" "bash" ];
       };
       lsp = {
         enable = true;
@@ -112,9 +122,28 @@
       };
       nvim-cmp = {
         enable = true;
-        sources = [{ name = "nvim_lsp"; }];
+        sources = [
+          { name = "nvim_lsp"; }
+        ];
         formatting.fields = [ "kind" "abbr" "menu" ];
       };
+     #neorg = {
+     #  enable = true;
+     #  package = pkgs.vimPlugins.neorg;
+     #  lazyLoading = false;
+     #  modules = {
+     #    "core.defaults" = {};                 
+     #    "core.dirman" = {};                   
+     #    "core.completion".config.engine = "nvim-cmp";
+     #    "core.highlights" = {};               
+     #    "core.highlightscore.keybinds" = {};  
+     #    "core.integrations.treesitter" = {};  
+     #    "core.mode" = {};                     
+     #    "core.neorgcmd" = {};                 
+     #    "core.pivot" = {};                    
+     #    "core.promo" = {};                           
+     #  };
+     #};
     };
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -127,110 +156,6 @@
       cmd = vim.cmd
       opt = vim.opt
       g = vim.g
-
-      _G.theme = "catppuccin"
-
-      require('base16-colorscheme').setup({
-        base00 = '#1d2021',
-        base01 = '#3c3836',
-        base02 = '#504945',
-        base03 = '#665c54',
-        base04 = '#bdae93',
-        base05 = '#d5c4a1',
-        base06 = '#ebdbb2',
-        base07 = '#fbf1c7',
-        base08 = '#fb4934',
-        base09 = '#fe8019',
-        base0A = '#fabd2f', 
-        base0B = '#b8bb26',
-        base0C = '#8ec07c',
-        base0D = '#83a598',
-        base0E = '#d3869b',
-        base0F = '#d65d0e'
-      })
-
-      local present, base16 = pcall(require, "base16-colorscheme")
-      if not present then return end
-
-      local present, color = pcall(require, "colors." .. theme)
-      if present then
-        base16.setup(color)
-      else
-        local ok, err = pcall(cmd, ("colorscheme base16-" .. theme))
-        if not ok then
-          _G.theme = "catppuccin"
-          color = require("colors." .. _G.theme)
-          base16.setup(color)
-          print(err)
-        end
-      end
-
-      -- Highlights 
-      local function hl(highlight, fg, bg)
-        if fg == nil then fg = "none" end
-        if bg == nil then bg = "none" end
-        cmd("hi " .. highlight .. " guifg=" .. fg .. " guibg=" .. bg)
-      end
-
-      -- Status Line
-      hl("StatusNormal")
-      hl("StatusLineNC", color.base03)
-      hl("StatusActive", color.base05)
-      hl("StatusLine", color.base02) -- inactive
-      hl("StatusReplace", color.base08)
-      hl("StatusInsert", color.base0B)
-      hl("StatusCommand", color.base0A)
-      hl("StatusVisual", color.base0D)
-      hl("StatusTerminal", color.base0E)
-
-      -- Nvim Tree
-      hl("NvimTreeFolderName", color.base05)
-      hl("NvimTreeOpenedFolderName", color.base05)
-      hl("NvimTreeEmptyFolderName", color.base05)
-      hl("NvimTreeFolderIcon", color.base03)
-      hl("NvimTreeGitDirty", color.base08)
-      hl("NvimTreeGitNew", color.base0B)
-      hl("NvimTreeGitDeleted", color.base08)
-      hl("NvimTreeGitRenamed", color.base0A)
-      hl("NvimTreeGitExecFile", color.base0B)
-      hl("NvimTreeSpecialFile", color.base0E)
-      hl("NvimTreeImageFile", color.base0C)
-      hl("NvimTreeWindowPicker", color.base05, color.base01)
-      hl("NvimTreeIndentMarker", color.base03)
-
-      -- Telescope
-      hl("TelescopePromptBorder", color.base01, color.base01)
-      hl("TelescopePromptNormal", nil, color.base01)
-      hl("TelescopePromptPrefix", color.base08, color.base01)
-      hl("TelescopeSelection", nil, color.base01)
-
-
-      -- Menu
-      hl("Pmenu", nil, color.base01)
-      hl("PmenuSbar", nil, color.base01)
-      hl("PmenuThumb", nil, color.base01)
-      hl("PmenuSel", nil, color.base02)
-
-      -- CMP
-      hl("CmpItemAbbrMatch", color.base05)
-      hl("CmpItemAbbrMatchFuzzy", color.base05)
-      hl("CmpItemAbbr", color.base03)
-      hl("CmpItemKind", color.base0E)
-      hl("CmpItemMenu", color.base0E)
-      hl("CmpItemKindSnippet", color.base0E)
-
-      -- Number
-      hl("CursorLine")
-      hl("CursorLineNR")
-      hl("LineNr", color.base03)
-
-      -- Others
-      hl("VertSplit", color.base01, nil)
-      hl("NormalFloat", nil, color.base01)
-      hl("FloatBorder", color.base01, color.base01)
-
-      -- Extra
-      cmd("hi StatusLine gui=strikethrough")
 
       local modes = {
         ['n']    = 'NORMAL',

@@ -94,7 +94,7 @@
               Description = "not really";
               Alias = "!yt";
               Method = "GET";
-              URLTemplate = "https://yt.femboy.hu/search?q={searchTerms}";
+              URLTemplate = "https://www.youtube.com/search?q={searchTerms}";
             }
             {
               Name = "Librex";
