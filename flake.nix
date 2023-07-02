@@ -39,7 +39,7 @@
     # repos
     # master.url = github:nixos/nixpkgs/master;
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     home-manager = {
@@ -49,8 +49,9 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    neovim-flake = {
-      url = "github:NotAShelf/neovim-flake?ref=release/v0.4";
+    # nvim configuration
+    nixvim = {
+      url = "github:pta2002/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

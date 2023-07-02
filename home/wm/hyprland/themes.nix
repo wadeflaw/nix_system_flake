@@ -8,7 +8,7 @@
     void main() {
       vec4 pixColor = texture2D(tex, v_texcoord);
 
-      float var = 0.9;
+      float var = 0.6;
       pixColor[3] *= var;
       pixColor[2] *= var;
       pixColor[1] *= var;
