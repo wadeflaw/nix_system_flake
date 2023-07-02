@@ -6,4 +6,8 @@
     deadnix
     statix
   ];
+  programs.neovim = {
+    enable = true;
+    
+  };
 }

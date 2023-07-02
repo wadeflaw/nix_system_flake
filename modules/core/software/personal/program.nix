@@ -6,7 +6,7 @@
   programs = {
     dconf.enable = true;
     zsh.enable = true;
-    neovim.enable = true;
+    neovim.enable = false;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

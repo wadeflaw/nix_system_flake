@@ -4,7 +4,7 @@
     ./neofetch
     ./zellij
     ./zathura
-#   ./nvim
+    ./nvim
     ./btop
     ./cava
   ];
