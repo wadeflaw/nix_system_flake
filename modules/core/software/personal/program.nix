@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+_: {
   programs = {
     dconf.enable = true;
     zsh.enable = true;
@@ -14,11 +10,4 @@
     };
     #   steam.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    wl-clipboard
-    wireguard-tools
-    home-manager
-    unzip
-  ];
 }

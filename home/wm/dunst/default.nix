@@ -1,9 +1,6 @@
-{
-  pkgs,
-  ...
-}: {
+_: {
   services.dunst = {
-      enable = true;
+    enable = true;
   };
   xdg.configFile."dunst/dunstrc".source = ./dunstrc;
 }

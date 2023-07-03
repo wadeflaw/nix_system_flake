@@ -4,7 +4,7 @@
   ];
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
     package = pkgs.neovim-unwrapped;
 
     options = {
@@ -14,6 +14,12 @@
       expandtab = true;
       laststatus = 3;
       termguicolors = true;
+    };
+
+    colorschemes = {
+    	catppuccin = {
+	  enable = true;
+	};
     };
 
     globals = {
@@ -71,19 +77,8 @@
       bufferline = {
         enable = true;
       };
-      toggleterm = {
-        enable = true;
-      };
       comment-nvim = {
         enable = true;
-      };
-      cursorline = {
-        enable = true;
-        cursorline = {
-          enable = true;
-          number = true;
-          timeout = 0;
-        };
       };
       nvim-autopairs = {
         enable = true;

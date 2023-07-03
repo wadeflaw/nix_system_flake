@@ -1,10 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-with lib; let
+{pkgs, ...}: let
   browser = ["firedragon.desktop"];
   associations = {
     "application/x-extension-htm" = browser;
@@ -35,13 +29,13 @@ in {
 
   xdg = {
     enable = true;
-#   userDirs = {
-#     enable = true;
-#     createDirectories = true;
-#     extraConfig = {
-#       XDG_DEVELOPMENT_DIR = "${config.xdg.userDirs.documents}/Dev";
-#     };
-#   };
+    #   userDirs = {
+    #     enable = true;
+    #     createDirectories = true;
+    #     extraConfig = {
+    #       XDG_DEVELOPMENT_DIR = "${config.xdg.userDirs.documents}/Dev";
+    #     };
+    #   };
 
     mimeApps = {
       enable = true;

@@ -1,7 +1,4 @@
-{ inputs
-, pkgs
-, ...
-}: {
+_: {
   programs.waybar = {
     enable = true;
     systemd = {

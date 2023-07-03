@@ -1,12 +1,7 @@
-{ pkgs
-, inputs
-, ...
-}:
-let
+{pkgs, ...}: let
   username = "ghost";
   initialPassword = "azd34u67";
-in
-{
+in {
   users.users = {
     ${username} = {
       isNormalUser = true;
@@ -30,7 +25,14 @@ in
   };
   security.doas.extraRules = [
     {
-      users = [ "${username}" ];
+      users = ["${username}"];
     }
+  ];
+
+  environment.systemPackages = with pkgs; [
+    home-manager
+    wl-clipboard
+    wireguard-tools
+    unzip
   ];
 }

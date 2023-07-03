@@ -1,17 +1,16 @@
-{ outputs
-, inputs
-,
-}:
-let
+{
+  outputs,
+  inputs,
+}: let
   # Adds my custom packages
-  additions = final: _: import ../pkgs { pkgs = final; };
+  additions = final: _: import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
+    neovim-tanish2002 = inputs.neovim-config.packages.x86_64-linux.default;
   };
-in
-{
+in {
   default = final: prev: (additions final prev) // (modifications final prev);
 }

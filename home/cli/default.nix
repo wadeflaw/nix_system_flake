@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./shell
     ./neofetch
     ./zellij
     ./zathura
-    ./nvim
+    # ./nvim/config
     ./btop
     ./cava
   ];
@@ -20,5 +20,6 @@
     timer
     libnotify
     lolcat
+    neovim-tanish2002
   ];
 }

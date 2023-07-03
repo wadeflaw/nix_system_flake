@@ -1,18 +1,16 @@
-{ lib
-, pkgs
-, inputs
-, ...
-}:
-let
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   hyprctl = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl";
   grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
-  getExe = lib.getExe;
+  getexe = lib.getExe;
 
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
   brightness = pkgs.writeShellScriptBin "brightness" (builtins.readFile ./scripts/brightness);
-
-in
-{
+in {
   xdg.configFile."hypr/binds.conf".text = ''
       input {
         kb_layout = us,ru
@@ -34,16 +32,16 @@ in
 
      bind = $mod,          Return,       exec, $term
      bind = $modSHIFT,     Return,  exec, [float] $term
-     bind = $mod,		        D, exec, ${getExe pkgs.rofi-wayland} -show drun
+     bind = $mod,		        D, exec, ${getexe pkgs.rofi-wayland} -show drun
      bind = $mod,		        R, exec, ${hyprctl} reload
-     bind = $mod,		        W, killactive, 
-     bind = $modCTRLSHIFT,	Q, exit, 
-     bind = $mod,			       S, togglefloating, 
+     bind = $mod,		        W, killactive,
+     bind = $modCTRLSHIFT,	Q, exit,
+     bind = $mod,			       S, togglefloating,
      bind = $mod,          F, fullscreen
      bind = $modSHIFT,		   T, pseudo, # dwindle
      bind = $mod,		        Y, togglesplit, # dwindle
      bind = $mod,		        B, exec, $term -e bluetuith
-     bind = $modSHIFT,     P, exec, $scripts/waylogout     
+     bind = $modSHIFT,     P, exec, $scripts/waylogout
      bind = CTRLSHIFT,     L, exec, gtklock
 
      bind = $mod,          U, pin
@@ -53,27 +51,27 @@ in
 
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
-     bind = ALT,           G, exec, ${getExe gamemode}
+     bind = ALT,           G, exec, ${getexe gamemode}
 
      bind = $mod,      h, movefocus, l
      bind = $mod,      l, movefocus, r
      bind = $mod,      k, movefocus, u
      bind = $mod,      j, movefocus, d
-                   
+
      bind = $modCTRL,  h, swapwindow, l
      bind = $modCTRL,  l, swapwindow, r
      bind = $modCTRL,  k, swapwindow, u
      bind = $modCTRL,  j, swapwindow, d
-                   
+
     binde = $modCTRL,  h, moveactive, -40 0
     binde = $modCTRL,  l, moveactive, 40 0
     binde = $modCTRL,  k, moveactive, 0 -40
-    binde = $modCTRL,  j, moveactive, 0 40 
+    binde = $modCTRL,  j, moveactive, 0 40
 
     binde = $modSHIFT, h, resizeactive, -40 0
     binde = $modSHIFT, l, resizeactive, 40 0
     binde = $modSHIFT, k, resizeactive, 0 -40
-    binde = $modSHIFT, j, resizeactive, 0 40 
+    binde = $modSHIFT, j, resizeactive, 0 40
 
      bind = $mod, 1, workspace, 1
      bind = $mod, 2, workspace, 2
@@ -117,9 +115,9 @@ in
     # $scripts/volume down
      bind = ,XF86AudioMute,           exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle > /dev/null
 
-     bind = ,XF86MonBrightnessDown,   exec, ${getExe brightness} down
-     bind = ,XF86MonBrightnessUp,     exec, ${getExe brightness} up
- 
+     bind = ,XF86MonBrightnessDown,   exec, ${getexe brightness} down
+     bind = ,XF86MonBrightnessUp,     exec, ${getexe brightness} up
+
      bind = ,Print,                   exec, ${grimblast} --notify --scale 1 copy screen
      bind = ALT, Print,               exec, ${grimblast} --notify --scale 1 copy area
   '';

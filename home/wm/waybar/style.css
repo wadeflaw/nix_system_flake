@@ -9,8 +9,6 @@
 window#waybar {
   background-color: @mantle;
   margin-bottom: 40px;
-  /* border-bottom: 3px solid @crust; */
-  /* border-right: 3px solid @crust; */
 }
 
 #tray menu {
@@ -25,7 +23,6 @@ tooltip {
 
 button {
   border-radius: 12px 12px 12px 12px;
-  /* border-radius: 0; */
 }
 
 #workspaces {
@@ -46,17 +43,13 @@ button {
 #workspaces button:hover {
   background: @bg;
   color: @pink;
-  /* border-radius: 0px; */
   border-radius: 12px 12px 12px 12px;
-  /* box-shadow: inset 0px -3px #ffffff; */
 }
 #workspaces button.active {
   color: @mantle;
   background-color: @pink;
   border-radius: 12px 12px 12px 12px;
   padding: 0px 15px 0px 15px;
-  /* color: @pink; */
-  /* border-top: 3px solid @pink; */
 }
 
 #workspaces button.focused {
@@ -66,7 +59,8 @@ button {
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: @red;
+  color: @bg;
   border-radius: 12px 12px 12px 12px;
 }
 
@@ -119,5 +113,4 @@ button {
   padding-left: 10px;
   padding-right: 10px;
   padding: 0px 10px;
-  /* border-left: 2px solid #32393f; */
 }

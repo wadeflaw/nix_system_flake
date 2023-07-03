@@ -1,10 +1,10 @@
-{ inputs
-, pkgs
-, lib
-, ...
-}:
-let
-  getExe = lib.getExe;
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
+  getexe = lib.getExe;
 
   autostart = pkgs.writeShellScriptBin "autostart" ''
             #!/bin/env bash
@@ -16,17 +16,17 @@ let
 
     # wallpaper
             if [[ ! `pidof swww-daemon` ]]; then
-                    ${getExe pkgs.swww} init &
+                    ${getexe pkgs.swww} init &
             fi
 
     # notification daemon
             if [[ ! `pidof dunst` ]]; then
-                    ${getExe pkgs.dunst} &
+                    ${getexe pkgs.dunst} &
             fi
 
     # sound
             if [[ ! `pidof pipewire` ]]; then
-                    ${getExe pkgs.pipewire} &
+                    ${getexe pkgs.pipewire} &
             fi
 
             if [[ ! `pidof pipewire-pulse` ]]; then
@@ -34,18 +34,16 @@ let
             fi
 
             if [[ ! `pidof wireplumber` ]]; then
-                    ${getExe pkgs.wireplumber} &
+                    ${getexe pkgs.wireplumber} &
             fi
 
             if [[ ! `pidof waybar` ]]; then
-                   ${getExe pkgs.waybar} &
+                   ${getexe pkgs.waybar} &
             fi
 
             ${pkgs.libnotify}/bin/notify-send "Hello ghost! 😈"
   '';
-
-in
-{
+in {
   imports = [
     ./variables.nix
     ./themes.nix
@@ -54,7 +52,7 @@ in
     inputs.hyprland.homeManagerModules.default
   ];
 
-  systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+  systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -74,7 +72,7 @@ in
 
       exec     = bash ${autostart}/bin/autostart
 
-      source   =    $HOME/.config/hypr/rules.conf 
+      source   =    $HOME/.config/hypr/rules.conf
       source   =    $HOME/.config/hypr/binds.conf
       source   =    $HOME/.config/hypr/themes/mocha.conf
 
@@ -117,7 +115,7 @@ in
       }
 
       dwindle {
-         pseudotile        = yes 
+         pseudotile        = yes
          preserve_split    = yes
          no_gaps_when_only = true
       }
@@ -139,7 +137,7 @@ in
          disable_autoreload        = true
          enable_swallow            = true
          swallow_regex             = kitty|Alacritty|foot
-         # swallow_exception_regex  = ^() 
+         # swallow_exception_regex  = ^()
       }
 
       binds {

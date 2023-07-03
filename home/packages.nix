@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs;
     [
       gparted
@@ -22,6 +26,7 @@
       imv
       ffmpeg
       yt-dlp
+      inputs.unstable.legacyPackages.${pkgs.system}.bat
     ]
     ++ [
       # nur.repos.aleksana.gtkcord4
