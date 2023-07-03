@@ -1,19 +1,4 @@
 {pkgs, ...}: {
-  # programs.firefox =
-  #   let
-  #     userChrome = pkgs.substituteAll {
-  #       src = ./userChrome.css;
-  #     };
-  #   in
-  #   {
-  #     enable = true;
-  #     package = pkgs.firefox-esr-102-unwrapped;
-  #     profiles = {
-  #       default = {
-  #         userChrome = builtins.readFile userChrome;
-  #       };
-  #     };
-  #   };
   home.file.".mozilla/firefox/default/chrome/userChrome.css" = {
     source = ./userChrome.css;
     executable = true;
