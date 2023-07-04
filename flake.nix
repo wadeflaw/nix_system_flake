@@ -10,16 +10,20 @@
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
     system = "x86_64-linux";
+    conf = {
+      user = "ghost";
+      pass = "azd34u67";
+    };
   in {
     overlays = import ./overlays {inherit inputs outputs;};
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit self inputs chaotic outputs;};
+        specialArgs = {inherit self conf inputs chaotic outputs;};
         modules = [
-          ./modules/core/default.nix
-          ./hosts/nixos/hardware-configuration.nix
+          # ./modules/core/default.nix
+          ./hosts/nixos/default.nix
         ];
       };
     };
@@ -27,7 +31,7 @@
     homeConfigurations = {
       "ghost" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {inherit self inputs chaotic outputs;};
+        extraSpecialArgs = {inherit self conf inputs chaotic outputs;};
         modules = [./home];
       };
     };
@@ -52,7 +56,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-config = {
+    neovim-conf = {
       url = "git+file:/etc/nixos/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };

@@ -20,6 +20,6 @@
     timer
     libnotify
     lolcat
-    neovim-tanish2002
+    neovim
   ];
 }

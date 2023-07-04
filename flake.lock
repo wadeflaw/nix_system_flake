@@ -3,7 +3,7 @@
     "beautysh": {
       "inputs": {
         "nixpkgs": [
-          "neovim-config",
+          "neovim-conf",
           "nixvim",
           "nixpkgs"
         ],
@@ -252,7 +252,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "neovim-config",
+          "neovim-conf",
           "nixvim",
           "pre-commit-hooks",
           "nixpkgs"
@@ -504,7 +504,7 @@
         "type": "github"
       }
     },
-    "neovim-config": {
+    "neovim-conf": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -514,10 +514,7 @@
       },
       "locked": {
         "lastModified": 1688324096,
-        "narHash": "sha256-b5QmPoYm5sYvonb3hFwfwFtnID3N2lRvvlJFMWmxwV4=",
-        "ref": "refs/heads/main",
-        "rev": "e3bab7eb049410ef6f475a7a0d375224c5d41897",
-        "revCount": 1,
+        "narHash": "sha256-vnyZCV1COeJEXAKKOPr0ME+9t88LfgHlLyyO1l/iGRQ=",
         "type": "git",
         "url": "file:/etc/nixos/nixvim"
       },
@@ -710,17 +707,17 @@
         "beautysh": "beautysh",
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
-          "neovim-config",
+          "neovim-conf",
           "nixpkgs"
         ],
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1688336260,
-        "narHash": "sha256-kOfoG82WZelY1whrD4WipjWfS8p0JoKXn0XapmelhbM=",
+        "lastModified": 1688411300,
+        "narHash": "sha256-oQlZ3KmMKsEfihUZYMzTP4qottrv8jM8JVi1y75TvmU=",
         "owner": "pta2002",
         "repo": "nixvim",
-        "rev": "341eb9d09484273dbd90db93e1680484cdd085dd",
+        "rev": "89d0b05c9d2a677489fbcfb7a0cff66d5af1ed67",
         "type": "github"
       },
       "original": {
@@ -770,13 +767,13 @@
     "poetry2nix": {
       "inputs": {
         "flake-utils": [
-          "neovim-config",
+          "neovim-conf",
           "nixvim",
           "beautysh",
           "utils"
         ],
         "nixpkgs": [
-          "neovim-config",
+          "neovim-conf",
           "nixvim",
           "beautysh",
           "nixpkgs"
@@ -829,7 +826,7 @@
         "flake-utils": "flake-utils_3",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "neovim-config",
+          "neovim-conf",
           "nixvim",
           "nixpkgs"
         ],
@@ -900,7 +897,7 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "hyprpicker": "hyprpicker",
-        "neovim-config": "neovim-config",
+        "neovim-conf": "neovim-conf",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_7",
         "nixvim": "nixvim_2",

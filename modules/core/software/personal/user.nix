@@ -1,11 +1,12 @@
-{pkgs, ...}: let
-  username = "ghost";
-  initialPassword = "azd34u67";
-in {
+{
+  pkgs,
+  conf,
+  ...
+}: {
   users.users = {
-    ${username} = {
+    "${conf.user}" = {
       isNormalUser = true;
-      initialPassword = "${initialPassword}";
+      initialPassword = "${conf.pass}";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -21,13 +22,19 @@ in {
         zsh
       ];
     };
-    root.initialPassword = "${initialPassword}";
+    root.initialPassword = "${conf.pass}";
   };
   security.doas.extraRules = [
     {
-      users = ["${username}"];
+      users = ["${conf.user}"];
     }
   ];
+
+  manual = {
+    html.enable = false;
+    json.enable = false;
+    manpages.enable = false;
+  };
 
   environment.systemPackages = with pkgs; [
     home-manager

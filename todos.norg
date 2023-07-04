@@ -6,6 +6,9 @@
       - ( ) Add secrets manager.
   ~ ( ) Make different configuration options for automation. 
   ~ ( ) Neovim nix config.
+  ~ ( ) Addopt firefox-unwrapped for librewolf [https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/browsers/firefox/wrapper.nix].
+  ~ ( ) Add this [https://github.com/simrat39/rust-tools.nvim] plugin.
+  ~ ( ) Try to do just one project from this list [https://github.com/rust-unofficial/awesome-rust#command-line]
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.

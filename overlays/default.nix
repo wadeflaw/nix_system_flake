@@ -9,7 +9,7 @@
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
-    neovim-tanish2002 = inputs.neovim-config.packages.x86_64-linux.default;
+    neovim = inputs.neovim-conf.packages.x86_64-linux.default;
   };
 in {
   default = final: prev: (additions final prev) // (modifications final prev);

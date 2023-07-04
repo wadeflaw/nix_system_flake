@@ -7,41 +7,48 @@
   getexe = lib.getExe;
 
   autostart = pkgs.writeShellScriptBin "autostart" ''
-            #!/bin/env bash
-            wl-paste --type text --watch cliphist store & #Stores only text data
-            wl-paste --type image --watch cliphist store & #Stores only image data
+        #!/bin/env bash
+        ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store & #Stores only text data
+        ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store & #Stores only image data
 
-            kwalletd5 &
-            ${pkgs.foot}/bin/foot --server &
+
+        if [[ ! `pidof kwalletd5` ]] then
+          ${pkgs.libsForQt5.kwallet}-bin/bin/kwalletd5 &
+        fi
+
+    # terminal
+        if [[ ! `pidof foot` ]]; then
+          ${pkgs.foot}/bin/foot --server &
+        fi
 
     # wallpaper
-            if [[ ! `pidof swww-daemon` ]]; then
-                    ${getexe pkgs.swww} init &
-            fi
+        if [[ ! `pidof swww-daemon` ]]; then
+          ${getexe pkgs.swww} init &
+        fi
 
     # notification daemon
-            if [[ ! `pidof dunst` ]]; then
-                    ${getexe pkgs.dunst} &
-            fi
+        if [[ ! `pidof dunst` ]]; then
+          ${getexe pkgs.dunst} &
+        fi
 
     # sound
-            if [[ ! `pidof pipewire` ]]; then
-                    ${getexe pkgs.pipewire} &
-            fi
+        if [[ ! `pidof pipewire` ]]; then
+          ${getexe pkgs.pipewire} &
+        fi
 
-            if [[ ! `pidof pipewire-pulse` ]]; then
-                    pipewire-pulse &
-            fi
+        if [[ ! `pidof pipewire-pulse` ]]; then
+          ${pkgs.pipewire}-pulse/bin/pipewire-pulse &
+        fi
 
-            if [[ ! `pidof wireplumber` ]]; then
-                    ${getexe pkgs.wireplumber} &
-            fi
+        if [[ ! `pidof wireplumber` ]]; then
+          ${getexe pkgs.wireplumber} &
+        fi
 
-            if [[ ! `pidof waybar` ]]; then
-                   ${getexe pkgs.waybar} &
-            fi
+        if [[ ! `pidof waybar` ]]; then
+          ${getexe pkgs.waybar} &
+        fi
 
-            ${pkgs.libnotify}/bin/notify-send "Hello ghost! 😈"
+        ${getexe pkgs.libnotify} "Hello ghost! 😈"
   '';
 in {
   imports = [
@@ -106,8 +113,8 @@ in {
          enabled   = yes
          bezier    = myBezier, 0.05, 0.9, 0.1, 1.05
 
-         animation = windows,     1, 2,  myBezier
-         animation = windowsOut,  1, 2,  default, popin 80%
+         animation = windows,     1, 2,  default
+         animation = windowsOut,  1, 2,  default
          animation = border,      1, 2,  default
          animation = borderangle, 1, 2,  default
          animation = fade,        1, 2,  default

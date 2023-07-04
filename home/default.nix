@@ -1,9 +1,10 @@
-{ lib
-, pkgs
-, config
-, inputs
-, outputs
-, ...
+{
+  lib,
+  pkgs,
+  conf,
+  inputs,
+  outputs,
+  ...
 }: {
   imports = [
     ./cli
@@ -13,8 +14,8 @@
   ];
 
   home = {
-    username = "ghost";
-    homeDirectory = "/home/${config.home.username}";
+    username = conf.user;
+    homeDirectory = /home/${conf.user};
     stateVersion = "23.11";
   };
 
@@ -31,7 +32,7 @@
   nix = {
     package = lib.mkForce pkgs.nixUnstable;
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
     };
   };

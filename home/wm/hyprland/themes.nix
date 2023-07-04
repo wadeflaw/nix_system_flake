@@ -1,5 +1,4 @@
-{ ...
-}: {
+_: {
   xdg.configFile."hypr/themes/screenShader.frag".text = ''
     precision mediump float;
     varying vec2 v_texcoord;
@@ -8,7 +7,7 @@
     void main() {
       vec4 pixColor = texture2D(tex, v_texcoord);
 
-      float var = 1.0;
+      float var = 0.9;
       pixColor[3] *= var;
       pixColor[2] *= var;
       pixColor[1] *= var;
