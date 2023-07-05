@@ -5,11 +5,16 @@
   ...
 }: let
   hyprctl = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl";
-  grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
-  getexe = lib.getExe;
+
+  grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast --notify --scale 1 ";
+
+  getExe = lib.getExe;
 
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
+
   brightness = pkgs.writeShellScriptBin "brightness" (builtins.readFile ./scripts/brightness);
+
+  volume = pkgs.writeShellScriptBin "volume" (builtins.readFile ./scripts/volume);
 in {
   xdg.configFile."hypr/binds.conf".text = ''
       input {
@@ -32,7 +37,7 @@ in {
 
      bind = $mod,          Return,       exec, $term
      bind = $modSHIFT,     Return,  exec, [float] $term
-     bind = $mod,		        D, exec, ${getexe pkgs.rofi-wayland} -show drun
+     bind = $mod,		        D, exec, ${getExe pkgs.rofi-wayland} -show drun
      bind = $mod,		        R, exec, ${hyprctl} reload
      bind = $mod,		        W, killactive,
      bind = $modCTRLSHIFT,	Q, exit,
@@ -51,7 +56,7 @@ in {
 
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
-     bind = ALT,           G, exec, ${getexe gamemode}
+     bind = ALT,           G, exec, ${getExe gamemode}
 
      bind = $mod,      h, movefocus, l
      bind = $mod,      l, movefocus, r
@@ -84,6 +89,9 @@ in {
      bind = $mod, 9, workspace, 9
      bind = $mod, 0, workspace, 10
 
+     bind = $mod,        E, movetoworkspace, +1
+     bind = $mod,        Q, movetoworkspace, -1
+
      bind = $mod SHIFT, 1, movetoworkspacesilent, 1
      bind = $mod SHIFT, 2, movetoworkspacesilent, 2
      bind = $mod SHIFT, 3, movetoworkspacesilent, 3
@@ -109,16 +117,14 @@ in {
     bindm = $mod, mouse:272, movewindow
     bindm = $mod, mouse:273, resizewindow
 
-     bind = ,XF86AudioRaiseVolume,    exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+ > /dev/null
-    # $scripts/volume up
-     bind = ,XF86AudioLowerVolume,    exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%- > /dev/null
-    # $scripts/volume down
-     bind = ,XF86AudioMute,           exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle > /dev/null
+     bind = ,XF86AudioRaiseVolume,    exec, ${getExe volume} up
+     bind = ,XF86AudioLowerVolume,    exec, ${getExe volume} down
+     bind = ,XF86AudioMute,           exec, ${getExe volume} mute
 
-     bind = ,XF86MonBrightnessDown,   exec, ${getexe brightness} down
-     bind = ,XF86MonBrightnessUp,     exec, ${getexe brightness} up
+     bind = ,XF86MonBrightnessDown,   exec, ${getExe brightness} down
+     bind = ,XF86MonBrightnessUp,     exec, ${getExe brightness} up
 
-     bind = ,Print,                   exec, ${grimblast} --notify --scale 1 copy screen
-     bind = ALT, Print,               exec, ${grimblast} --notify --scale 1 copy area
+     bind = ,Print,                   exec, ${grimblast} copy screen
+     bind = ALT, Print,               exec, ${grimblast} copy area
   '';
 }

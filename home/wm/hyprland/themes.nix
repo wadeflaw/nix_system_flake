@@ -1,4 +1,6 @@
-_: {
+{...}: let
+  nightmode.enable = false;
+in {
   xdg.configFile."hypr/themes/screenShader.frag".text = ''
     precision mediump float;
     varying vec2 v_texcoord;
@@ -7,11 +9,23 @@ _: {
     void main() {
       vec4 pixColor = texture2D(tex, v_texcoord);
 
-      float var = 0.9;
-      pixColor[3] *= var;
-      pixColor[2] *= var;
-      pixColor[1] *= var;
-      pixColor[0] *= var;
+      ${
+      if nightmode.enable
+      then ''
+        float var = 0.5;
+          pixColor[3] *= var;
+          pixColor[2] *= var - 0.2;
+          pixColor[1] *= var;
+          pixColor[0] *= var;
+      ''
+      else ''
+        float var = 1.0;
+          pixColor[3] *= var;
+          pixColor[2] *= var;
+          pixColor[1] *= var;
+          pixColor[0] *= var;
+      ''
+    }
 
       gl_FragColor = pixColor;
     }
