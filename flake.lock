@@ -487,6 +487,22 @@
         "type": "github"
       }
     },
+    "master": {
+      "locked": {
+        "lastModified": 1688659841,
+        "narHash": "sha256-+vp1o9QNsXh/3B4YGenxl7IQW3CcmrRQ8yHvhOaAAZc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1af2455a6b1ba67f332305edd8250e5ed8c3ef04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "mesa-git-src": {
       "flake": false,
       "locked": {
@@ -897,6 +913,7 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "hyprpicker": "hyprpicker",
+        "master": "master",
         "neovim-conf": "neovim-conf",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_7",

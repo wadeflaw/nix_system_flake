@@ -212,13 +212,6 @@ plugins {
     compact-bar { path "compact-bar"; }
 }
 
-layout name="dev" {
-    pane split_direction="vertical" {
-        pane edit="./" 
-        pane 
-    }
-}
-
 // Options:
 //   - detach (Default)
 //   - quit
@@ -259,7 +252,7 @@ copy_command "wl-copy"                    // wayland
 
 // The folder in which Zellij will look for layouts
 //
-// layout_dir "/path/to/my/layout_dir"
+layout_dir "$HOME/.config/zellij/layouts"
 
 // The folder in which Zellij will look for themes
 //

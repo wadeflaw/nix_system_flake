@@ -1,12 +1,10 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   xdg.configFile."zsh-plugins".source = ./zsh-plugins;
   programs = {
     zsh = {
       enable = true;
       dotDir = ".config/zsh";
-      sessionVariables = { LC_ALL = "en_US.UTF-8"; };
+      sessionVariables = {LC_ALL = "en_US.UTF-8";};
       profileExtra = ''
         # [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
         Hyprland &
@@ -30,7 +28,7 @@
         {
           name = "fzf-tab";
           src = zsh-fzf-tab;
-          file = "share/fzf-tab/fzf-tab.zsh";
+          file = "share/fzf-tab/fzf-tab.plugin.zsh";
         }
         {
           name = "zsh-syntax-highlighting";
@@ -45,7 +43,7 @@
         {
           name = "zsh-nix-shell";
           src = zsh-nix-shell;
-          file = "share/zsh/zsh-nix-shell/zsh-nix-shell.zsh";
+          file = "share/zsh/zsh-nix-shell/nix-shell.plugin.zsh";
         }
         {
           name = "zsh-vi-mode";
@@ -64,8 +62,8 @@
         }
         {
           name = "zsh-fzf-history-search"; # i forgit :skull:
-          file = "zsh-fzf-history-search.plugin.zsh";
-          src = fetchFromGitHub {
+          file = "zsh-fzf-history-search.zsh";
+          src = pkgs.fetchFromGitHub {
             owner = "joshskidmore";
             repo = "zsh-fzf-history-search";
             rev = "d1aae98ccd6ce153c97a5401d79fd36418cd2958";

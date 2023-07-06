@@ -27,6 +27,7 @@
       imv
       ffmpeg
       yt-dlp
+      gimp
       inputs.unstable.legacyPackages.${pkgs.system}.bat
     ]
     ++ [

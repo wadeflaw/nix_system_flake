@@ -10,6 +10,7 @@
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
     system = "x86_64-linux";
+
     conf = {
       user = "ghost";
       host = "nixos";
@@ -22,7 +23,6 @@
       ${conf.host} = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit self conf inputs chaotic outputs;};
         modules = [
-          # ./modules/core/default.nix
           ./hosts/${conf.host}/default.nix
         ];
       };
@@ -39,6 +39,7 @@
 
   inputs = {
     # repos
+    master.url = "github:nixos/nixpkgs/master";
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";

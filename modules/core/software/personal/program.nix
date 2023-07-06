@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   programs = {
     dconf.enable = true;
     zsh.enable = true;
@@ -10,4 +10,8 @@ _: {
     };
     #   steam.enable = true;
   };
+  environment.systemPackages = with pkgs; [
+    btrfs-snap
+    timeshift
+  ];
 }
