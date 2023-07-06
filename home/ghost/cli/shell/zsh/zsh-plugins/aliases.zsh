@@ -32,7 +32,8 @@ alias -g lta="ls --color -lTa"
 alias -g l="ls --color -l"
 alias -g cl="clear"
 alias -g nv="nvim"
-alias -g lv='lvim'
+
+alias -g znv="zellij r  -- nv"
 
 # faster navigation
 alias -g cd..='cd ..'
@@ -53,6 +54,7 @@ alias sudoedit='doas nvim'
 alias -g myip='curl ifconfig.me'
 alias zel='zellij'
 # alias nvim='lvim'
+alias ytdlp='yt-dlp --audio-quality 10'
 
 # nixos
 FLAKE_PATH="/etc/nixos/stable/"

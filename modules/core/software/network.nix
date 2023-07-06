@@ -1,11 +1,10 @@
-{ ... }: {
+{conf, ...}: {
   systemd.network = {
     enable = true;
     wait-online.enable = false;
   };
   networking = {
-
-    hostName = "nixos";
+    hostName = "${conf.host}";
 
     networkmanager.enable = true;
 
@@ -16,7 +15,7 @@
 
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 993 ];
+      allowedUDPPorts = [993];
     };
 
     wireguard = {
@@ -31,10 +30,10 @@
       };
     };
     hosts = {
-      "127.0.0.1" = [ "localhost" ];
-      "::1" = [ "localhost" "nixos" ];
-      "127.0.0.2" = [ "nixos" ];
-      "0.0.0.0" = [ "pornhub.com" "xvideos.com" "youtube.com" ];
+      "127.0.0.1" = ["localhost"];
+      "::1" = ["localhost" "${conf.host}"];
+      "127.0.0.2" = ["${conf.host}"];
+      "0.0.0.0" = ["pornhub.com" "xvideos.com" "youtube.com"];
     };
   };
 }

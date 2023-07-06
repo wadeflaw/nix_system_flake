@@ -12,43 +12,43 @@
         ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store & #Stores only image data
 
 
-        if [[ ! `pidof kwalletd5` ]] then
+        if [[ ! `pgrep kwalletd5` ]] then
           ${pkgs.libsForQt5.kwallet}-bin/bin/kwalletd5 &
         fi
 
     # terminal
-        if [[ ! `pidof foot` ]]; then
+        if [[ ! `pgrep foot` ]]; then
           ${pkgs.foot}/bin/foot --server &
         fi
 
     # wallpaper
-        if [[ ! `pidof swww-daemon` ]]; then
+        if [[ ! `pgrep swww-daemon` ]]; then
           ${getexe pkgs.swww} init &
         fi
 
     # notification daemon
-        if [[ ! `pidof dunst` ]]; then
+        if [[ ! `pgrep dunst` ]]; then
           ${getexe pkgs.dunst} &
         fi
 
     # sound
-        if [[ ! `pidof pipewire` ]]; then
+        if [[ ! `pgrep pipewire` ]]; then
           ${getexe pkgs.pipewire} &
         fi
 
-        if [[ ! `pidof pipewire-pulse` ]]; then
+        if [[ ! `pgrep pipewire-pulse` ]]; then
           ${pkgs.pipewire}-pulse/bin/pipewire-pulse &
         fi
 
-        if [[ ! `pidof wireplumber` ]]; then
+        if [[ ! `pgrep wireplumber` ]]; then
           ${getexe pkgs.wireplumber} &
         fi
 
-        if [[ ! `pidof waybar` ]]; then
+        if [[ ! `pgrep waybar` ]]; then
           ${getexe pkgs.waybar} &
         fi
 
-        ${getexe pkgs.libnotify} "Hello ghost! 😈"
+          ${getexe pkgs.libnotify} "Hello ghost! 😈"
   '';
 in {
   imports = [

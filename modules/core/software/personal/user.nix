@@ -6,7 +6,6 @@
   users.users = {
     "${conf.user}" = {
       isNormalUser = true;
-      initialPassword = "${conf.pass}";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -22,19 +21,12 @@
         zsh
       ];
     };
-    root.initialPassword = "${conf.pass}";
   };
   security.doas.extraRules = [
     {
       users = ["${conf.user}"];
     }
   ];
-
-  manual = {
-    html.enable = false;
-    json.enable = false;
-    manpages.enable = false;
-  };
 
   environment.systemPackages = with pkgs; [
     home-manager

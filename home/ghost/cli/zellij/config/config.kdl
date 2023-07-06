@@ -212,10 +212,10 @@ plugins {
     compact-bar { path "compact-bar"; }
 }
 
-layout {
-    pane borderless=false
-    pane {
-        borderless false
+layout name="dev" {
+    pane split_direction="vertical" {
+        pane edit="./" 
+        pane 
     }
 }
 

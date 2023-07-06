@@ -12,27 +12,27 @@
     system = "x86_64-linux";
     conf = {
       user = "ghost";
-      pass = "azd34u67";
+      host = "nixos";
     };
   in {
     overlays = import ./overlays {inherit inputs outputs;};
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      ${conf.host} = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit self conf inputs chaotic outputs;};
         modules = [
           # ./modules/core/default.nix
-          ./hosts/nixos/default.nix
+          ./hosts/${conf.host}/default.nix
         ];
       };
     };
 
     homeConfigurations = {
-      "ghost" = home-manager.lib.homeManagerConfiguration {
+      ${conf.user} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {inherit self conf inputs chaotic outputs;};
-        modules = [./home];
+        modules = [./home/${conf.user}];
       };
     };
   };

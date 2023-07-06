@@ -1,28 +1,11 @@
-## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
-## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
-## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
-# Setups
-format = "$directory$git_branch$character"
+format = " $directory $character"
 palette = "catppuccin_mocha"
-right_format = """$git_status$cmd_duration"""
+right_format = """$git_status $git_branch $cmd_duration"""
 add_newline = false
 
 # Other languages configurations:
-c.disabled = true
-cmake.disabled = true
-haskell.disabled = true
-python.disabled = true
-ruby.disabled = true
-rust.disabled = true
-perl.disabled = true
-package.disabled = true
-lua.disabled = true
-nodejs.disabled = true
-java.disabled = true
-golang.disabled = true
-
-[conda]
-format = ' [$symbol$environment](dimmed green) '
+rust.disabled = false
+lua.disabled = false
 
 # Prompt symbols 
 [character]
@@ -31,18 +14,18 @@ error_symbol = "[](red)"
 vicmd_symbol = "[](green)"
 
 [directory]
-format = "[]($style)[ ](bg:base fg:pink)[$path](bg:base fg:pink bold)[ ]($style)"
-style = "bg:base fg:base"
+format = "($style)[ ](bg:none fg:pink)[$path](bg:none fg:pink bold)($style)"
+style = "bg:none fg:pink"
 truncation_length = 3
 truncate_to_repo = false
 
 [git_branch]
-format = "[]($style)[[ ](bg:base fg:pink bold)$branch](bg:base fg:pink)[ ]($style)"
+format = "($style)[[ ](bg:none fg:pink bold)$branch](bg:none fg:pink)($style)"
 style = "bg:none fg:base"
 
 [git_status]
 # $all status$ahead_behind
-format = "[]($style)[$all_status$ahead_behind](bg:base fg:pink)[ ]($style)"
+format = "($style)[$all_status$ahead_behind](bg:none fg:pink)($style)"
 style = "bg:none fg:base"
 conflicted = "="
 ahead = "⇡${count}"
@@ -87,6 +70,6 @@ yellow = "#f9e2af"
 [cmd_duration]
 min_time = 1
 # duration & style 
-format = "[]($style)[[神](bg:base fg:pink bold)$duration](bg:base fg:pink)[ ]($style)"
+format = "($style)[(bg:none fg:pink bold)$duration](bg:none fg:pink)($style)"
 disabled = false
-style = "bg:base fg:base"
+style = "bg:none fg:base"

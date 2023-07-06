@@ -5,9 +5,9 @@
 }: {
   home.packages = with pkgs;
     [
-      gparted
       # desktop
       keepassxc
+      gparted
       gtklock
       pavucontrol
       firedragon
@@ -17,6 +17,7 @@
       gajim
       transmission-gtk
       libreoffice-fresh
+      element-desktop-wayland
 
       # media
       mpv

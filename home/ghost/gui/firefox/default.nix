@@ -5,7 +5,7 @@
   };
   home.packages = with pkgs; [
     (wrapFirefox firefox-esr-102-unwrapped {
-      # see https://github.com/mozilla/policy-templates/blob/master/README.md
+      # see {https://github.com/mozilla/policy-templates/blob/master/README.md}
       extraPolicies = {
         CaptivePortal = false;
         DisableFirefoxStudies = true;
@@ -15,6 +15,17 @@
         DisableFormHistory = true;
         DisplayBookmarksToolbar = false;
         DontCheckDefaultBrowser = true;
+        PromptForDownloadLocation = false;
+        NetworkPrediction = false;
+        showSearchBar = false;
+        DisableSetDesktopBackground = true;
+        LegacyProfiles = true;
+        ManualAppUpdateOnly = true;
+        Homepage = {
+          # "none" / "homepage" / "previous-session" / "homepage-locked"
+          Startpage = "previous-session";
+        };
+
         SearchEngines = {
           Add = [
             {
@@ -136,7 +147,6 @@
           Snippets = false;
         };
         PasswordManagerEnabled = false;
-        PromptForDownloadLocation = true;
         UserMessaging = {
           ExtensionRecommendations = false;
           SkipOnboarding = true;

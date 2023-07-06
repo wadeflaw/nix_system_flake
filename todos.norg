@@ -1,17 +1,19 @@
 |TODO
+  ~ ( ) Move all home autostart things to systemd.
   ~ ( ) Colors configuration.
   ~ ( ) Add automate laptop lock.
   ~ ( ) Make configuration more suckless, remove bloated stuff
   ~~~~ ( ) Pass insted keepassxc.
   ~~~~ ( ) Add secrets manager.
   ~ ( ) Make different configuration options for automation. 
-  ~ ( ) Neovim nix config.
   ~ ( ) Addopt firefox-unwrapped for librewolf [browser]{https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/browsers/firefox/wrapper.nix}.
   ~ ( ) Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
-  ~ ( ) Try to do just one project from this list [https://github.com/rust-unofficial/awesome-rust#command-line]
+  ~ ( ) Try to do just one project from this list {https://github.com/rust-unofficial/awesome-rust#command-line}.
+  ~ ( ) Create zellij layouts with names. {https://zellij.dev/tutorials/layouts/}
       
 #Solved
-~~~~ (x) Make home-manager config separated from main flake.
-~~~~ (x) Add zsh plugins, and setup it.
-~~~~ (x) Browser ( firefox or chrome) nix config.
+  ~ (x) Make home-manager config separated from main flake.
+  ~ (x) Add zsh plugins, and setup it.
+  ~ (x) Browser ( firefox or chrome) nix config.
+  ~ (x) Neovim nix config.
 
