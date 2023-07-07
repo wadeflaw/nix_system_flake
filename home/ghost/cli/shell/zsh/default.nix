@@ -6,9 +6,10 @@
       dotDir = ".config/zsh";
       sessionVariables = {LC_ALL = "en_US.UTF-8";};
       profileExtra = ''
-        # [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
-        Hyprland &
+        [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
+        # Hyprland &
       '';
+      shellAliases = {};
       plugins = with pkgs; [
         {
           name = "zsh-autosuggestions";
@@ -70,11 +71,6 @@
             sha256 = "4Dp2ehZLO83NhdBOKV0BhYFIvieaZPqiZZZtxsXWRaQ=";
           };
         }
-
-        #    "esc/conda-zsh-completion"
-        #    "Aloxaf/fzf-tab"
-        #    "joshskidmore/zsh-fzf-history-search"
-        #    "chitoku-k/fzf-zsh-completions"
       ];
       dirHashes = {
         docs = "$HOME/Documents";

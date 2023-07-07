@@ -1,10 +1,14 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  config,
+  lib,
+  conf,
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   fileSystems = {
     "/" = {
@@ -31,7 +35,7 @@
       ];
     };
 
-    "/home/ghost/Disc" = {
+    "/home/${conf.user}/Disc" = {
       device = "/dev/disk/by-label/artix_root";
       fsType = "btrfs";
       options = [
@@ -67,13 +71,12 @@
         "space_cache=v2"
       ];
     };
-    ${config.boot.loader.efi.efiSysMountPoint} =
-      {
-        device = "/dev/disk/by-label/BOOTNIX";
-        fsType = "vfat";
-      };
+    ${config.boot.loader.efi.efiSysMountPoint} = {
+      device = "/dev/disk/by-label/BOOTNIX";
+      fsType = "vfat";
+    };
   };
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
 

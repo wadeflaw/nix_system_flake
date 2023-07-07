@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  conf,
+  ...
+}: {
   programs = {
     dconf.enable = true;
     zsh.enable = true;
@@ -14,4 +18,8 @@
     btrfs-snap
     timeshift
   ];
+  environment.variables = {
+    FLAKE_PATH = "${conf.fl_path}";
+    BROWSER = "firefox";
+  };
 }

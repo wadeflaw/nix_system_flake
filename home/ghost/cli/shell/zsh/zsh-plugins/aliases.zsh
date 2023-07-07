@@ -44,7 +44,7 @@ alias -g cd.....='cd ../../../..'
 # quality of life aliases
 alias -g n="clear && neofetch"
 alias -g v="nvim"
-alias notes="cd ~/Documents/learn/notes/ && nvim"
+alias notes="cd ~/Documents/learn/notes"
 alias pac='yay'
 alias lsblk='lsblk -o NAME,FSTYPE,SIZE,TYPE,MOUNTPOINTS,STATE,FSSIZE,FSAVAIL'
 alias doo='doas'
@@ -59,12 +59,9 @@ alias ytdlp='yt-dlp --audio-quality 10'
 
 alias ytmp3="yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title='%(artist)s - %(title)s' --prefer-ffmpeg -o '%(title)s.%(ext)s'"
 alias cat="bat --style=plain"
-alias grep="ripgrep"
+alias grep="rg"
 alias du="du-dust"
-alias ps="procs"
 alias mp="mkdir -p"
-alias fcd="cd $(find -type d | fzf)"
-alias ls="exa -h --git --icons --color=auto --group-directories-first -s extension"
 alias l="ls -lF --time-style=long-iso --icons"
 # system aliases
 alias sc="sudo systemctl"
@@ -83,11 +80,11 @@ alias -g nrf="doas nixos-rebuild switch --flake $FLAKE_PATH"
 alias -g hrf="home-manager switch --flake $FLAKE_PATH$1"
 alias -g nsp="nix search nixpkgs"
 alias -g fl="cd $FLAKE_PATH"
-alias -g packages="ds nv $FLAKE_PATH/modules/home/package/default.nix"
+alias -g packages="nv $FLAKE_PATH/home/ghost/package.nix"
 
-alias rebuild="nix-store --verify; pushd ~dotfiles ; nixos-rebuild switch --flake .#$1 --use-remote-sudo && notify-send \"Done\" ; popd"
+alias rebuild="nix-store --verify; pushd /etc/nixos/stable ; nixos-rebuild switch --flake .#$1 --use-remote-sudo && notify-send \"Done\" ; popd"
 
-alias test="pushd ~dotfiles nixos-rebuild dry-activate"
+alias test="pushd /etc/nixos/stable; nixos-rebuild dry-activate"
 
 alias cleanup="sudo nix-collect-garbage --delete-older-than 3d && nix-collect-garbage -d"
 

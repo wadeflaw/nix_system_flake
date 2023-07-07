@@ -1,5 +1,6 @@
 {
   inputs,
+  conf,
   pkgs,
   lib,
   ...
@@ -48,7 +49,7 @@
           ${getexe pkgs.waybar} &
         fi
 
-          ${getexe pkgs.libnotify} "Hello ghost! 😈"
+          ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
   '';
 in {
   imports = [

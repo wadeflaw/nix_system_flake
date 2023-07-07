@@ -6,10 +6,15 @@
   ~~~~ ( ) Pass insted keepassxc.
   ~~~~ ( ) Add secrets manager.
   ~ ( ) Make different configuration options for automation. 
-  ~ ( ) Addopt firefox-unwrapped for librewolf [browser]{https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/browsers/firefox/wrapper.nix}.
+  ~ ( ) Addopt firefox options for librewolf [browser]{https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/browsers/firefox/wrapper.nix}.
   ~ ( ) Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
-  ~ ( ) Try to do just one project from this list {https://github.com/rust-unofficial/awesome-rust#command-line}.
-  ~ ( ) Create zellij layouts with names. {https://zellij.dev/tutorials/layouts/}
+  ~ ( ) Try to do just one project from this list [awesome-rust]{https://github.com/rust-unofficial/awesome-rust#command-line}.
+  ~ ( ) Create zellij layouts with names. [zellij layouts]{https://zellij.dev/tutorials/layouts/}.
+  ~ ( ) Move neovim from external flake into system.
+  ~ ( ) Learn tmux.
+  ~ ( ) Add neovim keybindings for telescope.
+  ~ ( ) Create btrfs snapshot for home files.
+  ~ ( ) Move aliases to nix
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.

@@ -23,7 +23,7 @@
       ];
       substituters = [
         "https://cache.nixos.org/"
-        "https://mirrors.bfsu.edu.cn/nix-channels/store"
+        # china mirror "https://mirrors.bfsu.edu.cn/nix-channels/store"
       ];
       extra-substituters = [
         # Nix community's cache server

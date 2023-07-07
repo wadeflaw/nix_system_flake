@@ -1,6 +1,7 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
   imports = [
     ./hyprland
@@ -8,7 +9,7 @@
     ./rofi
     ./dunst
     ./xdg
-    ./terminals
+    # ./terminals
     ./toolkits
   ];
 

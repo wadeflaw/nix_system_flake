@@ -2,7 +2,6 @@
   outputs = {
     nixpkgs,
     home-manager,
-    chaotic,
     self,
     ...
   } @ inputs: let
@@ -14,6 +13,7 @@
     conf = {
       user = "ghost";
       host = "nixos";
+      fl_path = "/etc/nixos/stable";
     };
   in {
     overlays = import ./overlays {inherit inputs outputs;};
@@ -21,7 +21,7 @@
 
     nixosConfigurations = {
       ${conf.host} = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit self conf inputs chaotic outputs;};
+        specialArgs = {inherit self conf inputs outputs;};
         modules = [
           ./hosts/${conf.host}/default.nix
         ];
@@ -31,19 +31,22 @@
     homeConfigurations = {
       ${conf.user} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {inherit self conf inputs chaotic outputs;};
+        extraSpecialArgs = {inherit self conf inputs outputs;};
         modules = [./home/${conf.user}];
       };
     };
   };
 
   inputs = {
-    # repos
+    # nixpkgs
     master.url = "github:nixos/nixpkgs/master";
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     nur.url = "github:nix-community/NUR";
+
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "unstable";
@@ -60,6 +63,7 @@
     neovim-conf = {
       url = "git+file:/etc/nixos/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixvim.follows = "nixvim";
     };
 
     # Hyprland stuff

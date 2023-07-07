@@ -1,6 +1,6 @@
 _: {
   programs.kitty = {
-    enable = true;
+    enable = false;
     settings = {
       background_opacity = "1";
       font_family = "FiraCode Nerd Font";
