@@ -14,7 +14,7 @@
   ~ ( ) Learn tmux.
   ~ ( ) Add neovim keybindings for telescope.
   ~ ( ) Create btrfs snapshot for home files.
-  ~ ( ) Move aliases to nix
+  ~ ( ) Move zsh aliases to nix
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.

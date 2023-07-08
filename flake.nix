@@ -12,6 +12,7 @@
 
     conf = {
       user = "ghost";
+      passhash = "$y$j9T$lcqsG7EZPy7dSeXRr5lYk.$zLi5zYkjtBzy5nd9KLYQddxy88wD97EHKOCuJgzG1A6";
       host = "nixos";
       fl_path = "/etc/nixos/stable";
     };

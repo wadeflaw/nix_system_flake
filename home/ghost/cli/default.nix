@@ -14,6 +14,7 @@
   # extra packages
   home.packages = with pkgs; [
     ripgrep
+    exa
     wget
     unzip
     calc

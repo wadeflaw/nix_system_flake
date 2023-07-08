@@ -24,12 +24,12 @@ alias record="wf-recorder --audio=alsa_output.pci-0000_08_00.6.analog-stereo.mon
 
 # Alias 
 # Replacement Icons for ls 
-alias -g ls="ls --color"
-alias -g ll="ls --color -l"
-alias -g la="ls --color -a"
-alias -g lt="ls --color -lT"
-alias -g lta="ls --color -lTa"
-alias -g l="ls --color -l"
+alias -g  ls="exa --color always "
+alias -g  ll="exa --color always -l"
+alias -g  la="exa --color always -a"
+alias -g  lt="exa --color always -lT"
+alias -g lta="exa --color always -lTa"
+alias -g l="exa -lF --time-style=long-iso --icons"
 alias -g cl="clear"
 alias -g nv="nvim"
 
@@ -62,7 +62,6 @@ alias cat="bat --style=plain"
 alias grep="rg"
 alias du="du-dust"
 alias mp="mkdir -p"
-alias l="ls -lF --time-style=long-iso --icons"
 # system aliases
 alias sc="sudo systemctl"
 alias jc="sudo journalctl"
@@ -82,9 +81,9 @@ alias -g nsp="nix search nixpkgs"
 alias -g fl="cd $FLAKE_PATH"
 alias -g packages="nv $FLAKE_PATH/home/ghost/package.nix"
 
-alias rebuild="nix-store --verify; pushd /etc/nixos/stable ; nixos-rebuild switch --flake .#$1 --use-remote-sudo && notify-send \"Done\" ; popd"
+alias rebuild="nix-store --verify; pushd $FLAKE_PATH ; nixos-rebuild switch --flake .#$1 --use-remote-sudo && notify-send \"Done\" ; popd"
 
-alias test="pushd /etc/nixos/stable; nixos-rebuild dry-activate"
+alias test="pushd $FLAKE_PATH; nixos-rebuild dry-activate"
 
 alias cleanup="sudo nix-collect-garbage --delete-older-than 3d && nix-collect-garbage -d"
 

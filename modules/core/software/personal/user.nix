@@ -5,6 +5,7 @@
 }: {
   users.users = {
     "${conf.user}" = {
+      hashedPassword = "${conf.passhash}";
       isNormalUser = true;
       extraGroups = [
         "networkmanager"
@@ -20,6 +21,10 @@
       packages = with pkgs; [
         zsh
       ];
+    };
+    root = {
+      shell = pkgs.zsh;
+      hashedPassword = "${conf.passhash}";
     };
   };
   security.doas.extraRules = [

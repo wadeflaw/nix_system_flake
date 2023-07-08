@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  hyprstart = pkgs.writeShellScriptBin "hyprstart" (builtins.readFile ./hyprstart);
+in {
   xdg.configFile."zsh-plugins".source = ./zsh-plugins;
   programs = {
     zsh = {
@@ -6,7 +12,7 @@
       dotDir = ".config/zsh";
       sessionVariables = {LC_ALL = "en_US.UTF-8";};
       profileExtra = ''
-        [ "$(tty)" = "/dev/tty1" ] && exec $HOME/.config/hypr/scripts/hypr.sh &
+        [ "$(tty)" = "/dev/tty1" ] && exec ${lib.getExe hyprstart} &
         # Hyprland &
       '';
       shellAliases = {};
@@ -84,6 +90,7 @@
         media = "$HOME/Media";
       };
       initExtra = ''
+        if [ "$TMUX" = "" ]; then tmux; fi
         export AUTO_NOTIFY_THRESHOLD=20
         export AUTO_NOTIFY_TITLE="%command finished"
 
