@@ -40,11 +40,24 @@
   nixpkgs = {
     overlays = [
       outputs.overlays.default
-      inputs.nur.overlay
+      (self: super: {
+        nur = import inputs.nur {
+          nurpkgs = super;
+          pkgs = super;
+          repoOverrides = {
+            ilya-fedin = import inputs.shlyupa-nur {
+              pkgs = super;
+            };
+          };
+        };
+      })
       inputs.chaotic.overlays.default
     ];
 
     config = {
+      permittedInsecurePackages = [
+        "openssl-1.1.1u"
+      ];
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };

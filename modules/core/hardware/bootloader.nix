@@ -63,9 +63,9 @@
       "pcie_aspm.policy=performance"
 
       # clear boot terminal
-      "quiet"
-      "udev.log_level=3"
-      "logo.nologo"
+      # "quiet"
+      # "udev.log_level=3"
+      # "logo.nologo"
 
       # Disables scatter/gather which was introduced with kernel version 6.2
       "amdgpu.sg_display=0"
@@ -84,6 +84,8 @@
     modprobeConfig = {
       enable = true;
     };
+
+    # disable random wifi disconnections
     extraModprobeConfig = ''
       options rtw88_core disable_lps_deep=y
       options rtw88_pci disable_msi=y disable_aspm=y

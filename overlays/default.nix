@@ -10,6 +10,7 @@
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
     neovim = inputs.neovim-conf.packages.x86_64-linux.default;
+    keepassxc = inputs.stable.legacyPackages.x86_64-linux.keepassxc;
   };
 in {
   default = final: prev: (additions final prev) // (modifications final prev);

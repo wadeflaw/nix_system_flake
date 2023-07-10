@@ -6,6 +6,7 @@
     ./zathura
     ./tmux
     ./terminals
+    ./nushell
     # ./nvim/config
     ./btop
     ./cava
@@ -15,6 +16,7 @@
   home.packages = with pkgs; [
     ripgrep
     exa
+    slides
     wget
     unzip
     calc

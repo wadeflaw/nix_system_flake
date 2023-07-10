@@ -1,22 +1,39 @@
 {
   pkgs,
+  lib,
   conf,
+  config,
   ...
 }: {
   users.users = {
     "${conf.user}" = {
       hashedPassword = "${conf.passhash}";
       isNormalUser = true;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "video"
-        "audio"
-        "input"
-        "power"
-        "storage"
-        "optical"
-      ];
+      extraGroups =
+        [
+          "wheel"
+          "systemd-journal"
+          "storage"
+          "optical"
+          "audio"
+          "video"
+          "input"
+          "plugdev"
+          "lp"
+          "tss"
+          "power"
+          "nix"
+        ]
+        ++ lib.ifTheyExist config [
+          "network"
+          "networkmanager"
+          "wireshark"
+          "mysql"
+          "docker"
+          "podman"
+          "git"
+          "libvirtd"
+        ];
       shell = pkgs.zsh;
       packages = with pkgs; [
         zsh
