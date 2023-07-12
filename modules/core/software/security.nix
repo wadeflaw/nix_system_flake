@@ -26,33 +26,43 @@
     };
     doas = {
       enable = lib.mkDefault (!config.security.sudo.enable);
-      extraRules = [
-        {
-          groups = ["wheel"];
-          persist = true;
-          keepEnv = true;
-        }
-        {
-          groups = ["wheel"];
-          noPass = true;
-          cmd = "${pkgs.systemd}/bin/poweroff";
-        }
-        {
-          groups = ["wheel"];
-          noPass = true;
-          cmd = "${pkgs.systemd}/bin/reboot";
-        }
-        {
-          groups = ["wheel"];
-          cmd = "${pkgs.brillo}/bin/brillo";
-          noPass = true;
-        }
-        {
-          groups = ["wheel"];
-          cmd = "rfkill";
-          noPass = true;
-        }
-      ];
+      extraConfig = ''
+        permit persist keepenv :wheel
+        permit nopass root
+        permit nopass :wheel cmd poweroff
+        permit nopass :wheel cmd brillo
+        permit nopass :wheel cmd reboot
+        permit nopass :wheel cmd rfkill
+      '';
+
+      # TODO extra rules won't keep env, fix that
+      # extraRules = [
+      #   {
+      #     groups = ["wheel"];
+      #     persist = true;
+      #     keepEnv = true;
+      #   }
+      #   {
+      #     groups = ["wheel"];
+      #     noPass = true;
+      #     cmd = "${pkgs.systemd}/bin/poweroff";
+      #   }
+      #   {
+      #     groups = ["wheel"];
+      #     noPass = true;
+      #     cmd = "${pkgs.systemd}/bin/reboot";
+      #   }
+      #   {
+      #     groups = ["wheel"];
+      #     cmd = "${pkgs.brillo}/bin/brillo";
+      #     noPass = true;
+      #   }
+      #   {
+      #     groups = ["wheel"];
+      #     cmd = "rfkill";
+      #     noPass = true;
+      #   }
+      # ];
     };
     #   protectKernelImage = true;
   };

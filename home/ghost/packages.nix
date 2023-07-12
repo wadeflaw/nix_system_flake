@@ -9,7 +9,7 @@
     gparted
     gtklock
     pavucontrol
-    firedragon
+    librewolf-wayland
     cinnamon.nemo
     steam
     telegram-desktop

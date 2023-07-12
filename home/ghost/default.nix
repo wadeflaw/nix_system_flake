@@ -40,17 +40,7 @@
   nixpkgs = {
     overlays = [
       outputs.overlays.default
-      (self: super: {
-        nur = import inputs.nur {
-          nurpkgs = super;
-          pkgs = super;
-          repoOverrides = {
-            ilya-fedin = import inputs.shlyupa-nur {
-              pkgs = super;
-            };
-          };
-        };
-      })
+      inputs.nur.overlay
       inputs.chaotic.overlays.default
     ];
 
