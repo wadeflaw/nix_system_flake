@@ -63,6 +63,7 @@ in {
   systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     xwayland = {
       enable = true;
       hidpi = true;
@@ -137,7 +138,7 @@ in {
       }
 
       misc {
-         render_titles_in_groupbar = false
+         render_titles_in_groupbar = true
          groupbar_gradients        = false
          disable_hyprland_logo     = true
          disable_splash_rendering  = true

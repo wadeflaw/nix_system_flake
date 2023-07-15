@@ -1,4 +1,8 @@
 |TODO
+ * BUG
+  ~ ( ) Sometimes nixos stuck on switching root stage. # FIX
+
+** ENCHANTMENT
   ~ ( ) Move all home autostart things to systemd.
   ~ ( ) Colors configuration.
   ~ ( ) Add automate laptop lock.
@@ -15,6 +19,7 @@
   ~ ( ) Add neovim keybindings for telescope.
   ~ ( ) Create btrfs snapshot for home files.
   ~ ( ) Move zsh aliases to nix
+  ~ ( ) Make waybar modules top and bottom padding more.
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.

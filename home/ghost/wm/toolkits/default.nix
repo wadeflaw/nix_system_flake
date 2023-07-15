@@ -51,7 +51,11 @@
     x11.enable = true;
     gtk.enable = true;
   };
-  qt = {
-    enable = true;
-  };
+  # qt = {
+  #   enable = true;
+  # style = {
+  #   name = "gtk2";
+  #   package = pkgs.libsForQt5.qtstyleplugins;
+  # };
+  # };
 }

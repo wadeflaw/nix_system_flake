@@ -98,6 +98,7 @@ in {
         export PATH=$HOME/.local/bin/:$PATH
 
         source $HOME/.config/zsh-plugins/lplugins.zsh
+        cat $HOME/Documents/learn/notes/daily.norg
       '';
     };
   };

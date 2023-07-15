@@ -79,7 +79,15 @@ button {
   margin-bottom: 4px;
   margin-top: 4px;
 }
-/* #cpu, */
+#cpu {
+  background-color: @pink;
+  color: @base;
+  border-right: 5px;
+  border-left: 5px;
+  padding: 0px 15px 0px 0px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
 #memory {
   background-color: @pink;
   color: @base;

@@ -79,6 +79,13 @@
               URLTemplate = "https://crates.io/search?q={searchTerms}";
             }
             {
+              Name = "Brave search";
+              Description = "Brave search engine";
+              Alias = "!br";
+              Method = "GET";
+              URLTemplate = "https://search.brave.com/search?q={searchTerms}";
+            }
+            {
               Name = "nixpkgs";
               Description = "Nixpkgs query";
               Alias = "!nix";

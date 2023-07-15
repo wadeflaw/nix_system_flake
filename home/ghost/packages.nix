@@ -9,15 +9,16 @@
     gparted
     gtklock
     pavucontrol
-    librewolf-wayland
     cinnamon.nemo
     steam
     telegram-desktop
     webcord
+    discord
     gajim
     transmission-gtk
     libreoffice-fresh
     element-desktop-wayland
+    obs-studio
 
     # media
     mpv

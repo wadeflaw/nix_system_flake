@@ -77,7 +77,7 @@ FLAKE_PATH="/etc/nixos/stable/"
 alias -g ncg="nix-collect-garbage && nix-collect-garbage -d && doas nix-collect-garbage && doas nix-collect-garbage -d && doas rm /nix/var/nix/gcroots/auto/*"
 alias -g nrf="doas nixos-rebuild switch --flake $FLAKE_PATH"
 alias -g hrf="home-manager switch --flake $FLAKE_PATH$1"
-alias -g nsp="nix search nixpkgs"
+alias -g nsp="nix search flake:n"
 alias -g fl="cd $FLAKE_PATH"
 alias -g packages="nv $FLAKE_PATH/home/ghost/package.nix"
 
