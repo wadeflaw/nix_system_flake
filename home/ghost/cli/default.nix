@@ -4,7 +4,7 @@
     ./neofetch
     ./zellij
     ./zathura
-    ./tmux
+    # ./tmux
     ./terminals
     ./nushell
     # ./nvim/config

@@ -3,20 +3,20 @@
 // Place a null value instead of a command string to switch the shortcut off
 
 [
-    {
-        "command": "show_archive",
-        "keys": "alt+a"
-    },
-    {
-        "command": "search",
-        "keys": "/"
-    },
-    {
-        "command": "next_chat",
-        "keys": "alt+shift+l"
-    },
-    {
-        "command": "previous_chat",
-        "keys": "alt+shift+h"
-    },
+  {
+    "command": "show_archive",
+    "keys": "alt+a"
+  },
+  {
+    "command": "search",
+    "keys": "ctrl+/"
+  },
+  {
+    "command": "next_chat",
+    "keys": "alt+shift+l"
+  },
+  {
+    "command": "previous_chat",
+    "keys": "alt+shift+h"
+  }
 ]

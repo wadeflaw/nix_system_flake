@@ -90,7 +90,7 @@ in {
         media = "$HOME/Media";
       };
       initExtra = ''
-        if [ "$TMUX" = "" ]; then tmux; fi
+        # if [ "$TMUX" = "" ]; then tmux; fi
         export AUTO_NOTIFY_THRESHOLD=20
         export AUTO_NOTIFY_TITLE="%command finished"
 

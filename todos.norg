@@ -20,6 +20,7 @@
   ~ ( ) Create btrfs snapshot for home files.
   ~ ( ) Move zsh aliases to nix
   ~ ( ) Make waybar modules top and bottom padding more.
+  ~ ( ) Hypr picker theme.
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.
