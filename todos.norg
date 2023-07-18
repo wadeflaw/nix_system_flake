@@ -5,9 +5,6 @@
 ** ENCHANTMENT
   ~ ( ) Move all home autostart things to systemd.
   ~ ( ) Colors configuration.
-  ~ ( ) Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
-  ~ ( ) Try to do just one project from this list [awesome-rust]{https://github.com/rust-unofficial/awesome-rust#command-line}.
-  ~ ( ) Create zellij layouts with names. [zellij layouts]{https://zellij.dev/tutorials/layouts/}.
   ~ ( ) Move neovim from external flake into system.
   ~ ( ) Add neovim keybindings for telescope.
   ~ ( ) Check telegram keybindings.
@@ -31,3 +28,5 @@
   ~ ( ) Add tpm encription management.
   ~ ( ) Make different configuration options for automation. 
   ~ ( ) Learn tmux.
+  ~ ( ) Create zellij layouts with names. [zellij layouts]{https://zellij.dev/tutorials/layouts/}.
+  ~ ( ) Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
