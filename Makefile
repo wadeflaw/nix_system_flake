@@ -6,7 +6,7 @@ hrf:
 		git add . 
 		home-manager switch --flake ".#ghost"
 
-tr:
+hyr:
 		git add . 
 		home-manager switch --flake ".#ghost" && hyprctl reload
 

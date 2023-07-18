@@ -1,0 +1,16 @@
+#!/bin/env sh
+
+def="$HOME/.config/hypr/themes/shader_def.frag"
+night="$HOME/.config/hypr/themes/shader_night.frag"
+
+export HYPRTHEME=$(hyprctl getoption decoration:screen_shader | sed -n '4p' | awk '{print $2}' | awk -F'"' '{print $2}')
+if [ $HYPRTHEME = $def ]; then
+	hyprctl keyword decoration:screen_shader $night
+	hyprctl notify -1 5000 "rgb(f5c2e7)" "Nightmode enabled. ^"
+	exit
+else
+	if [ $HYPRTHEME = $night ]; then
+		hyprctl notify -1 5000 "rgb(f5c2e7)" "Nightmode disabled. ^"
+	fi
+fi
+hyprctl keyword decoration:screen_shader $def

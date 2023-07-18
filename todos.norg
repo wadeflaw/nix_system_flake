@@ -1,26 +1,16 @@
 |TODO
  * BUG
-  ~ ( ) Sometimes nixos stuck on switching root stage. # FIX
+ ~ ( ) fix, nixos sometimes stucks on switch root sytemd state.
 
 ** ENCHANTMENT
   ~ ( ) Move all home autostart things to systemd.
   ~ ( ) Colors configuration.
-  ~ ( ) Add automate laptop lock.
-  ~ ( ) Make configuration more suckless, remove bloated stuff
-  ~~~~ ( ) Pass insted keepassxc.
-  ~~~~ ( ) Add secrets manager.
-  ~ ( ) Make different configuration options for automation. 
-  ~ ( ) Addopt firefox options for librewolf [browser]{https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/browsers/firefox/wrapper.nix}.
   ~ ( ) Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
   ~ ( ) Try to do just one project from this list [awesome-rust]{https://github.com/rust-unofficial/awesome-rust#command-line}.
   ~ ( ) Create zellij layouts with names. [zellij layouts]{https://zellij.dev/tutorials/layouts/}.
   ~ ( ) Move neovim from external flake into system.
-  ~ ( ) Learn tmux.
   ~ ( ) Add neovim keybindings for telescope.
-  ~ ( ) Create btrfs snapshot for home files.
-  ~ ( ) Move zsh aliases to nix
-  ~ ( ) Make waybar modules top and bottom padding more.
-  ~ ( ) Hypr picker theme.
+  ~ ( ) Check telegram keybindings.
       
 #Solved
   ~ (x) Make home-manager config separated from main flake.
@@ -28,3 +18,16 @@
   ~ (x) Browser ( firefox or chrome) nix config.
   ~ (x) Neovim nix config.
 
+- Not important (long term)
+  ~ ( ) Addopt firefox options for librewolf [browser]{https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/browsers/firefox/wrapper.nix}.
+  ~ ( ) Make configuration more suckless, remove bloated stuff
+  ~~~~ ( ) Pass insted keepassxc.
+  ~~~~ ( ) Add secrets manager.
+  ~ ( ) Add automate laptop lock.
+  ~ ( ) Move zsh aliases to nix
+  ~ ( ) Make waybar modules top and bottom padding more.
+  ~ ( ) Hypr picker theme when selecting source for display.
+  ~ ( ) Create btrfs snapshot for home files.
+  ~ ( ) Add tpm encription management.
+  ~ ( ) Make different configuration options for automation. 
+  ~ ( ) Learn tmux.

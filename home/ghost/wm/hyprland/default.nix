@@ -7,6 +7,8 @@
 }: let
   getexe = lib.getExe;
 
+  nightmode.enable = false;
+
   autostart = pkgs.writeShellScriptBin "autostart" ''
         #!/bin/env bash
         ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store & #Stores only text data
@@ -108,7 +110,15 @@ in {
          shadow_render_power = 4
          col.shadow          = $mantle
          shadow_offset       = -12, 12
-         screen_shader       = $HOME/.config/hypr/themes/screenShader.frag
+         ${
+        if nightmode.enable
+        then ''
+          screen_shader       = $HOME/.config/hypr/themes/shader_night.frag
+        ''
+        else ''
+          screen_shader       = $HOME/.config/hypr/themes/shader_def.frag
+        ''
+      }
       }
 
       animations {

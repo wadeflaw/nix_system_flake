@@ -14,6 +14,12 @@
         useOSProber = true;
         efiSupport = true;
         configurationLimit = 3;
+        extraEntries = ''
+          menuentry "artix" {
+            set root=(hd0,gpt1)
+            chainloader /EFI/grub/grubx64.efi
+          }
+        '';
         theme = pkgs.catppuccin-grub;
       };
       efi = {

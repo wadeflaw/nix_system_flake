@@ -86,6 +86,13 @@
               URLTemplate = "https://search.brave.com/search?q={searchTerms}";
             }
             {
+              Name = "you ai engine";
+              Description = "ai search engine";
+              Alias = "!yai";
+              Method = "GET";
+              URLTemplate = "https://you.com/search?q={searchTerms}";
+            }
+            {
               Name = "nixpkgs";
               Description = "Nixpkgs query";
               Alias = "!nix";

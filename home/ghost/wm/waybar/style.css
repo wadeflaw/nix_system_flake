@@ -114,7 +114,7 @@ button {
 
 #custom-separator {
   color: @base;
-  background-color: @base;
+  background-color: @mantle;
 }
 
 #tray {

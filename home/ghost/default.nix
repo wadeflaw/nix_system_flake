@@ -12,16 +12,15 @@
     ./wm
     ./packages.nix
   ];
+  # ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
     username = conf.user;
-    homeDirectory = /home/${conf.user};
+    homeDirectory = "/home/${conf.user}";
     stateVersion = "23.11";
   };
 
   programs.home-manager.enable = true;
-
-  # ++ (builtins.attrValues outputs.homeManagerModules);
 
   manual = {
     html.enable = false;

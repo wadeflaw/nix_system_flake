@@ -12,6 +12,8 @@
 
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
 
+  nightmode = pkgs.writeShellScriptBin "nightmode" (builtins.readFile ./scripts/nightmode);
+
   brightness = pkgs.writeShellScriptBin "brightness" (builtins.readFile ./scripts/brightness);
 
   volume = pkgs.writeShellScriptBin "volume" (builtins.readFile ./scripts/volume);
@@ -37,15 +39,15 @@ in {
 
      bind = $mod,          Return,       exec, $term
      bind = $modSHIFT,     Return,  exec, [float] $term
-     bind = $mod,		        D, exec, ${getExe pkgs.rofi-wayland} -show drun
-     bind = $mod,		        R, exec, ${hyprctl} reload
-     bind = $mod,		        W, killactive,
-     bind = $modCTRLSHIFT,	Q, exit,
-     bind = $mod,			       S, togglefloating,
+     bind = $mod,		       D, exec, ${getExe pkgs.rofi-wayland} -show drun
+     bind = $mod,		       R, exec, ${hyprctl} reload
+     bind = $mod,		       W, killactive,
+     bind = $modCTRLSHIFT, Q, exit,
+     bind = $mod,			     S, togglefloating,
      bind = $mod,          F, fullscreen
-     bind = $modSHIFT,		   T, pseudo, # dwindle
-     bind = $mod,		        Y, togglesplit, # dwindle
-     bind = $mod,		        B, exec, $term -e bluetuith
+     bind = $modSHIFT,		 T, pseudo, # dwindle
+     bind = $mod,		       Y, togglesplit, # dwindle
+     bind = $mod,		       B, exec, $term -e bluetuith
      bind = $modSHIFT,     P, exec, $scripts/waylogout
      bind = CTRLSHIFT,     L, exec, gtklock
 
@@ -57,6 +59,7 @@ in {
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
      bind = ALT,           G, exec, ${getExe gamemode}
+     bind = ALT,           N, exec, ${getExe nightmode}
 
      bind = $mod,      h, movefocus, l
      bind = $mod,      l, movefocus, r
@@ -68,10 +71,12 @@ in {
      bind = $modCTRL,  k, swapwindow, u
      bind = $modCTRL,  j, swapwindow, d
 
-    binde = $modCTRL,  h, moveactive, -40 0
-    binde = $modCTRL,  l, moveactive, 40 0
-    binde = $modCTRL,  k, moveactive, 0 -40
-    binde = $modCTRL,  j, moveactive, 0 40
+    $moverate = 60
+
+    binde = $modCTRL,  h, moveactive, -$moverate 0
+    binde = $modCTRL,  l, moveactive, $moverate 0
+    binde = $modCTRL,  k, moveactive, 0 -$moverate
+    binde = $modCTRL,  j, moveactive, 0 $moverate
 
     binde = $modSHIFT, h, resizeactive, -40 0
     binde = $modSHIFT, l, resizeactive, 40 0
