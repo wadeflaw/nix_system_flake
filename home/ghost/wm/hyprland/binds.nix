@@ -38,7 +38,7 @@ in {
     }
 
      bind = $mod,          Return,       exec, $term
-     bind = $modSHIFT,     Return,  exec, [float] $term
+     bind = $mod,          T, exec, [workspace 2 silent;float;noanim] $term
      bind = $mod,		       D, exec, ${getExe pkgs.rofi-wayland} -show drun
      bind = $mod,		       R, exec, ${hyprctl} reload
      bind = $mod,		       W, killactive,

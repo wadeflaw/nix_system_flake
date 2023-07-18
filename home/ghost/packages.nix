@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     # desktop
+    spotify
     keepassxc
     gparted
     gtklock
