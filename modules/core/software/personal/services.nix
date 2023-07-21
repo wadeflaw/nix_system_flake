@@ -6,5 +6,9 @@
       enable = true;
       implementation = "broker";
     };
+    xserver = {
+      xkbOptions = "grp:alt_shift_toggle,caps:swapescape";
+    };
   };
+  console.useXkbConfig = true;
 }

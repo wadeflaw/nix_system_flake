@@ -1,10 +1,8 @@
 {
   pkgs,
-  lib,
+  # lib,
   ...
-}: let
-  hyprstart = pkgs.writeShellScriptBin "hyprstart" (builtins.readFile ./hyprstart);
-in {
+}: {
   xdg.configFile."zsh-plugins".source = ./zsh-plugins;
   programs = {
     zsh = {
@@ -12,8 +10,7 @@ in {
       dotDir = ".config/zsh";
       sessionVariables = {LC_ALL = "en_US.UTF-8";};
       profileExtra = ''
-        [ "$(tty)" = "/dev/tty1" ] && exec ${lib.getExe hyprstart} &
-        # Hyprland &
+        [ "$(tty)" = "/dev/tty1" ] && exec Hyprland &
       '';
       shellAliases = {};
       plugins = with pkgs; [
@@ -98,6 +95,7 @@ in {
         export PATH=$HOME/.local/bin/:$PATH
 
         source $HOME/.config/zsh-plugins/lplugins.zsh
+        source $HOME/.config/zsh-plugins/tprompt.zsh
         cat $HOME/Documents/learn/notes/daily.norg
       '';
     };

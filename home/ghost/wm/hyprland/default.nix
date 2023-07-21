@@ -5,12 +5,11 @@
   lib,
   ...
 }: let
-  getexe = lib.getExe;
-
   nightmode.enable = false;
 
+  getexe = lib.getExe;
+
   autostart = pkgs.writeShellScriptBin "autostart" ''
-        #!/bin/env bash
         ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store & #Stores only text data
         ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store & #Stores only image data
 
@@ -51,7 +50,7 @@
           ${getexe pkgs.waybar} &
         fi
 
-          ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
+        ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
   '';
 in {
   imports = [
@@ -59,7 +58,7 @@ in {
     ./themes.nix
     ./binds.nix
     ./rules.nix
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
@@ -70,7 +69,7 @@ in {
       enable = true;
       hidpi = true;
     };
-    nvidiaPatches = false;
+    enableNvidiaPatches = false;
     systemdIntegration = true;
     extraConfig = ''
       #monitor=,preferred,auto,1
@@ -81,7 +80,7 @@ in {
       $mod     = SUPER
       $mod2    = ALT
 
-      exec     = bash ${autostart}/bin/autostart
+      exec     = bash ${getexe autostart}
 
       source   =    $HOME/.config/hypr/rules.conf
       source   =    $HOME/.config/hypr/binds.conf
@@ -96,6 +95,8 @@ in {
          col.group_border_active = $mauve
          col.group_border        = $surface0
 
+         # no_focus_fallback = true
+         cursor_inactive_timeout = 5
          layout = dwindle
       }
 
@@ -110,7 +111,7 @@ in {
          shadow_render_power = 4
          col.shadow          = $mantle
          shadow_offset       = -12, 12
-         ${
+       ${
         if nightmode.enable
         then ''
           screen_shader       = $HOME/.config/hypr/themes/shader_night.frag
@@ -156,6 +157,7 @@ in {
          disable_autoreload        = true
          enable_swallow            = true
          swallow_regex             = kitty|Alacritty|foot
+         cursor_zoom_factor = 0.6
          # swallow_exception_regex  = ^()
       }
 

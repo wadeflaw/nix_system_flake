@@ -29,7 +29,7 @@ alias -g  ll="exa --color always -l"
 alias -g  la="exa --color always -a"
 alias -g  lt="exa --color always -lT"
 alias -g lta="exa --color always -lTa"
-alias -g l="exa -lF --time-style=long-iso --icons"
+alias -g l="exa -lF --time-style=long-iso"
 alias -g cl="clear"
 alias -g nv="nvim"
 

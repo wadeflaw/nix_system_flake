@@ -19,25 +19,25 @@
   volume = pkgs.writeShellScriptBin "volume" (builtins.readFile ./scripts/volume);
 in {
   xdg.configFile."hypr/binds.conf".text = ''
-      input {
-        kb_layout = us,ru
-        kb_variant =
-        kb_model =
-        kb_options = grp:alt_shift_toggle,caps:swapescape
-    # altwin:swap_alt_win
-        kb_rules =
-        follow_mouse = 1
-        repeat_rate = 35
-        repeat_delay = 350
+     input {
+       kb_layout = us,ru
+       kb_variant =
+       kb_model =
+       kb_options = grp:alt_shift_toggle,caps:swapescape
+     # altwin:swap_alt_win
+       kb_rules =
+       follow_mouse = 1
+       repeat_rate = 35
+       repeat_delay = 350
 
-        touchpad {
-            natural_scroll = no
-        }
+       touchpad {
+           natural_scroll = no
+       }
 
-        sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-    }
+       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+     }
 
-     bind = $mod,          Return,       exec, $term
+     bind = $mod,          Return,  exec, $term
      bind = $mod,          T, exec, [workspace 2 silent;float;noanim] $term
      bind = $mod,		       D, exec, ${getExe pkgs.rofi-wayland} -show drun
      bind = $mod,		       R, exec, ${hyprctl} reload
@@ -45,43 +45,43 @@ in {
      bind = $modCTRLSHIFT, Q, exit,
      bind = $mod,			     S, togglefloating,
      bind = $mod,          F, fullscreen
-     bind = $modSHIFT,		 T, pseudo, # dwindle
+     bind = $modSHIFT,	   T, pseudo, # dwindle
      bind = $mod,		       Y, togglesplit, # dwindle
-     bind = $mod,		       B, exec, $term -e bluetuith
-     bind = $modSHIFT,     P, exec, $scripts/waylogout
-     bind = CTRLSHIFT,     L, exec, gtklock
+     bind = $mod,		       B, exec, $term -e ${getExe pkgs.bluetuith}
+    #bind = $modSHIFT,     P, exec, $scripts/waylogout
+     bind = CTRLSHIFT,     L, exec, ${getExe pkgs.gtklock}
 
      bind = $mod,          U, pin
      bind = $mod,      	   G, togglegroup
-    binde = $mod,        Tab, changegroupactive, f
-    binde = $modSHIFT,   Tab, changegroupactive, b
+    binde = $mod,          Tab, changegroupactive, f
+    binde = $modSHIFT,     Tab, changegroupactive, b
 
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
      bind = ALT,           G, exec, ${getExe gamemode}
      bind = ALT,           N, exec, ${getExe nightmode}
 
-     bind = $mod,      h, movefocus, l
-     bind = $mod,      l, movefocus, r
-     bind = $mod,      k, movefocus, u
-     bind = $mod,      j, movefocus, d
+     bind = $mod,          h, movefocus, l
+     bind = $mod,          l, movefocus, r
+     bind = $mod,          k, movefocus, u
+     bind = $mod,          j, movefocus, d
 
-     bind = $modCTRL,  h, swapwindow, l
-     bind = $modCTRL,  l, swapwindow, r
-     bind = $modCTRL,  k, swapwindow, u
-     bind = $modCTRL,  j, swapwindow, d
+     bind = $modCTRL,      h, swapwindow, l
+     bind = $modCTRL,      l, swapwindow, r
+     bind = $modCTRL,      k, swapwindow, u
+     bind = $modCTRL,      j, swapwindow, d
 
-    $moverate = 60
+     $moverate = 55
 
-    binde = $modCTRL,  h, moveactive, -$moverate 0
-    binde = $modCTRL,  l, moveactive, $moverate 0
-    binde = $modCTRL,  k, moveactive, 0 -$moverate
-    binde = $modCTRL,  j, moveactive, 0 $moverate
+    binde = $modCTRL,      h, moveactive, -$moverate 0
+    binde = $modCTRL,      l, moveactive, $moverate 0
+    binde = $modCTRL,      k, moveactive, 0 -$moverate
+    binde = $modCTRL,      j, moveactive, 0 $moverate
 
-    binde = $modSHIFT, h, resizeactive, -40 0
-    binde = $modSHIFT, l, resizeactive, 40 0
-    binde = $modSHIFT, k, resizeactive, 0 -40
-    binde = $modSHIFT, j, resizeactive, 0 40
+    binde = $modSHIFT,     h, resizeactive, -$moverate 0
+    binde = $modSHIFT,     l, resizeactive, $moverate 0
+    binde = $modSHIFT,     k, resizeactive, 0 -$moverate
+    binde = $modSHIFT,     j, resizeactive, 0 $moverate
 
      bind = $mod, 1, workspace, 1
      bind = $mod, 2, workspace, 2
@@ -94,8 +94,8 @@ in {
      bind = $mod, 9, workspace, 9
      bind = $mod, 0, workspace, 10
 
-     bind = $mod,        E, movetoworkspace, +1
-     bind = $mod,        Q, movetoworkspace, -1
+     bind = $mod,       E, movetoworkspace, +1
+     bind = $mod,       Q, movetoworkspace, -1
 
      bind = $mod SHIFT, 1, movetoworkspacesilent, 1
      bind = $mod SHIFT, 2, movetoworkspacesilent, 2

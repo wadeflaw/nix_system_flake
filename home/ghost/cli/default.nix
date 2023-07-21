@@ -27,6 +27,7 @@
     timer
     libnotify
     lolcat
+    socat
     neovim
   ];
 }

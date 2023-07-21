@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+handle() {
+	case $1 in
+	  workspace*) 
+	    echo $1
+	    worksp=$(echo $1 | awk -F'>>' '{print $2}')
+	    hyprctl dispatch movetoworkspace $worksp,"title:(Picture-in-Picture)" ;;
+	esac
+}
+
+socat -U - UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done

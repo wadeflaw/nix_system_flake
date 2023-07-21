@@ -29,6 +29,8 @@
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_QPA_PLATFORMTHEME = "xdgdekstopportal";
+
+    WINIT_UNIX_BACKEND = "wayland";
     # QT_STYLE_OVERRIDE = "kvantum";
     _JAVA_AWT_WM_NONEREPARENTING = "1";
 

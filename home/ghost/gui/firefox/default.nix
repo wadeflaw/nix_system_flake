@@ -4,7 +4,7 @@
     executable = true;
   };
   home.packages = with pkgs; [
-    (wrapFirefox firefox-esr-102-unwrapped {
+    (wrapFirefox firefox-esr-115-unwrapped {
       # see {https://github.com/mozilla/policy-templates/blob/master/README.md}
       extraPolicies = {
         CaptivePortal = false;
@@ -154,6 +154,7 @@
             "{1018e4d6-728f-4b20-ad56-37578a4de76}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/flagfox/latest.xpi";
             "sponsorBlocker@ajay.app".install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
             "{d7742d87-e61d-4b78-b8a1-b469842139fa}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+            "firefox@tampermonkey.net".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tampermonkey/latest.xpi";
           };
 
         FirefoxHome = {
