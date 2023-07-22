@@ -13,7 +13,7 @@
     cinnamon.nemo
     steam
     telegram-desktop
-    webcord
+    webcord-vencord
     discord
     gajim
     transmission-gtk

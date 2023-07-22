@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./program.nix
+    ./environment.nix
     ./user.nix
     ./wayland.nix
     ./xdg.nix

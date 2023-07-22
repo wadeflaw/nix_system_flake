@@ -9,6 +9,11 @@
     xserver = {
       xkbOptions = "grp:alt_shift_toggle,caps:swapescape";
     };
+    ananicy.enable = true;
+    irqbalance.enable = true;
   };
-  console.useXkbConfig = true;
+  # console = {
+  #   useXkbConfig = true;
+  # font = "";
+  # };
 }
