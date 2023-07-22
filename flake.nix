@@ -67,7 +67,10 @@
     # Hyprland stuff
     hyprland.url = "github:hyprwm/Hyprland";
     hypr-contrib.url = "github:hyprwm/contrib";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     hyprpicker.url = "github:hyprwm/hyprpicker";
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";

@@ -21,7 +21,7 @@
   environment.variables = {
     FLAKE_PATH = "${conf.fl_path}";
     BROWSER = "firefox";
-    __GL_THREADED_OPTIMIZATIONS = 1;
-    mesa_glthread = true;
+    __GL_THREADED_OPTIMIZATIONS = "1";
+    mesa_glthread = "true";
   };
 }

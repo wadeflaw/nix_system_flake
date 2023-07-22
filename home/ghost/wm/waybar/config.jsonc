@@ -51,8 +51,8 @@
   },
   "clock": {
     "interval": 1,
-    "format": "{:%H:%M}",
-    "format-alt": "{:%F %T}"
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%Y.%m.%d %I:%M %p}"
   },
   "custom/separator": {
     "format": "       ",

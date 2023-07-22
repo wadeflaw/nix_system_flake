@@ -1,32 +1,33 @@
 {pkgs, ...}: let
-  browser = ["firedragon.desktop"];
+  browser = ["firefox.desktop"];
+  zathura = ["org.pwmt.zathura.desktop.desktop"];
+  filemanager = ["dolphin.desktop"];
+
   associations = {
+    "text/html" = browser;
+    "x-scheme-handler/http" = browser;
+    "x-scheme-handler/https" = browser;
+    "x-scheme-handler/ftp" = browser;
+    "x-scheme-handler/about" = browser;
+    "x-scheme-handler/unknown" = browser;
     "application/x-extension-htm" = browser;
     "application/x-extension-html" = browser;
     "application/x-extension-shtml" = browser;
-    "application/x-extension-xht" = browser;
-    "application/x-extension-xhtml" = browser;
     "application/xhtml+xml" = browser;
-    "text/html" = browser;
-    "x-scheme-handler/about" = browser;
-    "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
-    "x-scheme-handler/ftp" = browser;
-    "x-scheme-handler/http" = browser;
-    "x-scheme-handler/https" = browser;
-    "x-scheme-handler/unknown" = browser;
+    "application/x-extension-xhtml" = browser;
+    "application/x-extension-xht" = browser;
 
     "audio/*" = ["mpv.desktop"];
     "video/*" = ["mpv.dekstop"];
     "image/*" = ["imv.desktop"];
     "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
-    "x-scheme-handler/discord" = ["discordcanary.desktop"];
-    "x-scheme-handler/spotify" = ["spotify.desktop"];
+    "application/pdf" = zathura;
     "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
+    "x-scheme-handler/spotify" = ["spotify.desktop"];
+    "x-scheme-handler/discord" = ["WebCord.desktop"];
+    "inode/directory" = filemanager;
   };
 in {
-  home.packages = [pkgs.xdg-utils];
-
   xdg = {
     enable = true;
     #   userDirs = {

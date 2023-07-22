@@ -10,8 +10,8 @@
   getexe = lib.getExe;
 
   autostart = pkgs.writeShellScriptBin "autostart" ''
-        ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store & #Stores only text data
-        ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store & #Stores only image data
+        ${pkgs.wl-clipboard}/bin/wl-paste --type text  --watch ${getexe pkgs.cliphist} store & #Stores only text data
+        ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${getexe pkgs.cliphist} store & #Stores only image data
 
 
         if [[ ! `pgrep kwalletd5` ]] then
@@ -54,6 +54,7 @@
   '';
 in {
   imports = [
+    # ./autostart.nix
     ./variables.nix
     ./themes.nix
     ./binds.nix

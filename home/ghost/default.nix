@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ./cli
+    ./terminal
     ./gui
     ./wm
     ./packages.nix

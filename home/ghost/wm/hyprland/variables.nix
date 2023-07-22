@@ -1,5 +1,5 @@
-_: {
-  home.sessionVariables = {
+_: let
+  vars = {
     NIXOS_OZONE_WL = "1";
     __GL_GSYNC_ALLOWED = "0";
     __GL_VRR_ALLOWED = "0";
@@ -28,7 +28,7 @@ _: {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "xdgdekstopportal";
+    QT_QPA_PLATFORMTHEME = "xdgdesktopportal";
 
     WINIT_UNIX_BACKEND = "wayland";
     # QT_STYLE_OVERRIDE = "kvantum";
@@ -38,8 +38,10 @@ _: {
     XCURSOR_THEME = "LyraQ-cursors";
 
     # apps
-    TERM = "footclient";
     BROWSER = "firedragon";
     EDITOR = "nvim";
   };
+in {
+  home.sessionVariables = vars;
+  systemd.user.sessionVariables = vars;
 }
