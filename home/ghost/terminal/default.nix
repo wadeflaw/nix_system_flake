@@ -29,5 +29,8 @@
     lolcat
     socat
     neovim
+    ffmpeg
+    yt-dlp
+    # playerctl
   ];
 }

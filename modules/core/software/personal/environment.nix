@@ -12,15 +12,15 @@
       enableSSHSupport = true;
       pinentryFlavor = "gtk2";
     };
-    #   steam.enable = true;
   };
   environment.systemPackages = with pkgs; [
     btrfs-snap
-    timeshift
+
+    # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home
+    # timeshift
   ];
   environment.variables = {
     FLAKE_PATH = "${conf.fl_path}";
-    BROWSER = "firefox";
     __GL_THREADED_OPTIMIZATIONS = "1";
     mesa_glthread = "true";
   };

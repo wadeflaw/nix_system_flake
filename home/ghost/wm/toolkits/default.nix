@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./qt.nix
-    ./gtk.nix
-  ];
   home.packages = with pkgs; [
     twemoji-color-font
     noto-fonts
@@ -14,6 +10,39 @@
     (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
   fonts.fontconfig.enable = true;
+  gtk = {
+    enable = true;
+    font = {
+      name = "Jost*";
+      size = 11;
+    };
+    iconTheme = {
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "pink";
+      };
+      name = "Papirus-Dark";
+    };
+    theme = {
+      name = "Catppuccin-Mocha-Compact-Mauve-dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["mauve"];
+        size = "compact";
+        variant = "mocha";
+      };
+    };
+    cursorTheme = {
+      name = "LyraQ Cursors";
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+      gtk-decoration-layout = "menu:";
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+      gtk-decoration-layout = "menu:";
+    };
+  };
 
   home.pointerCursor = {
     package = pkgs.lyraq-cursors;
@@ -22,4 +51,11 @@
     x11.enable = true;
     gtk.enable = true;
   };
+  # qt = {
+  #   enable = true;
+  # style = {
+  #   name = "gtk2";
+  #   package = pkgs.libsForQt5.qtstyleplugins;
+  # };
+  # };
 }

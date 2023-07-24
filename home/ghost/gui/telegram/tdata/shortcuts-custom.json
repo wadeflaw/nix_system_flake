@@ -10,13 +10,5 @@
   {
     "command": "search",
     "keys": "ctrl+/"
-  },
-  {
-    "command": "next_chat",
-    "keys": "alt+shift+l"
-  },
-  {
-    "command": "previous_chat",
-    "keys": "alt+shift+h"
   }
 ]

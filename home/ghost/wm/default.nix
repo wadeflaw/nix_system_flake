@@ -15,13 +15,13 @@
 
   home.packages = with pkgs; [
     # wm
-    swww
     inputs.hypr-contrib.packages.${pkgs.system}.grimblast
     inputs.hypr-contrib.packages.${pkgs.system}.hyprprop
     hyprpicker
     rofi-wayland
     wlogout
     grim
+    swww
     slurp
     cliphist
     wf-recorder
@@ -33,5 +33,6 @@
     brightnessctl
     polkit
     polkit_gnome
+    gtklock
   ];
 }
