@@ -82,6 +82,6 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.system = "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "perfomance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

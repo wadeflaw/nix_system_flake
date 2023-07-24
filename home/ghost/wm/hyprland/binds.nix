@@ -4,11 +4,13 @@
   inputs,
   ...
 }: let
+  getExe = lib.getExe;
+
   hyprctl = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl";
 
-  grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast --notify --scale 1 ";
+  grimblast = "${getExe inputs.hypr-contrib.packages.${pkgs.system}.grimblast} --notify --scale 1 ";
 
-  getExe = lib.getExe;
+  rofi = "${getExe pkgs.rofi-wayland}";
 
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
 
@@ -39,7 +41,7 @@ in {
 
      bind = $mod,          Return,  exec, $term
      bind = $mod,          T, exec, [workspace 2 silent;float;noanim] $term
-     bind = $mod,		       D, exec, ${getExe pkgs.rofi-wayland} -show drun
+     bind = $mod,		       D, exec, ${rofi} -show drun
      bind = $mod,		       R, exec, ${hyprctl} reload
      bind = $mod,		       W, killactive,
      bind = $modCTRLSHIFT, Q, exit,
@@ -58,6 +60,7 @@ in {
 
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
+     bind = $mod,          C, exec, ${getExe pkgs.cliphist} list | ${rofi} -dmenu -display-columns 2 | ${getExe pkgs.cliphist} decode | wl-copy
      bind = ALT,           G, exec, ${getExe gamemode}
      bind = ALT,           N, exec, ${getExe nightmode}
 

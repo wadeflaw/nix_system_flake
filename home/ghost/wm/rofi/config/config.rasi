@@ -25,15 +25,15 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height:		 32%;
-    width:		 16%;
+    height:		 62%;
+    width:		 32%;
     orientation: horizontal;
     border: 1.7px;
     border-color: @border-col;
     border-radius: 0px;
     background-color: @bg-col;
     padding: 0px;
-    margin: 35px;
+    margin: 90px;
 }
 
 mainbox {

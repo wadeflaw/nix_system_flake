@@ -20,6 +20,10 @@
   in {
     overlays = import ./overlays {inherit inputs outputs;};
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
+    # nixpkgs-master = import inputs.master {
+    #   system = conf.system;
+    #   config.allowUnfree = true;
+    # };
 
     nixosConfigurations = {
       ${conf.host} = nixpkgs.lib.nixosSystem {
@@ -33,8 +37,19 @@
     homeConfigurations = {
       ${conf.user} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${conf.system};
-        extraSpecialArgs = {inherit self conf inputs outputs;};
-        modules = [./home/${conf.user}];
+        extraSpecialArgs = {
+          inherit
+            self
+            conf
+            inputs
+            outputs
+            # nixpkgs-master
+            
+            ;
+        };
+        modules = [
+          ./home/${conf.user}
+        ];
       };
     };
   };

@@ -14,17 +14,17 @@
 
   # extra packages
   home.packages = with pkgs; [
+    timer
     ripgrep
     exa
+    bat
     slides
     wget
     unzip
     calc
     gnumake
-    git
     btop
     fzf
-    timer
     libnotify
     lolcat
     socat

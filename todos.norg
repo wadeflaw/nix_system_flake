@@ -31,3 +31,4 @@
   ~ ( ) Create zellij layouts with names. [zellij layouts]{https://zellij.dev/tutorials/layouts/}.
   ~ ( ) Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
   ~ ( ) Add browser notify's for dunst.
+  ~ ( ) Migrate invidtui to nix.
