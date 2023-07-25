@@ -128,6 +128,10 @@ in {
      bind = ,XF86AudioRaiseVolume,    exec, ${getExe volume} up
      bind = ,XF86AudioLowerVolume,    exec, ${getExe volume} down
      bind = ,XF86AudioMute,           exec, ${getExe volume} mute
+     bind = ,XF86AudioPlay,           exec, ${getExe pkgs.playerctl} play-pause
+
+     # pause all
+     bind = ,F8,                 exec, ${getExe pkgs.playerctl} -a pause
 
      bind = ,XF86MonBrightnessDown,   exec, ${getExe brightness} down
      bind = ,XF86MonBrightnessUp,     exec, ${getExe brightness} up

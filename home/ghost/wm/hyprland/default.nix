@@ -13,11 +13,6 @@
         ${pkgs.wl-clipboard}/bin/wl-paste --type text  --watch ${getexe pkgs.cliphist} store & #Stores only text data
         ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${getexe pkgs.cliphist} store & #Stores only image data
 
-
-        if [[ ! `pgrep kwalletd5` ]] then
-          ${pkgs.libsForQt5.kwallet}-bin/bin/kwalletd5 &
-        fi
-
     # terminal
         if [[ ! `pgrep foot` ]]; then
           ${pkgs.foot}/bin/foot --server &
@@ -29,26 +24,26 @@
         fi
 
     # notification daemon
-        if [[ ! `pgrep dunst` ]]; then
-          ${getexe pkgs.dunst} &
-        fi
+        # if [[ ! `pgrep dunst` ]]; then
+        #   ${getexe pkgs.dunst} &
+        # fi
 
     # sound
-        if [[ ! `pgrep pipewire` ]]; then
-          ${getexe pkgs.pipewire} &
-        fi
+        # if [[ ! `pgrep pipewire` ]]; then
+        #   ${getexe pkgs.pipewire} &
+        # fi
+        #
+        # if [[ ! `pgrep pipewire-pulse` ]]; then
+        #   ${pkgs.pipewire}-pulse/bin/pipewire-pulse &
+        # fi
 
-        if [[ ! `pgrep pipewire-pulse` ]]; then
-          ${pkgs.pipewire}-pulse/bin/pipewire-pulse &
-        fi
+        # if [[ ! `pgrep wireplumber` ]]; then
+        #   ${getexe pkgs.wireplumber} &
+        # fi
 
-        if [[ ! `pgrep wireplumber` ]]; then
-          ${getexe pkgs.wireplumber} &
-        fi
-
-        if [[ ! `pgrep waybar` ]]; then
-          ${getexe pkgs.waybar} &
-        fi
+        # if [[ ! `pgrep waybar` ]]; then
+        #   ${getexe pkgs.waybar} &
+        # fi
 
         ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
   '';

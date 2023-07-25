@@ -19,19 +19,13 @@
     stateVersion = "23.11";
   };
 
-  programs.home-manager.enable = true;
-
-  manual = {
-    html.enable = false;
-    json.enable = false;
-    manpages.enable = false;
-  };
-
   nix = {
     package = lib.mkForce pkgs.nixUnstable;
     settings = {
       experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
+      keep-outputs = true;
+      keep-derivations = true;
     };
   };
 
@@ -49,5 +43,13 @@
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
+  };
+
+  programs.home-manager.enable = true;
+
+  manual = {
+    html.enable = false;
+    json.enable = false;
+    manpages.enable = false;
   };
 }

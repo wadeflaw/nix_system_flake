@@ -26,7 +26,7 @@ alias record="wf-recorder --audio=alsa_output.pci-0000_08_00.6.analog-stereo.mon
 # Replacement Icons for ls 
 alias -g  ls="exa --color always "
 alias -g  ll="exa --color always -l"
-alias -g  la="exa --color always -a"
+alias -g  la="exa --color always -la"
 alias -g  lt="exa --color always -lT"
 alias -g lta="exa --color always -lTa"
 alias -g l="exa -lF --time-style=long-iso"
@@ -44,8 +44,8 @@ alias -g cd.....='cd ../../../..'
 # quality of life aliases
 alias -g n="clear && neofetch"
 alias -g v="nvim"
-alias notes="cd ~/Documents/learn/notes"
-alias pac='yay'
+alias notes="cd ~/Documents/learn/notes;nv \$(fzf)"
+# alias pac='yay'
 alias lsblk='lsblk -o NAME,FSTYPE,SIZE,TYPE,MOUNTPOINTS,STATE,FSSIZE,FSAVAIL'
 alias doo='doas'
 alias -g cl='clear'
@@ -80,7 +80,7 @@ alias -g nsp="nix search flake:n"
 alias -g fl="cd $FLAKE_PATH"
 alias -g packages="nv $FLAKE_PATH/home/ghost/package.nix"
 
-alias rebuild="nix-store --verify; pushd $FLAKE_PATH ; nixos-rebuild switch --flake .#$1 --use-remote-sudo && notify-send \"Done\" ; popd"
+alias rebuild="pushd $FLAKE_PATH ; nixos-rebuild switch --flake .#$1 && notify-send \"Done\" ; popd"
 
 alias test="pushd $FLAKE_PATH; nixos-rebuild dry-activate"
 

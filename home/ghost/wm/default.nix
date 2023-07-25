@@ -22,6 +22,7 @@
     wlogout
     grim
     swww
+    playerctl
     slurp
     cliphist
     wf-recorder
@@ -31,7 +32,6 @@
     plasma5Packages.kwallet
     brightnessctl
     polkit
-    polkit_gnome
     gtklock
   ];
 }

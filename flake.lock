@@ -431,10 +431,7 @@
       },
       "locked": {
         "lastModified": 1690006977,
-        "narHash": "sha256-lNv1T87soP27WfqyUYQ9rAJpOaHkz/ejvbatd6XiVc0=",
-        "ref": "refs/heads/main",
-        "rev": "a767a32016b5022444f53fba55ba2e5f03a979d5",
-        "revCount": 8,
+        "narHash": "sha256-13SiYywhlORZq414KbAjiPZM6Q8Z8ofdQW3r+GJZKYE=",
         "type": "git",
         "url": "file:/etc/nixos/nixvim"
       },
