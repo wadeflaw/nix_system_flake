@@ -10,7 +10,6 @@
     ./terminal
     ./gui
     ./wm
-    ./packages.nix
   ];
   # ++ (builtins.attrValues outputs.homeManagerModules);
 

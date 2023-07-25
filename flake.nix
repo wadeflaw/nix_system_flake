@@ -80,7 +80,7 @@
     };
 
     # Hyprland stuff
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
     hypr-contrib.url = "github:hyprwm/contrib";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";

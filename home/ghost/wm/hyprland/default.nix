@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  nightmode.enable = false;
+  nightmode.enable = true;
 
   getexe = lib.getExe;
 
@@ -112,7 +112,7 @@ in {
          shadow_render_power = 4
          col.shadow          = $mantle
          shadow_offset       = -12, 12
-       ${
+         ${
         if nightmode.enable
         then ''
           screen_shader       = $HOME/.config/hypr/themes/shader_night.frag

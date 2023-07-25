@@ -27,7 +27,6 @@
     wf-recorder
     glib
     wayland
-    direnv
     xdg-utils
     plasma5Packages.kwallet
     brightnessctl
