@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  nightmode.enable = true;
+  nightmode.enable = false;
 
   getexe = lib.getExe;
 
