@@ -68,6 +68,7 @@
       # prevent random wifi disconnection's
       "pcie_aspm.policy=performance"
 
+      "pci=pcie_bus_perf"
       # clear boot terminal
       # "quiet"
       # "udev.log_level=3"

@@ -1,8 +1,8 @@
 {
   pkgs,
-  lib,
   conf,
   config,
+  lib,
   ...
 }: {
   users.users = {

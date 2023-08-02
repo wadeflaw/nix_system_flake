@@ -1,6 +1,7 @@
 {
   pkgs,
   conf,
+  inputs,
   ...
 }: {
   programs = {
@@ -19,9 +20,11 @@
     # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home
     # timeshift
   ];
-  environment.variables = {
-    FLAKE_PATH = "${conf.fl_path}";
-    __GL_THREADED_OPTIMIZATIONS = "1";
-    mesa_glthread = "true";
+  environment = {
+    variables = {
+      FLAKE_PATH = "${conf.fl_path}";
+      __GL_THREADED_OPTIMIZATIONS = "1";
+      mesa_glthread = "true";
+    };
   };
 }

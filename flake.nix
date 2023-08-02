@@ -14,22 +14,20 @@
       system = "x86_64-linux";
     };
 
+    lib = import ./lib/nixpkgs {inherit nixpkgs lib inputs;};
+
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
-    lib = import ./lib/nixpkgs {inherit nixpkgs lib inputs;};
   in {
     overlays = import ./overlays {inherit inputs outputs;};
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
-    # nixpkgs-master = import inputs.master {
-    #   system = conf.system;
-    #   config.allowUnfree = true;
-    # };
 
     nixosConfigurations = {
       ${conf.host} = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit self conf lib inputs outputs;};
         modules = [
-          ./hosts/${conf.host}/default.nix
+          ./hosts/${conf.host}
+          # ./modules/core/software/de
         ];
       };
     };
@@ -43,8 +41,6 @@
             conf
             inputs
             outputs
-            # nixpkgs-master
-            
             ;
         };
         modules = [
@@ -65,27 +61,47 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    # nvim configuration
-    nixvim = {
-      url = "github:pta2002/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      # inputs.nixpkgs.follows = "unstable";
     };
 
     neovim-conf = {
       url = "git+file:/etc/nixos/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixvim.follows = "nixvim";
+      # inputs.nil.follows = "nil";
+    };
+
+    # Rust overlay
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Nix Language server
+    nil = {
+      url = "github:oxalica/nil";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+
+    helix = {
+      url = "github:SoraTenshi/helix/new-daily-driver";
+      inputs = {
+        # rust-overlay.follows = "rust-overlay";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    # Easy color integration
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     # Hyprland stuff
     hyprland.url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
     hypr-contrib.url = "github:hyprwm/contrib";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
     hyprpicker.url = "github:hyprwm/hyprpicker";
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";

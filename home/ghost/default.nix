@@ -10,6 +10,7 @@
     ./terminal
     ./gui
     ./wm
+    ./themes
   ];
   # ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -19,21 +20,21 @@
     stateVersion = "23.11";
   };
 
-  nix = {
-    package = lib.mkForce pkgs.nixUnstable;
-    settings = {
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
-      warn-dirty = false;
-      keep-outputs = true;
-      keep-derivations = true;
-    };
-  };
+  # nix = {
+  #   package = lib.mkForce pkgs.nixUnstable;
+  #   settings = {
+  #     experimental-features = ["nix-command" "flakes" "repl-flake"];
+  #     warn-dirty = false;
+  #     keep-outputs = true;
+  #     keep-derivations = true;
+  #   };
+  # };
 
   nixpkgs = {
     overlays = [
       outputs.overlays.default
       inputs.nur.overlay
-      inputs.chaotic.overlays.default
+      # inputs.chaotic.overlays.default
     ];
 
     config = {

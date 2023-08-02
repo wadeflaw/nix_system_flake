@@ -32,7 +32,6 @@
       "127.0.0.1" = ["localhost"];
       "::1" = ["localhost" "${conf.host}"];
       "127.0.0.2" = ["${conf.host}"];
-      "0.0.0.0" = ["pornhub.com" "xvideos.com" "youtube.com"];
     };
   };
 }

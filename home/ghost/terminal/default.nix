@@ -1,15 +1,9 @@
 {pkgs, ...}: {
   imports = [
-    ./shell
     ./tools
-    ./neofetch
-    ./zellij
-    ./zathura
-    # ./tmux
+    ./shell
     ./emulators
-    # ./nvim/config
-    ./btop
-    ./cava
+    ./editors
   ];
 
   # extra packages

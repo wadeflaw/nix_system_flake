@@ -10,15 +10,12 @@
 
   grimblast = "${getExe inputs.hypr-contrib.packages.${pkgs.system}.grimblast} --notify --scale 1 ";
 
-  rofi = "${getExe pkgs.rofi-wayland}";
-
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
 
   nightmode = pkgs.writeShellScriptBin "nightmode" (builtins.readFile ./scripts/nightmode);
-
-  brightness = pkgs.writeShellScriptBin "brightness" (builtins.readFile ./scripts/brightness);
-
-  volume = pkgs.writeShellScriptBin "volume" (builtins.readFile ./scripts/volume);
+  # brightness = pkgs.writeShellScriptBin "brightness" (builtins.readFile ./scripts/brightness);
+  #
+  # volume = pkgs.writeShellScriptBin "volume" (builtins.readFile ./scripts/volume);
 in {
   xdg.configFile."hypr/binds.conf".text = ''
      input {
@@ -41,7 +38,7 @@ in {
 
      bind = $mod,          Return,  exec, $term
      bind = $mod,          T, exec, [workspace 2 silent;float;noanim] $term
-     bind = $mod,		       D, exec, ${rofi} -show drun
+     bind = $mod,		       D, exec, rofi -show drun
      bind = $mod,		       R, exec, ${hyprctl} reload
      bind = $mod,		       W, killactive,
      bind = $modCTRLSHIFT, Q, exit,
@@ -52,6 +49,8 @@ in {
      bind = $mod,		       B, exec, $term -e ${getExe pkgs.bluetuith}
     #bind = $modSHIFT,     P, exec, $scripts/waylogout
      bind = CTRLSHIFT,     L, exec, ${getExe pkgs.gtklock}
+     bind = $modSHIFT,		 E, exec, rofi -show emoji
+     bind = $modSHIFT,		 C, exec, rofi -show calc
 
      bind = $mod,          U, pin
      bind = $mod,      	   G, togglegroup
@@ -60,7 +59,7 @@ in {
 
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
-     bind = $mod,          C, exec, ${getExe pkgs.cliphist} list | ${rofi} -dmenu -display-columns 2 | ${getExe pkgs.cliphist} decode | wl-copy
+     bind = $mod,          C, exec, ${getExe pkgs.cliphist} list | rofi -dmenu -display-columns 2 | ${getExe pkgs.cliphist} decode | wl-copy
      bind = ALT,           G, exec, ${getExe gamemode}
      bind = ALT,           N, exec, ${getExe nightmode}
 
@@ -86,57 +85,41 @@ in {
     binde = $modSHIFT,     k, resizeactive, 0 -$moverate
     binde = $modSHIFT,     j, resizeactive, 0 $moverate
 
-     bind = $mod, 1, workspace, 1
-     bind = $mod, 2, workspace, 2
-     bind = $mod, 3, workspace, 3
-     bind = $mod, 4, workspace, 4
-     bind = $mod, 5, workspace, 5
-     bind = $mod, 6, workspace, 6
-     bind = $mod, 7, workspace, 7
-     bind = $mod, 8, workspace, 8
-     bind = $mod, 9, workspace, 9
-     bind = $mod, 0, workspace, 10
-
-     bind = $mod,       E, movetoworkspace, +1
-     bind = $mod,       Q, movetoworkspace, -1
-
-     bind = $mod SHIFT, 1, movetoworkspacesilent, 1
-     bind = $mod SHIFT, 2, movetoworkspacesilent, 2
-     bind = $mod SHIFT, 3, movetoworkspacesilent, 3
-     bind = $mod SHIFT, 4, movetoworkspacesilent, 4
-     bind = $mod SHIFT, 5, movetoworkspacesilent, 5
-     bind = $mod SHIFT, 6, movetoworkspacesilent, 6
-     bind = $mod SHIFT, 7, movetoworkspacesilent, 7
-     bind = $mod SHIFT, 8, movetoworkspacesilent, 8
-     bind = $mod SHIFT, 9, movetoworkspacesilent, 9
-     bind = $mod SHIFT, 0, movetoworkspacesilent, 10
-
-     bind = CTRL SHIFT, 1, movetoworkspace, 1
-     bind = CTRL SHIFT, 2, movetoworkspace, 2
-     bind = CTRL SHIFT, 3, movetoworkspace, 3
-     bind = CTRL SHIFT, 4, movetoworkspace, 4
-     bind = CTRL SHIFT, 5, movetoworkspace, 5
-     bind = CTRL SHIFT, 6, movetoworkspace, 6
-     bind = CTRL SHIFT, 7, movetoworkspace, 7
-     bind = CTRL SHIFT, 8, movetoworkspace, 8
-     bind = CTRL SHIFT, 9, movetoworkspace, 9
-     bind = CTRL SHIFT, 0, movetoworkspace, 10
-
-    bindm = $mod, mouse:272, movewindow
-    bindm = $mod, mouse:273, resizewindow
-
-     bind = ,XF86AudioRaiseVolume,    exec, ${getExe volume} up
-     bind = ,XF86AudioLowerVolume,    exec, ${getExe volume} down
-     bind = ,XF86AudioMute,           exec, ${getExe volume} mute
+     bind = ,XF86AudioRaiseVolume,    exec, volume -i 7
+     bind = ,XF86AudioLowerVolume,    exec, volume -d 7
+     bind = ,XF86AudioMute,           exec, volume mute
      bind = ,XF86AudioPlay,           exec, ${getExe pkgs.playerctl} play-pause
 
      # pause all
      bind = ,F8,                 exec, ${getExe pkgs.playerctl} -a pause
 
-     bind = ,XF86MonBrightnessDown,   exec, ${getExe brightness} down
-     bind = ,XF86MonBrightnessUp,     exec, ${getExe brightness} up
+     bind = ,XF86MonBrightnessDown,   exec, brightness set 7%-
+     bind = ,XF86MonBrightnessUp,     exec, brightness set +7%
 
      bind = ,Print,                   exec, ${grimblast} copy screen
      bind = ALT, Print,               exec, ${grimblast} copy area
+
+     # workspace binds
+     bind = $mod,       E, movetoworkspace, +1
+     bind = $mod,       Q, movetoworkspace, -1
+
+    # binds mod + [shift +] {1..10} to [move to] ws {1..10}
+    ${
+      builtins.concatStringsSep "\n" (builtins.genList (
+          x: let
+            ws = let
+              c = (x + 1) / 10;
+            in
+              builtins.toString (x + 1 - (c * 10));
+          in ''
+            bind = $mod, ${ws}, workspace, ${toString (x + 1)}
+            bind = $mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}
+            bind = CTRL SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+          ''
+        )
+        10)
+    }
+    bindm = $mod, mouse:272, movewindow
+    bindm = $mod, mouse:273, resizewindow
   '';
 }

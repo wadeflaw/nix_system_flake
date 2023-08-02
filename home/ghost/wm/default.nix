@@ -9,8 +9,7 @@
     ./rofi
     ./dunst
     ./xdg
-    # ./terminals
-    ./toolkits
+    ./variables
   ];
 
   home.packages = with pkgs; [
@@ -18,18 +17,15 @@
     inputs.hypr-contrib.packages.${pkgs.system}.grimblast
     inputs.hypr-contrib.packages.${pkgs.system}.hyprprop
     hyprpicker
-    rofi-wayland
-    wlogout
     grim
     swww
     playerctl
     slurp
     cliphist
-    wf-recorder
+    # wf-recorder
     glib
     wayland
     xdg-utils
-    plasma5Packages.kwallet
     brightnessctl
     polkit
     gtklock

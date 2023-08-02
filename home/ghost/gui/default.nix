@@ -1,20 +1,31 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
-    ./telegram
     ./firefox
+    ./telegram
+    ./apps
+    # ./gnome
+    # ./vscode
   ];
 
   home.packages = with pkgs; [
-    gimp
+    (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override {
+      # wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
+      wine = pkgs.wine-staging;
+      location = "$HOME/.osu";
+    })
+    # gimp
+
     keepassxc
     gparted
     pavucontrol
     cinnamon.nemo
-    steam
-    telegram-desktop
+    # steam
     webcord-vencord
     obs-studio
-    nur.repos.ilya-fedin.kotatogram-desktop
     mpv
     imv
     # invidtui

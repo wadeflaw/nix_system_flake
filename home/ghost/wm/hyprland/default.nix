@@ -1,11 +1,15 @@
 {
   inputs,
+  config,
   conf,
   pkgs,
   lib,
   ...
 }: let
+  inherit (config.colorscheme) colors;
   nightmode.enable = false;
+
+  pointer = config.home.pointerCursor;
 
   getexe = lib.getExe;
 
@@ -23,38 +27,14 @@
           ${getexe pkgs.swww} init &
         fi
 
-    # notification daemon
-        # if [[ ! `pgrep dunst` ]]; then
-        #   ${getexe pkgs.dunst} &
-        # fi
-
-    # sound
-        # if [[ ! `pgrep pipewire` ]]; then
-        #   ${getexe pkgs.pipewire} &
-        # fi
-        #
-        # if [[ ! `pgrep pipewire-pulse` ]]; then
-        #   ${pkgs.pipewire}-pulse/bin/pipewire-pulse &
-        # fi
-
-        # if [[ ! `pgrep wireplumber` ]]; then
-        #   ${getexe pkgs.wireplumber} &
-        # fi
-
-        # if [[ ! `pgrep waybar` ]]; then
-        #   ${getexe pkgs.waybar} &
-        # fi
-
+        hyprctl setcursor ${pointer.name} ${toString pointer.size}
         ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
   '';
 in {
   imports = [
-    # ./autostart.nix
-    ./variables.nix
     ./themes.nix
     ./binds.nix
     ./rules.nix
-    # inputs.hyprland.homeManagerModules.default
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
@@ -76,20 +56,19 @@ in {
       $mod     = SUPER
       $mod2    = ALT
 
-      exec     = bash ${getexe autostart}
+      exec     = ${getexe autostart}
 
       source   =    $HOME/.config/hypr/rules.conf
       source   =    $HOME/.config/hypr/binds.conf
-      source   =    $HOME/.config/hypr/themes/mocha.conf
 
       general {
          gaps_in                 = 6
          gaps_out                = 12
          border_size             = 3.5
-         col.active_border       = $mauve $pink $lavender 45deg
-         col.inactive_border     = $surface1
-         col.group_border_active = $mauve
-         col.group_border        = $surface0
+         col.active_border       = 0xff${colors.base0F} 0xff${colors.base0F} 0xff${colors.base07} 45deg
+         col.inactive_border     = 0xff${colors.base03}
+         col.group_border_active = 0xff${colors.base0E}
+         col.group_border        = 0xff${colors.base02}
 
          # no_focus_fallback = true
          cursor_inactive_timeout = 5
@@ -105,7 +84,7 @@ in {
          drop_shadow         = false
          shadow_range        = 55
          shadow_render_power = 4
-         col.shadow          = $mantle
+         col.shadow          = 0xff${colors.base01}
          shadow_offset       = -12, 12
          ${
         if nightmode.enable
@@ -118,6 +97,21 @@ in {
       }
       }
 
+      # animations {
+      #   enabled = true
+      #   bezier = smoothOut, 0.36, 0, 0.66, -0.56
+      #   bezier = smoothIn, 0.25, 1, 0.5, 1
+      #   bezier = overshot, 0.4,0.8,0.2,1.2
+      #
+      #   animation = windows, 1, 4, overshot, slide
+      #   animation = windowsOut, 1, 4, smoothOut, slide
+      #   animation = border,1,10,default
+      #
+      #   animation = fade, 1, 10, smoothIn
+      #   animation = fadeDim, 1, 10, smoothIn
+      #   animation = workspaces,1,4,overshot,slidevert
+      #
+      # }
       animations {
          enabled   = yes
          bezier    = myBezier, 0.05, 0.9, 0.1, 1.05
@@ -145,14 +139,14 @@ in {
       }
 
       misc {
-         render_titles_in_groupbar = true
+         render_titles_in_groupbar = false
          groupbar_gradients        = false
          disable_hyprland_logo     = true
          disable_splash_rendering  = true
          vrr                       = 1
          disable_autoreload        = true
          enable_swallow            = true
-         swallow_regex             = kitty|Alacritty|foot
+         swallow_regex             = kitty|Alacritty|foot|nemo
          cursor_zoom_factor = 0.6
          # swallow_exception_regex  = ^()
       }
