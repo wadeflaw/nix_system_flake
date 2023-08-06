@@ -12,6 +12,7 @@
   ~ ( ) Add neovim keybindings for telescope.
   ~ (-) Font config.
   ~ ( ) SEe raf (notashelf) conf.
+  ~ ( ) Create telegram wrapper with {https://github.com/viperML/wrapper-manager}.
       
 #Solved
   ~ (x) Make home-manager separated.
@@ -20,6 +21,7 @@
   ~ (x) Neovim nix config.
   ~ (x) Add telegram keybindings.
   ~ (x) Move all home autostart things to systemd.
+  ~ (x) Automate backups with btrbk.
 
 - Not important (long term)
   ~ ( ) Make configuration more suckless, remove bloated stuff

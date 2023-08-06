@@ -44,6 +44,7 @@
       python.symbol = "[](blue) ";
       nix_shell.symbol = "[](blue) ";
       rust.symbol = "[](red) ";
+      zig.symbol = "[](yellow) ";
       package.symbol = "📦  ";
 
       cmd_duration = {

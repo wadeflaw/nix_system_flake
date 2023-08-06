@@ -22,7 +22,7 @@
     keepassxc
     gparted
     pavucontrol
-    cinnamon.nemo
+    # cinnamon.nemo
     # steam
     webcord-vencord
     obs-studio
@@ -33,7 +33,7 @@
     # mousai
     # spotify
     # discord
-    # gajim
+    gajim
     # transmission-gtk
     # libreoffice-fresh
     # element-desktop-wayland

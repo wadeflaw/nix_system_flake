@@ -11,7 +11,7 @@
     # a command-line tool for github
     gh = {
       enable = true;
-      enableGitCredentialHelper = false;
+      gitCredentialHelper.enable = false;
       extensions = [];
       settings = {
         git_protocol = "ssh";

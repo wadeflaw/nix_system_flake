@@ -115,8 +115,18 @@ in {
     bindkey "^A" vi-beginning-of-line
     bindkey "^E" vi-end-of-line
 
-    ${builtins.readFile ./zsh-plugins/functions.zsh}
-    ${builtins.readFile ./zsh-plugins/aliases.zsh}
+    path+="$HOME/.config/zsh-plugins/*"
+    fpath+="$HOME/.config/zsh-plugins/*"
+
+    if [[ -f "$HOME/.config/zsh-plugins/aliases/aliases.plugin.zsh" ]]; then
+      source "$HOME/.config/zsh-plugins/aliases/aliases.plugin.zsh"
+    fi
+    if [[ -f "$HOME/.config/zsh-plugins/functions/functions.plugin.zsh" ]]; then
+      source "$HOME/.config/zsh-plugins/functions/functions.plugin.zsh"
+    fi
+    if [[ -f "$HOME/.config/zsh-plugins/tprompt/tprompt.plugin.zsh" ]]; then
+      source "$HOME/.config/zsh-plugins/tprompt/tprompt.plugin.zsh"
+    fi
 
   '';
 }

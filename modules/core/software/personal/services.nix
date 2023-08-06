@@ -23,6 +23,7 @@
     };
     gvfs.enable = true;
     fstrim.enable = true;
+    gpm.enable = true;
     dbus = {
       enable = true;
       implementation = "broker";
@@ -32,6 +33,10 @@
     };
     ananicy.enable = true;
     irqbalance.enable = true;
+  };
+  systemd.services = {
+    systemd-fsck.enable = false;
+    systemd-timesyncd.enable = false;
   };
   # console = {
   #   useXkbConfig = true;

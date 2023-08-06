@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "height": 30,
-  "modules-left": ["wlr/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
 
   "modules-center": ["clock"],
 
@@ -23,7 +23,7 @@
     "format-uk": "ua",
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "on-click": "activate",
     "sort-by-number": true
     /* "persistent_workspaces": { */

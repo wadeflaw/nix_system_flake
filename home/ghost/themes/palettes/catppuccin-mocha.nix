@@ -10,7 +10,7 @@
       base03 = "#45475a"; # Surface1
       base04 = "#585b70"; # Surface2
       base05 = "#cdd6f4"; # text
-      base06 = "#f5e0dc"; # rosewater
+      base06 = "#f5c2e7"; # rosewater
       base07 = "#b4befe"; # lavender
       base08 = "#f38ba8"; # red
       base09 = "#fab387"; # peach

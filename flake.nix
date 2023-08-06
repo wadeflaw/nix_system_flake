@@ -72,6 +72,15 @@
       # inputs.nil.follows = "nil";
     };
 
+    wrapper-manager = {
+      url = "github:viperML/wrapper-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Rust overlay
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -99,6 +108,11 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    wallpkgs = {
+      url = "github:NotAShelf/wallpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hyprland stuff
     hyprland.url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
     hypr-contrib.url = "github:hyprwm/contrib";
@@ -108,6 +122,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hypr-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
     nur.url = "github:nix-community/NUR";
 
     shlyupa-nur.url = "github:ilya-fedin/nur-repository";

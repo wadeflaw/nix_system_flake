@@ -14,8 +14,8 @@
   getexe = lib.getExe;
 
   autostart = pkgs.writeShellScriptBin "autostart" ''
-        ${pkgs.wl-clipboard}/bin/wl-paste --type text  --watch ${getexe pkgs.cliphist} store & #Stores only text data
-        ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${getexe pkgs.cliphist} store & #Stores only image data
+        ${pkgs.wl-clipboard}/bin/wl-paste --type text  --watch ${pkgs.cliphist}/bin/cliphist store & #Stores only text data
+        ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store & #Stores only image data
 
     # terminal
         if [[ ! `pgrep foot` ]]; then
@@ -41,6 +41,10 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
+    plugins = [
+      inputs.hy3.packages.${pkgs.system}.hy3
+      # inputs.hypr-plugins.packages.${pkgs.system}.hyprbars
+    ];
     xwayland = {
       enable = true;
       hidpi = true;
@@ -65,7 +69,7 @@ in {
          gaps_in                 = 6
          gaps_out                = 12
          border_size             = 3.5
-         col.active_border       = 0xff${colors.base0F} 0xff${colors.base0F} 0xff${colors.base07} 45deg
+         col.active_border       = 0xff${colors.base0E} 0xff${colors.base0E} 0xff${colors.base07} 45deg
          col.inactive_border     = 0xff${colors.base03}
          col.group_border_active = 0xff${colors.base0E}
          col.group_border        = 0xff${colors.base02}
@@ -124,6 +128,29 @@ in {
          animation = workspaces,  1, 2,  default
       }
 
+      # plugin { hyprbars {
+      #     bar_color = 0xff${colors.base02}
+      #     bar_height = 19
+      #     col.text = 0xff${colors.base05}
+      #     bar_text_size = 9
+      #     bar_text_font = "Jost*"
+      #
+      #     col.maximize = 0xff${colors.base0F}
+      #     col.close = 0xff${colors.base08}
+      #   }
+      #   hy3 {
+      #     tabs {
+      #       height = 5
+      #       padding = 8
+      #       render_text = false
+      #     }
+      #     autotile {
+      #       enable = true
+      #       trigger_width = 0
+      #       trigger_height = 0
+      #     }
+      #   }
+      # }
       dwindle {
          pseudotile        = yes
          preserve_split    = yes

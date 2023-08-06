@@ -8,7 +8,7 @@
 
   hyprctl = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl";
 
-  grimblast = "${getExe inputs.hypr-contrib.packages.${pkgs.system}.grimblast} --notify --scale 1 ";
+  grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast --notify --scale 1 ";
 
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
 
@@ -46,7 +46,7 @@ in {
      bind = $mod,          F, fullscreen
      bind = $modSHIFT,	   T, pseudo, # dwindle
      bind = $mod,		       Y, togglesplit, # dwindle
-     bind = $mod,		       B, exec, $term -e ${getExe pkgs.bluetuith}
+     bind = $mod,		       B, exec, $term -e ${pkgs.bluetuith}/bin/cliphist
     #bind = $modSHIFT,     P, exec, $scripts/waylogout
      bind = CTRLSHIFT,     L, exec, ${getExe pkgs.gtklock}
      bind = $modSHIFT,		 E, exec, rofi -show emoji
@@ -59,7 +59,7 @@ in {
 
      bind = $modSHIFTCTRL, K, exec, [workspace 3] kotatogram-desktop
      bind = $mod,          N, exec, [float      ] $term -e ${pkgs.networkmanager}/bin/nmtui
-     bind = $mod,          C, exec, ${getExe pkgs.cliphist} list | rofi -dmenu -display-columns 2 | ${getExe pkgs.cliphist} decode | wl-copy
+     bind = $mod,          C, exec, ${pkgs.cliphist}/bin/cliphist list | rofi -dmenu -display-columns 2 | ${pkgs.cliphist}/bin/cliphist decode | wl-copy
      bind = ALT,           G, exec, ${getExe gamemode}
      bind = ALT,           N, exec, ${getExe nightmode}
 

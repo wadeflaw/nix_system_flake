@@ -14,13 +14,15 @@
 
   home.packages = with pkgs; [
     # wm
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
-    inputs.hypr-contrib.packages.${pkgs.system}.hyprprop
+    # screenshots
+    grimblast
+    swww
+    slurp
+
+    hyprprop
     hyprpicker
     grim
-    swww
     playerctl
-    slurp
     cliphist
     # wf-recorder
     glib
@@ -28,6 +30,7 @@
     xdg-utils
     brightnessctl
     polkit
+    # locker
     gtklock
   ];
 }
