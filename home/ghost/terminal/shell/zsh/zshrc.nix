@@ -3,7 +3,7 @@
 in {
   programs.zsh.initExtra = ''
     # fzf history search
-    autoload fzf_history_search                                                                                                                         5!3+5⇡2  master
+    autoload fzf_history_search
     zle -N fzf_history_search
     bindkey '^r' fzf_history_search
 

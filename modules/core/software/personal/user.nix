@@ -44,16 +44,9 @@
       hashedPassword = "${conf.passhash}";
     };
   };
-  security.doas.extraRules = [
-    {
-      users = ["${conf.user}"];
-    }
-  ];
 
   environment.systemPackages = with pkgs; [
     home-manager
-    wl-clipboard
     wireguard-tools
-    unzip
   ];
 }

@@ -74,11 +74,6 @@
     dev.enable = false;
   };
 
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-  ];
-
   time.timeZone = "Europe/Kyiv";
   i18n.defaultLocale = "en_US.UTF-8";
   system.stateVersion = "23.05";

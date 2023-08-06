@@ -8,6 +8,7 @@
     ./waybar
     ./rofi
     ./dunst
+    ./gtklock
     ./xdg
     ./variables
   ];
@@ -31,6 +32,5 @@
     brightnessctl
     polkit
     # locker
-    gtklock
   ];
 }

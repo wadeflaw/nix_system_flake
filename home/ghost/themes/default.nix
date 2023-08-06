@@ -1,8 +1,4 @@
-{
-  inputs,
-  osConfig,
-  ...
-}: let
+{inputs, ...}: let
   # inherit (inputs.nix-colors) colorSchemes;
   # Custom colorscheme list #
   # default-dark = (import ./palettes/default-dark.nix).colorscheme;
@@ -12,6 +8,7 @@
   # decay-dark = (import ./palettes/decay-dark.nix).colorscheme;
   # Custom, pywal'd #
   # noelle = (import ./palettes/noelle.nix).colorscheme;
+  # tokio-night = (import ./palettes/tokyo-night.nix).colorscheme;
   # Catppuccins #
   catppuccin-mocha = (import ./palettes/catppuccin-mocha.nix).colorscheme;
   # catppuccin-macchiato = (import ./palettes/catppuccin-mocha.nix).colorscheme;
