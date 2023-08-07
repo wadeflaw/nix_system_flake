@@ -2,11 +2,6 @@
   inherit (config.colorscheme) colors;
 in {
   programs.zsh.initExtra = ''
-    # fzf history search
-    autoload fzf_history_search
-    zle -N fzf_history_search
-    bindkey '^r' fzf_history_search
-
     set -k
 
     export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
@@ -109,9 +104,6 @@ in {
     bindkey    '^K'       up-line-or-history
     bindkey    '^J'       down-line-or-history
 
-    # Vi mode
-    bindkey -v
-
     bindkey "^A" vi-beginning-of-line
     bindkey "^E" vi-end-of-line
 
@@ -124,9 +116,5 @@ in {
     if [[ -f "$HOME/.config/zsh-plugins/functions/functions.plugin.zsh" ]]; then
       source "$HOME/.config/zsh-plugins/functions/functions.plugin.zsh"
     fi
-    if [[ -f "$HOME/.config/zsh-plugins/tprompt/tprompt.plugin.zsh" ]]; then
-      source "$HOME/.config/zsh-plugins/tprompt/tprompt.plugin.zsh"
-    fi
-
   '';
 }

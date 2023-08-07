@@ -19,14 +19,14 @@ in {
         locked-title = "no";
 
         term = "xterm-256color";
-        font = "JetBrainsMonoNL NF Medium:size=12";
+        font = "JetBrains Mono NL ExtraLight:size=12";
         pad = "5x5";
         # dpi-aware = "yes";
         vertical-letter-offset = "-0.75";
         # notify = ''notify-send -a ''${app-id} -i ''${app-id} ''${title} ''${body}'';
       };
       colors = {
-        # alpha = "0.85";
+        alpha = "0.85";
         foreground = "${colors.base05}"; # Text
         background = "${colors.base00}"; # Base
 

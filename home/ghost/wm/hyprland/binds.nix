@@ -46,7 +46,7 @@ in {
      bind = $mod,          F, fullscreen
      bind = $modSHIFT,	   T, pseudo, # dwindle
      bind = $mod,		       Y, togglesplit, # dwindle
-     bind = $mod,		       B, exec, $term -e ${pkgs.bluetuith}/bin/cliphist
+     bind = $mod,		       B, exec, $term -e ${pkgs.bluetuith}/bin/bluetuith
     #bind = $modSHIFT,     P, exec, $scripts/waylogout
      bind = CTRLSHIFT,     L, exec, ${getExe pkgs.gtklock}
      bind = $modSHIFT,		 E, exec, rofi -show emoji

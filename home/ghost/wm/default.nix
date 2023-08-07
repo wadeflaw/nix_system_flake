@@ -10,6 +10,7 @@
     ./dunst
     ./gtklock
     ./xdg
+    ./x11.nix
     ./variables
   ];
 
@@ -25,6 +26,7 @@
     grim
     playerctl
     cliphist
+    wl-clipboard
     # wf-recorder
     glib
     wayland

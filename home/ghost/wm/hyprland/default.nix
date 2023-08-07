@@ -42,7 +42,7 @@ in {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
     plugins = [
-      inputs.hy3.packages.${pkgs.system}.hy3
+      # inputs.hy3.packages.${pkgs.system}.hy3
       # inputs.hypr-plugins.packages.${pkgs.system}.hyprbars
     ];
     xwayland = {
@@ -50,8 +50,10 @@ in {
       hidpi = true;
     };
     enableNvidiaPatches = false;
-    systemdIntegration = true;
+    systemdIntegration = false;
     extraConfig = ''
+      exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd PATH DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target
+
       #monitor=,preferred,auto,1
       monitor  = eDP-1,1920x1080@60,0x0,1
       monitor  = HDMI-A-1,disabled

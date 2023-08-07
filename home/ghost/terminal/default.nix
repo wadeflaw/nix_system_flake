@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./tools
     ./shell
@@ -8,6 +12,7 @@
 
   # extra packages
   home.packages = with pkgs; [
+    # invidtui
     timer
     ripgrep
     exa
@@ -27,4 +32,5 @@
     yt-dlp
     # playerctl
   ];
+  programs.gpg.homedir = "${config.xdg.configHome}/gnupg";
 }

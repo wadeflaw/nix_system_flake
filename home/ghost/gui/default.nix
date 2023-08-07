@@ -6,25 +6,25 @@
   imports = [
     ./firefox
     ./telegram
+    ./webcord
     ./apps
     # ./gnome
     # ./vscode
   ];
 
   home.packages = with pkgs; [
-    (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override {
-      # wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
-      wine = pkgs.wine-staging;
-      location = "$HOME/.osu";
-    })
+    # (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override {
+    #   # wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
+    #   wine = pkgs.wine-staging;
+    #   location = "$HOME/.osu";
+    # })
     # gimp
 
     keepassxc
     gparted
     pavucontrol
     # cinnamon.nemo
-    # steam
-    webcord-vencord
+    steam
     obs-studio
     mpv
     imv

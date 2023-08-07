@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   # lib,
   ...
@@ -96,6 +97,15 @@
             };
           }
         ];
+      history = {
+        path = "${config.xdg.configHome}/zsh/zsh_history";
+        share = true;
+        save = 10000;
+        size = 10000;
+        expireDuplicatesFirst = true;
+        ignoreDups = true;
+        ignoreSpace = true;
+      };
       # dirHashes = {
       #   docs = "$HOME/Documents";
       #   notes = "$HOME/Cloud/Notes";

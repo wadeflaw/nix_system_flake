@@ -11,6 +11,10 @@
           hyprctl keyword input:kb_layout us,ru,ua
         }
 
+        dr() {
+          mkdir $1 && cd $_
+        }
+
         declare -A pomo_options
         pomo_options["work"]="2700"
         pomo_options["break"]="900"

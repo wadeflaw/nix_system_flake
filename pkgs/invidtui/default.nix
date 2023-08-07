@@ -1,19 +1,39 @@
 {
   lib,
-  stdenv,
-  fetchTarball,
+  yt-dlp,
+  mpv,
+  ffmpeg,
+  buildGoModule,
+  fetchFromGitHub,
 }:
-stdenv.mkDerivation rec {
-  pname = "nvidtui";
-  version = "0.3.2";
+buildGoModule rec {
+  pname = "invidtui";
+  version = "0.3.3";
 
-  src = fetchTarball {
-    url = "https://github.com/darkhz/invidtui/releases/download/v${version}/invidtui_${version}_Linux_x86_64.tar.gz";
-    sha256 = "";
+  src = fetchFromGitHub {
+    owner = "darkhz";
+    repo = "invidtui";
+    rev = "v${version}";
+    hash = "sha256-IhyL3WlLSouV8+1Q1mF4ZMn2FXqbjelb+S48D2BNV0E=";
   };
+  buildInputs = [
+    yt-dlp
+    mpv
+    ffmpeg
+  ];
 
-  installPhase = ''
-    mkdir -p $out
-    cp -r $out
-  '';
+  vendorHash = "sha256-65hl/xWdLAGsLmR6Lm1nFOXEbBIr2LxwFmBV8usVQxc=";
+
+  ldflags = [
+    "-s"
+    "-w"
+    "-X=github.com/darkhz/invidtui/cmd.Version=${version}@${src.rev}"
+  ];
+
+  meta = with lib; {
+    description = "A TUI based Invidious client";
+    homepage = "https://github.com/darkhz/invidtui/";
+    license = licenses.mit;
+    maintainers = with maintainers; [];
+  };
 }

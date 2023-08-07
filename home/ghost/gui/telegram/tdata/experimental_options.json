@@ -1,5 +1,9 @@
 {
     "auto-scroll-inactive-chat": true,
+    "ctrl-click-chat-new-window": true,
+    "disable-autoplay-next": true,
     "mono-settings-icons": true,
+    "tabbed-panel-show-on-click": true,
+    "view-profile-in-chats-list-context-menu": true,
     "webview-debug-enabled": true
 }

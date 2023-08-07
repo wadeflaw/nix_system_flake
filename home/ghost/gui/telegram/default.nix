@@ -6,6 +6,7 @@
   home = {
     packages = [
       pkgs.nur.repos.ilya-fedin.kotatogram-desktop
+      # pkgs.kotatogram-desktop-unwrapped
       pkgs.telegram-desktop
     ];
     activation = {
