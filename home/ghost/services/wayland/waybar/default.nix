@@ -1,10 +1,7 @@
 {config, ...}: {
   programs.waybar = {
+    systemd.enable = true;
     enable = true;
-    systemd = {
-      enable = true;
-      target = "graphical-session.target";
-    };
   };
 
   xdg.configFile = let
@@ -13,6 +10,7 @@
     fg = colors.base05;
   in {
     "waybar/config".source = ./config.jsonc;
+    # TODO font config
     "waybar/style.css".text = ''
             * {
               font-family: "Jost *";

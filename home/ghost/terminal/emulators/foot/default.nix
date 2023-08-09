@@ -5,11 +5,29 @@
   ...
 }:
 with lib; let
+  mkGraphicalService = lib.recursiveUpdate {
+    Unit.PartOf = ["graphical-session.target"];
+    Unit.After = ["graphical-session.target"];
+    Install.WantedBy = ["graphical-session.target"];
+  };
+
   inherit (config.colorscheme) colors;
 in {
   home.packages = with pkgs; [
     libsixel # for displaying images
   ];
+  systemd.user.services.footserver = mkGraphicalService {
+    Unit = {
+      description = "foot --server service";
+      Requires = ["graphical-session.target"];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.foot}/bin/foot --server";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = ["hyprland-session.target"];
+  };
   programs.foot = {
     enable = true;
     settings = {

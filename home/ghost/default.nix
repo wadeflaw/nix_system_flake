@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./services
     ./terminal
     ./gui
     ./wm

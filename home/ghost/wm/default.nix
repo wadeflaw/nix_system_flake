@@ -5,20 +5,14 @@
 }: {
   imports = [
     ./hyprland
-    ./waybar
     ./rofi
-    ./dunst
-    ./gtklock
     ./xdg
-    ./x11.nix
-    ./variables
   ];
 
   home.packages = with pkgs; [
     # wm
     # screenshots
     grimblast
-    swww
     slurp
 
     hyprprop
@@ -26,7 +20,6 @@
     grim
     playerctl
     cliphist
-    wl-clipboard
     # wf-recorder
     glib
     wayland

@@ -12,22 +12,6 @@
   pointer = config.home.pointerCursor;
 
   getexe = lib.getExe;
-
-  autostart = pkgs.writeShellScriptBin "autostart" ''
-        ${pkgs.wl-clipboard}/bin/wl-paste --type text  --watch ${pkgs.cliphist}/bin/cliphist store & #Stores only text data
-        ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store & #Stores only image data
-
-    # terminal
-        if [[ ! `pgrep foot` ]]; then
-          ${pkgs.foot}/bin/foot --server &
-        fi
-
-    # wallpaper
-        if [[ ! `pgrep swww-daemon` ]]; then
-          ${getexe pkgs.swww} init &
-        fi
-
-  '';
 in {
   imports = [
     ./themes.nix
@@ -35,7 +19,8 @@ in {
     ./rules.nix
   ];
 
-  systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
+  systemd.user.targets.hyprland-session.Target.before = ["xdg-desktop-autostart.target"];
+  # systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -60,7 +45,6 @@ in {
       $mod     = SUPER
       $mod2    = ALT
 
-      exec     = ${getexe autostart}
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}; ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
 
       source   =    $HOME/.config/hypr/rules.conf
