@@ -3,7 +3,7 @@ _: {
     ./environment.nix
     ./user.nix
     ./wayland.nix
-    ./xdg.nix
+    # ./xdg.nix
     ./services.nix
     ./dev.nix
   ];

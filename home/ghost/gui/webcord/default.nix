@@ -1,9 +1,10 @@
 {
   pkgs,
   lib,
-  config,
+  # conf,
+  # config,
   # inputs,
-  self,
+  # self,
   ...
 }:
 with lib; let
@@ -27,8 +28,33 @@ in {
       source = "${catppuccin-mocha}/themes/mocha.theme.css";
     };
 
+    # TODO copy config script from telegram, and modify it for cheking changes
+    # if [[ $(diff config.json $HOME/.config/WebCord/config.json) ]]; then echo true; fi
     # share my webcord configuration across devices
-    "WebCord/config.json".source = config.lib.file.mkOutOfStoreSymlink "${self}/home/notashelf/graphical/apps/webcord/config.json";
+    # "WebCord/config.json".source = ./config.json;
+    # config.lib.file.mkOutOfStoreSymlink
+    #     myActivationAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    #   TG_PATH="$HOME/.local/share/KotatogramDesktop/tdata"
+    #
+    #   files=("experimental_options.json" "kotato-settings-custom.json" "shortcuts-custom.json")
+    #
+    #   for file in "''${files[@]}"; do
+    #
+    #   filepath="$TG_PATH/$file"
+    #
+    #     if [ -e "$filepath" ]; then
+    #       rm $filepath
+    #     else
+    #       mkdir -p $TG_PATH
+    #       cp -r $FLAKE_PATH/home/$USER/gui/telegram/tdata/$file $TG_PATH
+    #       chmod 0644 $TG_PATH/$file
+    #       exit
+    #     fi
+    #       mkdir -p $TG_PATH
+    #       cp -r $FLAKE_PATH/home/$USER/gui/telegram/tdata/$file $TG_PATH
+    #       chmod 0644 $TG_PATH/$file
+    #   done
+    # '';
   };
 
   # services.arrpc.enable = true;

@@ -15,6 +15,7 @@
     };
   };
   environment.systemPackages = with pkgs; [
+    git
     btrfs-snap
 
     # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home

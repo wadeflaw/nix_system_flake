@@ -18,7 +18,7 @@
     #   wine = pkgs.wine-staging;
     #   location = "$HOME/.osu";
     # })
-    # gimp
+    gimp
 
     keepassxc
     gparted
@@ -28,6 +28,7 @@
     obs-studio
     mpv
     imv
+    logseq
     # invidtui
     # mpvpaper
     # mousai

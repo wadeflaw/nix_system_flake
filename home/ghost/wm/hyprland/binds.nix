@@ -6,16 +6,11 @@
 }: let
   getExe = lib.getExe;
 
-  hyprctl = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl";
-
   grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast --notify --scale 1 ";
 
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
 
   nightmode = pkgs.writeShellScriptBin "nightmode" (builtins.readFile ./scripts/nightmode);
-  # brightness = pkgs.writeShellScriptBin "brightness" (builtins.readFile ./scripts/brightness);
-  #
-  # volume = pkgs.writeShellScriptBin "volume" (builtins.readFile ./scripts/volume);
 in {
   xdg.configFile."hypr/binds.conf".text = ''
      input {
@@ -39,7 +34,7 @@ in {
      bind = $mod,          Return,  exec, $term
      bind = $mod,          T, exec, [workspace 2 silent;float;noanim] $term
      bind = $mod,		       D, exec, rofi -show drun
-     bind = $mod,		       R, exec, ${hyprctl} reload
+     bind = $mod,		       R, exec, hyprctl reload
      bind = $mod,		       W, killactive,
      bind = $modCTRLSHIFT, Q, exit,
      bind = $mod,			     S, togglefloating,

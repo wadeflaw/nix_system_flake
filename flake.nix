@@ -45,6 +45,7 @@
         };
         modules = [
           ./home/${conf.user}
+          ./modules/default
         ];
       };
     };

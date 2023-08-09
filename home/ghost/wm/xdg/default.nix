@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  conf,
+  config,
+  ...
+}: let
   browser = ["firefox.desktop"];
   zathura = ["org.pwmt.zathura.desktop.desktop"];
   filemanager = ["dolphin.desktop"];
@@ -27,21 +32,34 @@
     "x-scheme-handler/discord" = ["WebCord.desktop"];
     "inode/directory" = filemanager;
   };
+  home = config.home.homeDirectory;
 in {
   xdg = {
     enable = true;
-    #   userDirs = {
-    #     enable = true;
-    #     createDirectories = true;
-    #     extraConfig = {
-    #       XDG_DEVELOPMENT_DIR = "${config.xdg.userDirs.documents}/Dev";
-    #     };
-    #   };
+    userDirs = {
+      enable = true;
+      createDirectories = false;
+      documents = "${home}/docs";
+      download = "${home}/dl";
+      desktop = "${home}/desk";
+      music = "${home}/music";
+      pictures = "${home}/pics";
+      videos = "${home}/vids";
+
+      extraConfig = {
+        # XDG_DEVELOPMENT_DIR = "${config.xdg.userDirs.documents}/Dev";
+      };
+    };
 
     mimeApps = {
       enable = true;
       associations.added = associations;
       defaultApplications = associations;
     };
+  };
+  home.activation."mimeapps-remove" = {
+    before = ["checkLinkTargets"];
+    after = [];
+    data = "rm -f /home/${conf.user}/.config/mimeapps.list";
   };
 }

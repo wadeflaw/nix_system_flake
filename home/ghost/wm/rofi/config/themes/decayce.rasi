@@ -4,7 +4,7 @@
     border-col: #f5c2e7;
     selected-col: #313244;
     blue: #f5c2e7;
-    fg-col: #f5c2e7;
-    fg-col2: #dd6777;
+    fg-col: #cdd6f4;
+    fg-col2: #f5c2e7;
     grey: #313244;
 }

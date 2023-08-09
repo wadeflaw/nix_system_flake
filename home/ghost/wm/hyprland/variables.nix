@@ -1,4 +1,4 @@
-_: let
+{config, ...}: let
   vars = {
     NIXOS_OZONE_WL = "1";
     __GL_GSYNC_ALLOWED = "0";
@@ -34,14 +34,15 @@ _: let
     # QT_STYLE_OVERRIDE = "kvantum";
     _JAVA_AWT_WM_NONEREPARENTING = "1";
 
-    XCURSOR_SIZE = "24";
-    XCURSOR_THEME = "LyraQ-cursors";
+    XCURSOR_SIZE = "${config.home.pointerCursor.size}";
+    XCURSOR_THEME = "${config.home.pointerCursor.name}";
 
     # apps
-    BROWSER = "firedragon";
+    BROWSER = "firefox";
     EDITOR = "nvim";
+    TERMINAL = "footclient";
   };
 in {
   home.sessionVariables = vars;
-  systemd.user.sessionVariables = vars;
+  # systemd.user.sessionVariables = vars;
 }

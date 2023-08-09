@@ -11,6 +11,7 @@
     ./gui
     ./wm
     ./themes
+    ./preferences.nix
   ];
   # ++ (builtins.attrValues outputs.homeManagerModules);
 

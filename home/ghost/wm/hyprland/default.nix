@@ -27,8 +27,6 @@
           ${getexe pkgs.swww} init &
         fi
 
-        hyprctl setcursor ${pointer.name} ${toString pointer.size}
-        ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
   '';
 in {
   imports = [
@@ -63,14 +61,15 @@ in {
       $mod2    = ALT
 
       exec     = ${getexe autostart}
+      exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}; ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
 
       source   =    $HOME/.config/hypr/rules.conf
       source   =    $HOME/.config/hypr/binds.conf
 
       general {
-         gaps_in                 = 6
-         gaps_out                = 12
-         border_size             = 3.5
+         gaps_in                 = 0
+         gaps_out                = 0
+         border_size             = 1
          col.active_border       = 0xff${colors.base0E} 0xff${colors.base0E} 0xff${colors.base07} 45deg
          col.inactive_border     = 0xff${colors.base03}
          col.group_border_active = 0xff${colors.base0E}
@@ -82,8 +81,8 @@ in {
       }
 
       decoration {
-         rounding            = 6
-         blur                = false
+         rounding            = 0
+         blur                = true
          blur_size           = 3
          blur_passes         = 2
          blur_ignore_opacity = true
@@ -119,7 +118,7 @@ in {
       #
       # }
       animations {
-         enabled   = yes
+         enabled   = false
          bezier    = myBezier, 0.05, 0.9, 0.1, 1.05
 
          animation = windows,     1, 2,  default

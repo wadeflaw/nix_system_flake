@@ -18,190 +18,116 @@
           rofi-emoji-wayland
         ];
     };
-    # font = "Jost* 11";
-    # extraConfig = {
-    #   modi = "drun,filebrowser,calc,emoji";
-    #   drun-display-format = " {name} ";
-    #   sidebar-mode = false;
-    #   matching = "prefix";
-    #   scroll-method = 0;
-    #   disable-history = false;
-    #   show-icons = true;
-    #
-    #   display-drun = " Run";
-    #   display-run = " Run";
-    #   display-filebrowser = " Files";
-    #   display-calc = "󰃬 Calculator";
-    #   display-emoji = "💀 Emoji";
-    # };
-    #
-    # theme = let
-    #   inherit (config.colorscheme) colors;
-    #   inherit (config.lib.formats.rasi) mkLiteral;
-    # in {
-    #   "*" = {
-    #     background = mkLiteral "#${colors.base02}";
-    #     background-alt = mkLiteral "#${colors.base02}";
-    #     foreground = mkLiteral "#${colors.base05}";
-    #     selected = mkLiteral "#${colors.base00}";
-    #     active = mkLiteral "#${colors.base0D}";
-    #     urgent = mkLiteral "#${colors.base00}";
-    #   };
-    #   "window" = {
-    #     transparency = "real";
-    #     location = mkLiteral "1";
-    #     anchor = mkLiteral "1";
-    #     fullscreen = mkLiteral "false";
-    #     width = mkLiteral "300px";
-    #     x-offset = mkLiteral "0px";
-    #     y-offset = mkLiteral "0px";
-    #     enabled = mkLiteral "true";
-    #     border-radius = mkLiteral "15px";
-    #     border = mkLiteral "4px";
-    #     border-color = mkLiteral "#${colors.base02}";
-    #     cursor = "default";
-    #     background-color = mkLiteral "@background";
-    #   };
-    #   "mainbox" = {
-    #     enabled = true;
-    #     spacing = mkLiteral "0px";
-    #     background-color = mkLiteral "transparent";
-    #     orientation = mkLiteral "vertical";
-    #     children = mkLiteral "[inputbar,listbox]";
-    #   };
-    #   "listbox" = {
-    #     spacing = mkLiteral "10px";
-    #     padding = mkLiteral "10px 10px 10px 15px";
-    #     background-color = mkLiteral "transparent";
-    #     orientation = mkLiteral "vertical";
-    #     children = mkLiteral "[message,listview]";
-    #   };
-    #   "inputbar" = {
-    #     enabled = true;
-    #     spacing = mkLiteral "10px";
-    #     padding = mkLiteral "30px 20px 30px 20px";
-    #     background-color = mkLiteral "@selected";
-    #     text-color = mkLiteral "@foreground";
-    #     orientation = mkLiteral "horizontal";
-    #     children = mkLiteral "[prompt,entry]";
-    #   };
-    #   "entry" = {
-    #     enabled = true;
-    #     expand = true;
-    #     width = mkLiteral "300px";
-    #     padding = mkLiteral "12px 15px";
-    #     border-radius = mkLiteral "15px";
-    #     background-color = mkLiteral "@background-alt";
-    #     text-color = mkLiteral "inherit";
-    #     cursor = mkLiteral "text";
-    #     placeholder = "Search";
-    #     placeholder-color = mkLiteral "inherit";
-    #   };
-    #   "prompt" = {
-    #     width = mkLiteral "64px";
-    #     font = "JetBrains Mono NL ExtraLight 12.5";
-    #     padding = mkLiteral "10px 20px 10px 20px";
-    #     border-radius = mkLiteral "15px";
-    #     background-color = mkLiteral "@background-alt";
-    #     text-color = mkLiteral "inherit";
-    #     cursor = mkLiteral "pointer";
-    #   };
-    #   "mode-switcher" = {
-    #     enabled = true;
-    #     spacing = mkLiteral "10px";
-    #     background-color = mkLiteral "transparent";
-    #     text-color = mkLiteral "@foreground";
-    #   };
-    #   "button" = {
-    #     width = mkLiteral "48px";
-    #     font = "Iosevka Nerd Font 14";
-    #     padding = mkLiteral "8px 5px 8px 8px";
-    #     border-radius = mkLiteral "15px";
-    #     background-color = mkLiteral "@background-alt";
-    #     text-color = mkLiteral "inherit";
-    #     cursor = mkLiteral "pointer";
-    #   };
-    #   "button selected" = {
-    #     background-color = mkLiteral "@selected";
-    #     text-color = mkLiteral "@foreground";
-    #   };
-    #   "listview" = {
-    #     enabled = true;
-    #     columns = 2;
-    #     lines = 7;
-    #     cycle = true;
-    #     dynamic = true;
-    #     srollbar = false;
-    #     layout = mkLiteral "vertical";
-    #     reverse = false;
-    #     fixed-height = true;
-    #     fixed-columns = false;
-    #     spacing = mkLiteral "5px";
-    #     background-color = mkLiteral "transparent";
-    #     text-color = mkLiteral "@foreground";
-    #     cursor = mkLiteral "default";
-    #   };
-    #   "element" = {
-    #     enabled = true;
-    #     spacing = mkLiteral "15px";
-    #     padding = mkLiteral "7px";
-    #     border-radius = mkLiteral "100%";
-    #     background-color = mkLiteral "transparent";
-    #     text-color = mkLiteral "@foreground";
-    #     cursor = mkLiteral "pointer";
-    #   };
-    #   "element normal.normal" = {
-    #     background-color = mkLiteral "inherit";
-    #     text-color = mkLiteral "inherit";
-    #   };
-    #   "element normal.urgent" = {
-    #     background-color = mkLiteral "@urgent";
-    #     text-color = mkLiteral "@foreground";
-    #   };
-    #   "element normal.active" = {
-    #     background-color = mkLiteral "@background";
-    #     text-color = mkLiteral "@active";
-    #   };
-    #   "element selected.normal" = {
-    #     background-color = mkLiteral "@selected";
-    #     text-color = mkLiteral "@foreground";
-    #   };
-    #   "element selected.urgent" = {
-    #     background-color = mkLiteral "@urgent";
-    #     text-color = mkLiteral "@foreground";
-    #   };
-    #   "element selected.active" = {
-    #     background-color = mkLiteral "@urgent";
-    #     text-color = mkLiteral "@active";
-    #   };
-    #   "element-icon" = {
-    #     background-color = mkLiteral "transparent";
-    #     text-color = mkLiteral "inherit";
-    #     size = mkLiteral "32px";
-    #     cursor = mkLiteral "inherit";
-    #   };
-    #   "element-text" = {
-    #     background-color = mkLiteral "transparent";
-    #     text-color = mkLiteral "inherit";
-    #     cursor = mkLiteral "inherit";
-    #     vertical-align = mkLiteral "0.5";
-    #     horizontal-align = mkLiteral "0.0";
-    #   };
-    #   "message" = {background-color = mkLiteral "transparent";};
-    #   "textbox" = {
-    #     padding = mkLiteral "12px";
-    #     border-radius = mkLiteral "100%";
-    #     background-color = mkLiteral "@background-alt";
-    #     text-color = mkLiteral "@foreground";
-    #     vertical-align = mkLiteral "0.5";
-    #     horizontal-align = mkLiteral "0.0";
-    #   };
-    #   "error-message" = {
-    #     padding = mkLiteral "12px";
-    #     border-radius = mkLiteral "20px";
-    #     background-color = mkLiteral "@background";
-    #     text-color = mkLiteral "@foreground";
-    #   };
-    # };
   };
+  # xdg.configFile."rofi/config.rasi".text = let
+  #   inherit (config.colorscheme) colors;
+  #   bg = colors.base00;
+  #   fg = colors.base05;
+  # in
+  #   with colors;
+  #   # TODO global gui and term Font
+  #     ''
+  #           configuration{
+  #           location: 1;
+  #           modi: "drun,filebrowser,calc,emoji";
+  #           lines: 5;
+  #           font: "Jost* 11";
+  #           show-icons: true;
+  #           icon-theme: "ePapirus-Dark";
+  #           terminal: "${config.defaultApplications.terminal.desktop}";
+  #           drun-display-format: "{icon} {name}";
+  #           location: 0;
+  #           disable-history: false;
+  #           hide-scrollbar: true;
+  #           location: 1;
+  #       }
+  #
+  #       element-text, element-icon , mode-switcher {
+  #           background-color: #${bg};
+  #           text-color:       #${fg};
+  #       }
+  #
+  #       window {
+  #           height:		 62%;
+  #           width:		 32%;
+  #           orientation: horizontal;
+  #           border: 1.7px;
+  #           border-color: #${base06};
+  #           border-radius: 0px;
+  #           background-color: #${bg};
+  #           padding: 0px;
+  #           margin: 90px;
+  #       }
+  #
+  #       mainbox {
+  #           background-color: #${bg};
+  #       }
+  #
+  #       inputbar {
+  #           children: [entry];
+  #           background-color: #${bg};
+  #           border-radius: 5px;
+  #           padding: 0px;
+  #       }
+  #
+  #       prompt {
+  #           background-color: #${base06};
+  #           padding: 6px;
+  #           text-color: #${bg};
+  #           border-radius: 3px;
+  #           margin: 0px 0px 0px 0px;
+  #       }
+  #
+  #       textbox-prompt-colon {
+  #           expand: false;
+  #           str: ":";
+  #       }
+  #
+  #       entry {
+  #           padding: 6px;
+  #           margin: 5px 0px 0px 5px;
+  #           text-color: #${fg};
+  #           background-color: #${bg};
+  #       }
+  #
+  #       listview {
+  #           border: 0px 0px 0px;
+  #           margin: 10px 35px 0px 10px;
+  #           background-color: #${bg};
+  #       }
+  #
+  #       element {
+  #           padding: 2px;
+  #           background-color: #${bg};
+  #           text-color: #${fg}  ;
+  #       }
+  #
+  #       element-icon {
+  #           size: 24px;
+  #       }
+  #
+  #       element selected {
+  #           background-color:  #${base02} ;
+  #           text-color: #${base06}  ;
+  #           border-radius: 10px;
+  #       }
+  #
+  #       mode-switcher {
+  #           spacing: -7;
+  #       }
+  #
+  #       button {
+  #           padding: 10px;
+  #           background-color: #${bg};
+  #           text-color: #${base02};
+  #           vertical-align: 0.5;
+  #           horizontal-align: 0.5;
+  #       }
+  #
+  #       button selected {
+  #         background-color: #${bg};
+  #         text-color: #${base06};
+  #       }
+  #
+  #     '';
 }
