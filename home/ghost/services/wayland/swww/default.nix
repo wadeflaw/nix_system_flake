@@ -1,10 +1,8 @@
-{pkgs, ...}: let
-  whileRun = pkgs.writeShellScript ''
-    while [[ `pgrep swww` ]]; do
-      sleep 5s
-    done
-  '';
-in {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   home.packages = [pkgs.swww];
 
   systemd.user.services.swww = {
@@ -12,11 +10,13 @@ in {
       Description = "wallpaper daemon controlled at runtime";
       Requires = ["graphical-session.target"];
     };
-    Service = {
+    Service = let
+      wall = "${inputs.wallpkgs}/share/catppuccin/01.png";
+    in {
       Type = "simple";
-      ExecStartPre = "${pkgs.swww}/bin/swww init";
-      ExecStart = "${whileRun}";
-      Restart = "always";
+      ExecStartPre = "${pkgs.swww}/bin/swww-daemon";
+      ExecStart = "${pkgs.swww}/bin/swww img ${wall}";
+      Restart = "on-failure";
     };
     Install.WantedBy = ["hyprland-session.target"];
   };

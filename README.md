@@ -9,7 +9,7 @@
 
 Where i'm stolen base config - https://github.com/samiulbasirfahim/Flakes
 
-I'm learning confs from this people
+I'm learning configs by this people:
 
 - https://github.com/NotAShelf/nyx
 - https://github.com/jsw08/nyxital/

@@ -6,7 +6,7 @@
 }: let
   browser = ["firefox.desktop"];
   zathura = ["org.pwmt.zathura.desktop.desktop"];
-  filemanager = ["dolphin.desktop"];
+  filemanager = ["nemo.desktop"];
 
   associations = {
     "text/html" = browser;
@@ -34,6 +34,21 @@
   };
   home = config.home.homeDirectory;
 in {
+  defaultApplications = {
+    terminal = {
+      cmd = "${pkgs.foot}/bin/footclient";
+      desktop = "footclient";
+    };
+    browser = {
+      cmd = "${pkgs.firefox}/bin/firefox";
+      desktop = "firefox";
+    };
+    editor = {
+      cmd = "${pkgs.neovim}/bin/nvim";
+      desktop = "nvim";
+    };
+  };
+
   xdg = {
     enable = true;
     userDirs = {
@@ -57,9 +72,9 @@ in {
       defaultApplications = associations;
     };
   };
-  home.activation."mimeapps-remove" = {
-    before = ["checkLinkTargets"];
-    after = [];
-    data = "rm -f /home/${conf.user}/.config/mimeapps.list";
-  };
+  # home.activation."mimeapps-remove" = {
+  #   before = ["checkLinkTargets"];
+  #   after = [];
+  #   data = "rm -f /home/${conf.user}/.config/mimeapps.list";
+  # };
 }

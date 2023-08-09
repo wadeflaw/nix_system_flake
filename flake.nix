@@ -15,12 +15,9 @@
     };
 
     lib = import ./lib/nixpkgs {inherit nixpkgs lib inputs;};
-
-    forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-linux"];
-    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
   in {
     overlays = import ./overlays {inherit inputs outputs;};
-    packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
+    packages = pkgs: import ./pkgs {inherit pkgs;};
 
     nixosConfigurations = {
       ${conf.host} = nixpkgs.lib.nixosSystem {
@@ -49,6 +46,21 @@
         ];
       };
     };
+
+    # devShells.default = inputs.devshell.legacyPackages.mkShell {
+    #   name = "nyx";
+    #   commands = (import ./lib/flake/devShell).shellCommands;
+    #   packages = with nixpkgs.legacyPackages.${conf.system}; [
+    #     inputs.agenix.packages.default # let me run agenix commands in the flake repository and only in the flake repository
+    #     config.treefmt.build.wrapper
+    #     nil # nix ls
+    #     alejandra # formatter
+    #     git # flakes require git, and so do I
+    #     glow # markdown viewer
+    #     statix # lints and suggestions
+    #     deadnix # clean up unused nix code
+    #   ];
+    # };
   };
 
   inputs = {
@@ -77,6 +89,7 @@
       url = "github:viperML/wrapper-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -122,6 +135,11 @@
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # ragenix = {
+    #   url = "https://github.com/yaxitech/ragenix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     hypr-plugins = {
       url = "github:hyprwm/hyprland-plugins";

@@ -1,4 +1,4 @@
-_: let
+{config, ...}: let
   vars = {
     NIXOS_OZONE_WL = "1";
     __GL_GSYNC_ALLOWED = "0";
@@ -18,25 +18,20 @@ _: let
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = "1";
     # toolkits
-    GDK_BACKEND = "wayland,x11";
-    SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
 
     CLUTTER_BACKEND = "wayland";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "xdgdesktopportal";
 
     WINIT_UNIX_BACKEND = "wayland";
     # QT_STYLE_OVERRIDE = "kvantum";
     _JAVA_AWT_WM_NONEREPARENTING = "1";
 
     # apps
-    BROWSER = "firedragon";
-    EDITOR = "nvim";
+    TERMINAL = "${config.defaultApplications.terminal.desktop}";
+    BROWSER = "${config.defaultApplications.browser.desktop}";
+    EDITOR = "${config.defaultApplications.editor.desktop}";
   };
 in {
   home.sessionVariables = vars;

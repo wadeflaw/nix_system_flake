@@ -13,6 +13,8 @@
     grimblast = inputs.hypr-contrib.packages.${prev.system}.grimblast;
     hyprprop = inputs.hypr-contrib.packages.${prev.system}.hyprprop;
 
+    # kotatogram-desktop = prev.system.nur.repos.ilya-fedin.kotatogram-desktop;
+
     # kotatogram-desktop-unwrapped = inputs.nur.packages.${prev.system}.kotatogram-desktop.overrideAttrs (prev: {
     #   postFixup = ''
     #     wrapProgram $out/bin/kotatogram-desktop \

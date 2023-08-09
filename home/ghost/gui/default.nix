@@ -8,18 +8,22 @@
     ./telegram
     ./webcord
     ./apps
-    # ./gnome
-    # ./vscode
+    ./wms
+    ./rofi
+    ./xdg
   ];
 
   home.packages = with pkgs; [
-    # (inputs.nix-gaming.packages.${pkgs.system}.osu-stable.override {
-    #   # wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
-    #   wine = pkgs.wine-staging;
-    #   location = "$HOME/.osu";
+    # (inputs.wrapper-manager.lib.build {
+    #   inherit pkgs;
+    #   modules = [
+    #     (import ./telegram)
+    #   ];
     # })
     gimp
 
+    tor-browser-bundle-bin
+    mullvad-browser
     keepassxc
     gparted
     pavucontrol

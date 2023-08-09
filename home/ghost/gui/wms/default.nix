@@ -5,8 +5,6 @@
 }: {
   imports = [
     ./hyprland
-    ./rofi
-    ./xdg
   ];
 
   home.packages = with pkgs; [

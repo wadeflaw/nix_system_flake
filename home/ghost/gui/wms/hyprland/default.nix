@@ -45,7 +45,9 @@ in {
       $mod     = SUPER
       $mod2    = ALT
 
+      exec-once = bash swww init
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}; ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
+      exec = ${getexe pkgs.libnotify} "reloaded!"
 
       source   =    $HOME/.config/hypr/rules.conf
       source   =    $HOME/.config/hypr/binds.conf

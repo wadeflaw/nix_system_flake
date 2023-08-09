@@ -1,1 +1,0 @@
-/home/ghost/docs/apps/logseq/pages/flake.md

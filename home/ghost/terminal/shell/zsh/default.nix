@@ -106,17 +106,18 @@
         ignoreDups = true;
         ignoreSpace = true;
       };
-      # dirHashes = {
-      #   docs = "$HOME/Documents";
-      #   notes = "$HOME/Cloud/Notes";
-      #   dev = "$HOME/Dev";
-      #   dotfiles = "$HOME/.config/nyx";
-      #   dl = "$HOME/Downloads";
-      #   vids = "$HOME/Media/Videos";
-      #   music = "$HOME/Media/Music";
-      #   screenshots = "$HOME/Pictures/Screenshots";
-      #   media = "$HOME/Media";
-      # };
+      dirHashes = rec {
+        docs = "${config.xdg.userDirs.documents}";
+        notes = "${docs}";
+        dev = "${docs}/dev";
+        flake = "$FLAKE_PATH";
+        dl = "${config.xdg.userDirs.download}";
+        vids = "${config.xdg.userDirs.videos}";
+        music = "${config.xdg.userDirs.music}";
+        pics = "${config.xdg.userDirs.pictures}";
+        screenshots = "${pics}/screenshots";
+        # media = "$HOME/Media";
+      };
     };
   };
 }

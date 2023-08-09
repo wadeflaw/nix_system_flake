@@ -20,7 +20,8 @@
       m.flake = inputs.master;
     };
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = ["nix-command" "flakes" "recursive-nix"];
+      systemFeatures = ["recursive-nix"];
       auto-optimise-store = true;
       builders-use-substitutes = true;
 

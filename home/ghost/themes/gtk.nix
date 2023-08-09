@@ -72,8 +72,11 @@
       # gtk applications should use filepickers specified by xdg
       GTK_USE_PORTAL = "1";
 
-      XCURSOR_SIZE = "24";
+      XCURSOR_SIZE = "${config.home.pointerCursor.size}";
       XCURSOR_THEME = "${config.home.pointerCursor.name}";
+
+      GDK_BACKEND = "wayland,x11";
+      SDL_VIDEODRIVER = "wayland";
     };
     pointerCursor = {
       package = pkgs.lyraq-cursors;

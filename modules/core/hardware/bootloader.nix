@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   boot = {
-    tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor pkgs.linuxKernel.kernels.linux_lqx);
 
+    tmp.cleanOnBoot = true;
     plymouth = {
       enable = false;
     };
@@ -52,27 +52,27 @@
         "sd_mod"
       ];
     };
-    kernelModules = [
-      "amdgpu"
-      "kvm-amd"
-      # "acpi_call"
-    ];
+    modprobeConfig = {
+      enable = true;
+    };
     # extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-    consoleLogLevel = 0;
+    # consoleLogLevel = 0;
     kernelParams = [
-      "acpi_call"
+      # speed up guys
+      "loglevel=3"
+      # "udev.log_level=3"
+      "logo.nologo"
+      "quiet"
       "splash"
+      "mitigations=off"
+      "i8042.noaux=1"
+      "module_blacklist=nvidia,nvidia_uvm,nvidia_drm,nvidia_modeset"
+
+      "acpi_call"
       "rootfstype=btrfs"
       "page_alloc.shuffle=1"
 
-      # prevent random wifi disconnection's
-      "pcie_aspm.policy=performance"
-
       "pci=pcie_bus_perf"
-      # clear boot terminal
-      # "quiet"
-      # "udev.log_level=3"
-      # "logo.nologo"
 
       # Disables scatter/gather which was introduced with kernel version 6.2
       "amdgpu.sg_display=0"
@@ -87,11 +87,10 @@
       "vt.default_red=30,243,166,249,137,245,148,186,88,243,166,249,137,245,148,166"
       "vt.default_grn=30,139,227,226,180,194,226,194,91,139,227,226,180,194,226,173"
       "vt.default_blu=46,168,161,175,250,231,213,222,112,168,161,175,250,231,213,200"
-    ];
-    modprobeConfig = {
-      enable = true;
-    };
 
+      # prevent random wifi disconnection's
+      "pcie_aspm.policy=performance"
+    ];
     # disable random wifi disconnections
     extraModprobeConfig = ''
       options rtw88_core disable_lps_deep=y

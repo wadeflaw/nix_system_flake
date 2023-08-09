@@ -1,7 +1,8 @@
-{ ... }: {
+{...}: {
   xdg.configFile."hypr/rules.conf".text = ''
          windowrule = float,         xfce-polkit
      windowrule = size 1262 202, polkit-gnome-authentication-agent-1
+     windowrule = minsize 1025 580, mpv
      windowrule = float,         title:^(.*float.*)$
      windowrule = float,         connman-gtk
      windowrule = workspace 2,   firedragon
@@ -17,12 +18,12 @@
       # windowrule = workspace special, TelegramDesktop
       windowrule = float,          title:^(Telegram)$
       windowrule = size 600 1000,  title:^(Telegram)$
-      windowrule = move 1190 54,   title:^(Telegram)$ 
+      windowrule = move 1190 54,   title:^(Telegram)$
       windowrule = pseudo,         title:^(Telegram)$
-  
+
       windowrule = float,          title:^(Kotatogram)$
       windowrule = size 600 1000,  title:^(Kotatogram)$
-      windowrule = move 1190 54,   title:^(Kotatogram)$ 
+      windowrule = move 1190 54,   title:^(Kotatogram)$
       # windowrule = pseudo,         title:^(Kotatogram)$
 
       windowrule = float,              ncmpcpp
@@ -57,7 +58,7 @@
 
       #  decorations
     #   windowrule = opacity 0.84,  firedragon
-    #  windowrule = opacity 0.85,  title:^(Picture-inPicture)$ 
+    #  windowrule = opacity 0.85,  title:^(Picture-inPicture)$
     #   windowrule = opacity 0.85,  kotatogramdesktop
     #   windowrule = rounding  25,  kotatogramdesktop
     #  windowrule = opacity 0.95,  discord
