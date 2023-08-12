@@ -15,9 +15,12 @@
     };
 
     lib = import ./lib/nixpkgs {inherit nixpkgs lib inputs;};
+
+    forEachSystem = nixpkgs.lib.genAttrs ["${conf.system}"];
+    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
   in {
     overlays = import ./overlays {inherit inputs outputs;};
-    packages = pkgs: import ./pkgs {inherit pkgs;};
+    packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
     nixosConfigurations = {
       ${conf.host} = nixpkgs.lib.nixosSystem {

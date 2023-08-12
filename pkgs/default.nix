@@ -4,4 +4,5 @@
   rofi-calc-wayland = pkgs.callPackage ./rofi-calc-wayland.nix {};
   rofi-emoji-wayland = pkgs.callPackage ./rofi-emoji-wayland.nix {};
   invidtui = pkgs.callPackage ./invidtui {};
+  pwvucontrol = pkgs.callPackage ./pwvucontrol {};
 }

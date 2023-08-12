@@ -27,6 +27,7 @@
     keepassxc
     gparted
     pavucontrol
+    pwvucontrol
     # cinnamon.nemo
     steam
     obs-studio

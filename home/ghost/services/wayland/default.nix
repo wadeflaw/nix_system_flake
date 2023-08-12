@@ -5,6 +5,6 @@ _: {
     ./clipboard
     ./variables
     ./gtklock
-    ./swww
+    # ./swww
   ];
 }
