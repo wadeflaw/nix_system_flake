@@ -1,31 +1,31 @@
-{
-  outputs,
-  inputs,
-}: let
+{ outputs
+, inputs
+,
+}:
+let
   # Adds my custom packages
-  additions = final: _: import ../pkgs {pkgs = final;};
+  additions = final: _: import ../pkgs { pkgs = final; };
 
   modifications = final: prev: {
     eww-wayland = inputs.eww.packages.${prev.system}.eww-wayland;
     neovim = inputs.neovim-conf.packages.${prev.system}.default;
     keepassxc = inputs.stable.legacyPackages.${prev.system}.keepassxc;
 
+    waybar = prev.waybar.overrideAttrs (oa: {
+      hyprlandSupport = true;
+      mesonFlags = (oa.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
+    });
+
     grimblast = inputs.hypr-contrib.packages.${prev.system}.grimblast;
     hyprprop = inputs.hypr-contrib.packages.${prev.system}.hyprprop;
 
-    # kotatogram-desktop = prev.system.nur.repos.ilya-fedin.kotatogram-desktop;
-
-    # kotatogram-desktop-unwrapped = inputs.nur.packages.${prev.system}.kotatogram-desktop.overrideAttrs (prev: {
-    #   postFixup = ''
-    #     wrapProgram $out/bin/kotatogram-desktop \
-    #     --set QT_QPA_PLATFORMTHEME "xdgdesktopportal"
-    #   '';
-    # });
+    kotatogram-desktop = inputs.shlyupa-nur.packages.${prev.system}.kotatogram-desktop;
 
     xdg-desktop-portal-hyprland = inputs.xdph.packages.${prev.system}.default.override {
-      hyprland-share-picker = inputs.xdph.packages.${prev.system}.hyprland-share-picker.override {hyprland = inputs.hyprland.packages.${prev.system}.default;};
+      hyprland-share-picker = inputs.xdph.packages.${prev.system}.hyprland-share-picker.override { hyprland = inputs.hyprland.packages.${prev.system}.default; };
     };
   };
-in {
+in
+{
   default = final: prev: (additions final prev) // (modifications final prev);
 }

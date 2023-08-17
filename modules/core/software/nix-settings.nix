@@ -21,7 +21,6 @@
     };
     settings = {
       experimental-features = ["nix-command" "flakes" "recursive-nix"];
-      systemFeatures = ["recursive-nix"];
       auto-optimise-store = true;
       builders-use-substitutes = true;
 
@@ -42,7 +41,7 @@
         "https://nix-community.cachix.org" # nix-community cache
         "https://hyprland.cachix.org" # hyprland
         "https://nixpkgs-wayland.cachix.org" # automated builds of *some* wayland packages
-        # "https://nix-gaming.cachix.org" # nix-gaming
+        "https://nix-gaming.cachix.org" # nix-gaming
         # "https://nyx.chaotic.cx"
         # china mirror "https://mirrors.bfsu.edu.cn/nix-channels/store"
       ];
@@ -56,7 +55,7 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
         "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-        # "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       ];
     };

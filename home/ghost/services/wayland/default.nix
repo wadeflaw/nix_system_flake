@@ -5,6 +5,7 @@ _: {
     ./clipboard
     ./variables
     ./gtklock
+    ./hyprpaper
     # ./swww
   ];
 }

@@ -44,7 +44,7 @@ in {
         # notify = ''notify-send -a ''${app-id} -i ''${app-id} ''${title} ''${body}'';
       };
       colors = {
-        alpha = "0.85";
+        alpha = "0.94";
         foreground = "${colors.base05}"; # Text
         background = "${colors.base00}"; # Base
 

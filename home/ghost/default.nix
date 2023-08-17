@@ -1,16 +1,16 @@
-{
-  lib,
-  pkgs,
-  conf,
-  inputs,
-  outputs,
-  ...
+{ lib
+, pkgs
+, conf
+, inputs
+, outputs
+, ...
 }: {
   imports = [
     ./services
     ./terminal
     ./gui
     ./themes
+    ./nix
   ];
   # ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -18,34 +18,6 @@
     username = conf.user;
     homeDirectory = "/home/${conf.user}";
     stateVersion = "23.11";
-  };
-
-  # nix = {
-  #   package = lib.mkForce pkgs.nixUnstable;
-  #   settings = {
-  #     experimental-features = ["nix-command" "flakes" "repl-flake"];
-  #     warn-dirty = false;
-  #     keep-outputs = true;
-  #     keep-derivations = true;
-  #   };
-  # };
-
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.default
-      inputs.nur.overlay
-      # inputs.chaotic.overlays.default
-    ];
-
-    config = {
-      permittedInsecurePackages = [
-        "openssl-1.1.1u"
-        "openssl-1.1.1v"
-        "openssl_1_1"
-      ];
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
   };
 
   programs.home-manager.enable = true;

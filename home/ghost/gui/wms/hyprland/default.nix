@@ -45,7 +45,7 @@ in {
       $mod     = SUPER
       $mod2    = ALT
 
-      exec-once = bash swww init
+      exec-once = bash ${pkgs.swww}/bin/swww init
       exec-once = hyprctl setcursor ${pointer.name} ${toString pointer.size}; ${getexe pkgs.libnotify} "Hello ${conf.user}! 😈"
       exec = ${getexe pkgs.libnotify} "reloaded!"
 
@@ -53,8 +53,8 @@ in {
       source   =    $HOME/.config/hypr/binds.conf
 
       general {
-         gaps_in                 = 0
-         gaps_out                = 0
+         gaps_in                 = 6
+         gaps_out                = 12
          border_size             = 1
          col.active_border       = 0xff${colors.base0E} 0xff${colors.base0E} 0xff${colors.base07} 45deg
          col.inactive_border     = 0xff${colors.base03}
@@ -67,7 +67,7 @@ in {
       }
 
       decoration {
-         rounding            = 0
+         rounding            = 6
          blur                = true
          blur_size           = 3
          blur_passes         = 2
@@ -104,7 +104,7 @@ in {
       #
       # }
       animations {
-         enabled   = false
+         enabled   = true
          bezier    = myBezier, 0.05, 0.9, 0.1, 1.05
 
          animation = windows,     1, 2,  default

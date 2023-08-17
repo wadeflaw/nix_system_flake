@@ -24,7 +24,7 @@
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
   "hyprland/workspaces": {
-    "on-click": "activate",
+    // "on-click": "activate",
     "sort-by-number": true
     /* "persistent_workspaces": { */
     /*   "1": [], */

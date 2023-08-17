@@ -38,6 +38,8 @@
     systemd-fsck.enable = false;
     systemd-timesyncd.enable = false;
   };
+
+  virtualisation.waydroid.enable = true;
   # console = {
   #   useXkbConfig = true;
   # font = "";

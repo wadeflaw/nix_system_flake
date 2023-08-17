@@ -1,7 +1,7 @@
 # functions
   myip() {
-    IP=$(curl -s ifconfig.me)
-    echo "Your public IP address is: $IP"
+    IP=$(curl -s ifconfig.me) && \ 
+    echo "Your public IP address is: $IP" && \
     echo -n $IP | wl-copy
   }
 
@@ -18,19 +18,11 @@
   }
 
   hackernews() {
-    if [[ -z "$1" ]]; then
-            curl hkkr.in
-      else
-          curl hkkr.in/n$1
-      fi
+    [ -z "$1" ] && curl hkkr.in || curl hkkr.in/n$1
   }
 
   crypto() {
-    if [[ -z "$1" ]]; then
-          curl rate.sx
-      else
-          curl rate.sx/$1/$2
-      fi
+    [ -z "$1" ] && curl rate.sx || curl rate.sx/$1/$2
   }
 
   weather() {
@@ -38,8 +30,7 @@
   }
 
   cheat() {
-      query=$(echo $1 | tr ' ' '+')
-      curl cheat.sh/$query
+      query=$(echo $1 | tr ' ' '+') && curl cheat.sh/$query
   }
 
   declare -A pomo_options
@@ -47,19 +38,16 @@
   pomo_options["break"]="900"
 
   pomodoro () {
-    if [ -n "$1" -a -n "''${pomo_options["$1"]}" ]; then
-      val=$1
+    [ -n "$1" -a -n "''${pomo_options["$1"]}" ] && val=$1
     echo $val | lolcat
-      timer ''${pomo_options["$val"]}
-    fi
+    timer ''${pomo_options["$val"]}
   }
 
     alias wo="pomodoro 'work'"
     alias br="pomodoro 'break'"
 
   cpfile() {
-    cat $1 | wl-copy
-    echo ${wl-paste}
+    cat $1 | wl-copy && echo ${wl-paste}
   }
 
   wgc() {

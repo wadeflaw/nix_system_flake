@@ -1,12 +1,13 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }: {
   imports = [
     ./firefox
     ./telegram
     ./webcord
+    ./spotify
+    ./games
     ./apps
     ./wms
     ./rofi
@@ -14,12 +15,6 @@
   ];
 
   home.packages = with pkgs; [
-    # (inputs.wrapper-manager.lib.build {
-    #   inherit pkgs;
-    #   modules = [
-    #     (import ./telegram)
-    #   ];
-    # })
     gimp
 
     tor-browser-bundle-bin
@@ -27,7 +22,6 @@
     keepassxc
     gparted
     pavucontrol
-    pwvucontrol
     # cinnamon.nemo
     steam
     obs-studio

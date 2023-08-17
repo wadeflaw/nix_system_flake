@@ -1,37 +1,28 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
+  imports = [./config.nix];
   home = {
-    packages = [
-      pkgs.nur.repos.ilya-fedin.kotatogram-desktop
-      pkgs.telegram-desktop
+    packages = with pkgs; let
+      kotatogram-desktop-unwrapped = symlinkJoin {
+        name = "kotatogram-desktop-unwrapped";
+        paths = [kotatogram-desktop];
+        buildInputs = [makeWrapper];
+        postBuild = ''
+          wrapProgram $out/bin/kotatogram-desktop \
+            --set QT_QPA_PLATFORMTHEME "xdgdesktopportal"
+        '';
+      };
+      telegram-desktop-unwrapped = symlinkJoin {
+        name = "telegram-desktop-unwrapped";
+        paths = [telegram-desktop];
+        buildInputs = [makeWrapper];
+        postBuild = ''
+          wrapProgram $out/bin/telegram-desktop \
+            --set QT_QPA_PLATFORMTHEME "xdgdesktopportal"
+        '';
+      };
+    in [
+      kotatogram-desktop-unwrapped
+      telegram-desktop-unwrapped
     ];
-  };
-
-  home.activation = {
-    myActivationAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      TG_PATH="$HOME/.local/share/KotatogramDesktop/tdata"
-
-      files=("experimental_options.json" "kotato-settings-custom.json" "shortcuts-custom.json")
-
-      for file in "''${files[@]}"; do
-
-      filepath="$TG_PATH/$file"
-
-        if [ -e "$filepath" ]; then
-          rm $filepath
-        else
-          mkdir -p $TG_PATH
-          cp -r $FLAKE_PATH/home/$USER/gui/telegram/tdata/$file $TG_PATH
-          chmod 0644 $TG_PATH/$file
-          exit
-        fi
-          mkdir -p $TG_PATH
-          cp -r $FLAKE_PATH/home/$USER/gui/telegram/tdata/$file $TG_PATH
-          chmod 0644 $TG_PATH/$file
-      done
-    '';
   };
 }

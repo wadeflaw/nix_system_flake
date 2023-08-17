@@ -4,12 +4,17 @@
   config,
   ...
 }: let
-  browser = ["firefox.desktop"];
-  zathura = ["org.pwmt.zathura.desktop.desktop"];
+  browser = ["${config.defaultApplications.browser.desktop}.desktop"];
+  pdfreader = ["org.pwmt.zathura.desktop.desktop"];
+  telegram = ["kotatogram-desktop.desktop"];
   filemanager = ["nemo.desktop"];
+  torrent = ["transmission.desktop"];
+  video = ["mpv.desktop"];
+  image = ["imv.desktop"];
+  editor = ["${config.defaultApplications.editor.desktop}.desktop"];
 
   associations = {
-    "text/html" = browser;
+    "text/html*" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/ftp" = browser;
@@ -21,16 +26,22 @@
     "application/xhtml+xml" = browser;
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht" = browser;
-
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.dekstop"];
-    "image/*" = ["imv.desktop"];
     "application/json" = browser;
-    "application/pdf" = zathura;
-    "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
+
+    "audio/*" = video;
+    "video/*" = video;
+    "image/*" = image;
+    "inode/directory" = filemanager;
+    "application/pdf" = pdfreader;
+    "x-scheme-handler/tg" = telegram;
     "x-scheme-handler/spotify" = ["spotify.desktop"];
     "x-scheme-handler/discord" = ["WebCord.desktop"];
-    "inode/directory" = filemanager;
+    "x-scheme-handler/magnet" = torrent;
+    "x-scheme-handler/application/x-bittorrent" = torrent;
+
+    # "text/rust*" = editor;
+    # "text/x-python*" = editor;
+    # "text"
   };
   home = config.home.homeDirectory;
 in {
