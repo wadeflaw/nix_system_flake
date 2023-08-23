@@ -13,12 +13,12 @@
           rm $filepath
         else
           mkdir -p $TG_PATH
-          cp -r $FLAKE_PATH/home/$USER/gui/telegram/tdata/$file $TG_PATH
+          cp -r ${./tdata}/$file $TG_PATH
           chmod 0644 $TG_PATH/$file
           exit
         fi
           mkdir -p $TG_PATH
-          cp -r $FLAKE_PATH/home/$USER/gui/telegram/tdata/$file $TG_PATH
+          cp -r ${./tdata}/$file $TG_PATH
           chmod 0644 $TG_PATH/$file
       done
     '';

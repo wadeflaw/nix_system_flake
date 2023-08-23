@@ -38,6 +38,7 @@
 - [x] Switch todos to `.md`.
   - migrating from norg to logseq
 - [x] Colors configuration.
+- [ ] Add custom kernel {https://github.com/johnrichardrinehart/JohnOS/blob/cca38212232a8ab664ef8e56181a05d59a4494ee/modules/kernel.nix#L14-L46}
 
 - ## Unactual
 - fix, nixos sometimes stucks on switch root sytemd state. # seems it was only on one version of something.

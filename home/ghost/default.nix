@@ -1,9 +1,10 @@
-{ lib
-, pkgs
-, conf
-, inputs
-, outputs
-, ...
+{
+  lib,
+  pkgs,
+  conf,
+  inputs,
+  self,
+  ...
 }: {
   imports = [
     ./services

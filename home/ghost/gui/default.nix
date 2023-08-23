@@ -1,13 +1,10 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
   imports = [
-    ./firefox
-    ./telegram
-    ./webcord
-    ./spotify
-    ./games
+    ./imv
     ./apps
     ./wms
     ./rofi
@@ -16,9 +13,12 @@
 
   home.packages = with pkgs; [
     gimp
+    plasma5Packages.kamoso
+    deluge-gtk
 
-    tor-browser-bundle-bin
-    mullvad-browser
+    firefox
+    # tor-browser-bundle-bin
+    # mullvad-browser
     keepassxc
     gparted
     pavucontrol

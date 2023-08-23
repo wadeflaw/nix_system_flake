@@ -1,25 +1,26 @@
-{
-  inputs,
-  config,
-  conf,
-  pkgs,
-  lib,
-  ...
-}: let
+{ inputs
+, config
+, conf
+, pkgs
+, lib
+, ...
+}:
+let
   inherit (config.colorscheme) colors;
   nightmode.enable = false;
 
   pointer = config.home.pointerCursor;
 
   getexe = lib.getExe;
-in {
+in
+{
   imports = [
     ./themes.nix
     ./binds.nix
     ./rules.nix
   ];
 
-  systemd.user.targets.hyprland-session.Target.before = ["xdg-desktop-autostart.target"];
+  systemd.user.targets.hyprland-session.Target.before = [ "xdg-desktop-autostart.target" ];
   # systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -28,18 +29,19 @@ in {
       # inputs.hy3.packages.${pkgs.system}.hy3
       # inputs.hypr-plugins.packages.${pkgs.system}.hyprbars
     ];
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
+    # xwayland = {
+    #   enable = true;
+    #   hidpi = true;
+    # };
     enableNvidiaPatches = false;
     systemdIntegration = false;
     extraConfig = ''
       exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd PATH DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target
 
-      #monitor=,preferred,auto,1
+      # monitor=,preferred,auto,1
       monitor  = eDP-1,1920x1080@60,0x0,1
-      monitor  = HDMI-A-1,disabled
+      # monitor = eDP-1,disabled
+      # monitor  = HDMI-A-1,1920x1080@60,0x0,1
 
       $term    = ${pkgs.foot}/bin/footclient
       $mod     = SUPER
@@ -68,10 +70,6 @@ in {
 
       decoration {
          rounding            = 6
-         blur                = true
-         blur_size           = 3
-         blur_passes         = 2
-         blur_ignore_opacity = true
          drop_shadow         = false
          shadow_range        = 55
          shadow_render_power = 4
@@ -85,7 +83,14 @@ in {
         else ''
           screen_shader       = $HOME/.config/hypr/themes/shader_def.frag
         ''
-      }
+
+        }
+           blur {
+               enabled        = true
+               size           = 3
+               passes         = 2
+               ignore_opacity = true
+           }
       }
 
       # animations {

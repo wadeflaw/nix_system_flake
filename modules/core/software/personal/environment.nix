@@ -1,8 +1,7 @@
-{
-  pkgs,
-  conf,
-  inputs,
-  ...
+{ pkgs
+, conf
+, inputs
+, ...
 }: {
   programs = {
     dconf.enable = true;
@@ -14,14 +13,15 @@
       pinentryFlavor = "gtk2";
     };
   };
-  environment.systemPackages = with pkgs; [
-    git
-    btrfs-snap
-
-    # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home
-    # timeshift
-  ];
   environment = {
+    systemPackages = with pkgs; [
+      git
+      btrfs-snap
+
+      # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home
+      # timeshift
+    ];
+    memoryAllocator.provider = "jemalloc";
     variables = {
       FLAKE_PATH = "${conf.fl_path}";
       __GL_THREADED_OPTIMIZATIONS = "1";

@@ -1,6 +1,5 @@
-{
-  pkgs,
-  # inputs,
+{ pkgs
+, # inputs,
   ...
 }: {
   xdg.portal = {

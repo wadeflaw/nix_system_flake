@@ -7,7 +7,7 @@
 }: {
   nixpkgs = {
     overlays = [
-      self.overlays.default
+      self.overlays.extraPkgs
     ];
     config = {
       allowUnfree = true;
@@ -18,6 +18,7 @@
     registry = {
       n.flake = inputs.unstable;
       m.flake = inputs.master;
+      s.flake = inputs.stable;
     };
     settings = {
       experimental-features = ["nix-command" "flakes" "recursive-nix"];

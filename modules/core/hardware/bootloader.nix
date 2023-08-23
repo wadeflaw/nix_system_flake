@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   boot = {
-    kernelPackages = pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor pkgs.linuxKernel.kernels.linux_lqx);
+    kernelPackages = pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor pkgs.linuxKernel.kernels.linux_xanmod_latest);
+    #linux_lqx);
 
     tmp.cleanOnBoot = true;
     plymouth = {
@@ -35,7 +36,10 @@
       };
       kernelModules = [
         "amdgpu"
+        "radeon"
         "kvm-amd"
+        "btrfs"
+
         # "acpi_call"
       ];
       availableKernelModules = [

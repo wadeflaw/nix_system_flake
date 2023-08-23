@@ -1,13 +1,14 @@
-{ outputs
-, inputs
-, lib
-, pkgs
-, ...
+{
+  self,
+  inputs,
+  lib,
+  pkgs,
+  ...
 }: {
   nix = {
     package = lib.mkForce pkgs.nixUnstable;
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
       keep-outputs = true;
       keep-derivations = true;
@@ -16,7 +17,7 @@
 
   nixpkgs = {
     overlays = [
-      outputs.overlays.default
+      self.overlays.extraPkgs
       inputs.nur.overlay
       # inputs.chaotic.overlays.default
     ];
