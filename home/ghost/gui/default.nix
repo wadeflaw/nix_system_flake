@@ -16,7 +16,6 @@
     plasma5Packages.kamoso
     deluge-gtk
 
-    firefox
     # tor-browser-bundle-bin
     # mullvad-browser
     keepassxc

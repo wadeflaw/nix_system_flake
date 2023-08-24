@@ -424,7 +424,7 @@
             "privacy.window.maxInnerWidth" = 1600;
             "privacy.window.maxInnerHeight" = 900;
           };
-          # userChrome = builtins.readFile userChrome;
+          userChrome = builtins.readFile ./userChrome.css;
         };
       })
   ];

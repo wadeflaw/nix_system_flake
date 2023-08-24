@@ -2,9 +2,9 @@ _: {
   imports = [
     ./games
     ./zathura
-    # ./firefox
+    ./firefox
     ./telegram
     ./webcord
-    ./spotify
+    # ./spotify
   ];
 }

@@ -24,6 +24,9 @@
     xdg-desktop-portal-hyprland = inputs.xdph.packages.${prev.system}.default.override {
       hyprland-share-picker = inputs.xdph.packages.${prev.system}.hyprland-share-picker.override {hyprland = inputs.hyprland.packages.${prev.system}.default;};
     };
+
+    amdvlk = inputs.stable.legacyPackages.${prev.system}.amdvlk;
+    driversi686Linux.amdvlk = inputs.stable.legacyPackages.${prev.system}.driversi686Linux.amdvlk;
   };
 in {
   extraPkgs = final: prev: (additions final prev) // (modifications final prev);
