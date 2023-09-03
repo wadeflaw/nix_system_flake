@@ -1,19 +1,20 @@
 - ## Home manager
   - ## Neovim
-    - [ ] Move neovim from external flake into system.
+    - [x] Move neovim from external flake into system.
     - [ ] Add neovim keybindings for telescope.
     - [x] Neovim nix config.
-    - [ ] Move zsh aliases to nix
-    - [ ] Create zellij layouts with names. https://zellij.dev/tutorials/layouts/.
   - ## Telegram
-    - [ ] Create telegram wrapper with {https://github.com/viperML/wrapper-manager}.
+    - [_] Create telegram wrapper with {https://github.com/viperML/wrapper-manager}.
+      - [x] Used vanilla nix stuff.
     - [x] Add telegram keybindings.
   - ## WM stuff
-    - [ ] Move hyprland autostart to systemd services.
+    - [x] Move hyprland autostart to systemd services.
     - [ ] Make waybar modules top and bottom padding more.
     - [ ] Font config.
     - [ ] Add this [rust-tools]{https://github.com/simrat39/rust-tools.nvim} plugin.
     - [ ] Add browser notify's for dunst.
+- [ ] Create zellij layouts with names. https://zellij.dev/tutorials/layouts/.
+- [ ] Move zsh aliases to nix
 - [x] Make home-manager separated.
 - [x] Add zsh plugins, and setup it.
 - [x] Browser nix config.
@@ -32,8 +33,12 @@
   - [x] Create btrfs snapshot for home files.
     - [x] Automate backups with btrbk.
 - ## Packages
+
   - [-] Migrate invidtui to nix.
     - some issues, videos not playing.
+  - [ ] Ayuagram
+  - [ ] linux kernel
+
 - [ ] Hypr picker theme when selecting source for display.
 - [x] Switch todos to `.md`.
   - migrating from norg to logseq

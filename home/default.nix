@@ -1,14 +1,14 @@
+{ conf
+, # lib,
+  inputs
+, ...
+}:
+let
+  self = inputs.self;
+in
 {
-  conf,
-  lib,
-  self,
-  inputs,
-  nixpkgs,
-  home-manager,
-  ...
-}: {
-  ${conf.user} = home-manager.lib.homeManagerConfiguration {
-    pkgs = nixpkgs.legacyPackages.${conf.system};
+  ${conf.user} = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.${conf.system};
     extraSpecialArgs = {
       inherit
         self

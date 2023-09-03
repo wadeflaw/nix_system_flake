@@ -1,23 +1,20 @@
 {
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    flake-parts,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    { self
+    , flake-parts
+    , ...
+    } @ inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         # systems for which you want to build the `perSystem` attributes
         "x86_64-linux"
         # "aarch64-linux"
         # "i686-linux"
-        # ...
       ];
 
       imports = [
         # add self back to inputs, I depend on inputs.self at least once
-        {config._module.args._inputs = inputs // {inherit (inputs) self;};}
+        { config._module.args._inputs = inputs // { inherit (inputs) self; }; }
 
         # parts and modules from inputs
         inputs.flake-parts.flakeModules.easyOverlay
@@ -27,77 +24,49 @@
         # ./pkgs
       ];
 
-      flake = let
-        conf = import ./modules/config;
+      flake =
+        let
+          conf = import ./modules/config;
 
-        # inherit (self) outputs;
-        lib = import ./lib/nixpkgs {inherit nixpkgs lib inputs;};
-      in {
-        overlays = import ./overlays {inherit inputs;};
+          lib = import ./lib/nixpkgs { inherit inputs; };
+        in
+        {
+          # my overlay with custom pkgs
+          overlays = import ./overlays { inherit inputs; };
 
-        nixosConfigurations = import ./hosts {
-          inherit nixpkgs self conf lib inputs;
-        };
+          # entry-point for nixos configurations
+          nixosConfigurations = import ./hosts {
+            inherit lib conf inputs;
+          };
 
-        homeConfigurations = import ./home {
-          inherit nixpkgs home-manager lib self conf inputs;
-        };
-      };
+          # hm cfg
+          homeConfigurations = import ./home {
+            inherit lib conf inputs;
+          };
 
-      perSystem = {
-        config,
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: {
-        imports = [
-          {
-            _module.args.pkgs = import nixpkgs {
-              config.allowUnfree = true;
-              config.allowUnsupportedSystem = true;
-              inherit system;
-            };
-          }
-        ];
-
-        devShells.default = inputs'.devshell.legacyPackages.mkShell {
-          name = "nyx";
-          commands = (import ./lib/flake/devShell).shellCommands;
-          packages = with pkgs; [
-            # inputs'.ragenix.packages.default # let me run agenix commands in the flake repository and only in the flake repository
-            config.treefmt.build.wrapper
-            nil # nix ls
-            # alejandra # formatter
-            git # flakes require git, and so do I
-            glow # markdown viewer
-            statix # lints and suggestions
-            deadnix # clean up unused nix code
-          ];
-        };
-
-        # provide the formatter for nix fmt
-        formatter = pkgs.alejandra;
-
-        # configure treefmt
-        treefmt = {
-          projectRootFile = "flake.nix";
-
-          programs = {
-            alejandra.enable = true;
-            deadnix.enable = false;
-            shellcheck.enable = true;
-            stylua.enable = true;
-            rustfmt.enable = true;
-            shfmt = {
-              enable = true;
-              # https://flake.parts/options/treefmt-nix.html#opt-perSystem.treefmt.programs.shfmt.indent_size
-              # 0 causes shfmt to use tabs
-              indent_size = 0;
-            };
+          nixOnDroidConfigurations = import ./hosts/nixOnDroid {
+            inherit lib conf inputs;
           };
         };
-      };
+
+      perSystem =
+        { config
+        , inputs'
+        , pkgs
+        , system
+        , nixvim
+        , ...
+        }: {
+          imports = [
+            {
+              _module.args.pkgs = import inputs.nixpkgs {
+                config.allowUnfree = true;
+                config.allowUnsupportedSystem = true;
+                inherit system;
+              };
+            }
+          ];
+        };
     };
 
   inputs = {
@@ -114,96 +83,96 @@
     };
 
     # nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     master.url = "github:nixos/nixpkgs/master";
     stable.url = "github:nixos/nixpkgs/nixos-23.05";
-    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming/d10b39b3e525907d904854b86803cf4b102daed9";
-      # inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-conf = {
       url = "git+file:/etc/nixos/nixvim";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixvim = {
         follows = "nixvim";
-        inputs.nixpkgs.follows = "unstable";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
       # inputs.nil.follows = "nil";
     };
 
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    schizofox = {
+      url = "github:schizofox/schizofox";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Rust overlay
     # rust-overlay = {
     #   url = "github:oxalica/rust-overlay";
-    #   inputs.nixpkgs.follows = "unstable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
     # Nix Language server
     # nil = {
     #   url = "github:oxalica/nil";
-    #   inputs.nixpkgs.follows = "unstable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
     #   inputs.rust-overlay.follows = "rust-overlay";
-    # };
-
-    # helix = {
-    #   url = "github:SoraTenshi/helix/new-daily-driver";
-    #   inputs = {
-    #     # rust-overlay.follows = "rust-overlay";
-    #     nixpkgs.follows = "unstable";
-    #   };
     # };
 
     # Easy color integration
     nix-colors = {
       url = "github:misterio77/nix-colors";
-      inputs.nixpkgs-lib.follows = "unstable";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     wallpkgs = {
       url = "github:NotAShelf/wallpkgs";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify = {
       url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Hyprland stuff
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hypr-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpicker.url = "github:hyprwm/hyprpicker";
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # ragenix = {
     #   url = "https://github.com/yaxitech/ragenix";
-    #   inputs.nixpkgs.follows = "unstable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # hypr-plugins = {
@@ -214,14 +183,19 @@
     #   url = "github:outfoxxed/hy3";
     #   inputs.hyprland.follows = "hyprland";
     # };
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+    };
 
     shlyupa-nur = {
       url = "github:ilya-fedin/nur-repository";
-      # inputs.nixpkgs.follows = "unstable";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {

@@ -21,6 +21,9 @@
     keepassxc
     gparted
     pavucontrol
+
+    # TODO
+    # ayuagram
     # cinnamon.nemo
     steam
     obs-studio

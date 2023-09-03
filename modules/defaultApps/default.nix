@@ -10,10 +10,5 @@
       }));
       description = "Preferred applications";
     };
-
-    # startupApplications = mkOption {
-    #   type = listOf path;
-    #   description = "Applications to run on startup";
-    # };
   };
 }

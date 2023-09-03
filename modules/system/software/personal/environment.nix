@@ -1,8 +1,7 @@
-{
-  pkgs,
-  conf,
-  inputs,
-  ...
+{ pkgs
+, conf
+, inputs
+, ...
 }: {
   programs = {
     dconf.enable = true;
@@ -18,6 +17,7 @@
     systemPackages = with pkgs; [
       git
       btrfs-snap
+      wl-clipboard
 
       # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home
       # timeshift

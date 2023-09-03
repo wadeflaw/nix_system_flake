@@ -16,7 +16,7 @@
 
   nix = {
     registry = {
-      n.flake = inputs.unstable;
+      n.flake = inputs.nixpkgs;
       m.flake = inputs.master;
       s.flake = inputs.stable;
     };

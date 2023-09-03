@@ -1,10 +1,19 @@
-{pkgs, ...}: {
+{ pkgs
+, inputs
+, ...
+}:
+let
+  module = { imports = [ ./config ]; };
+  nixvim' = inputs.nixvim.legacyPackages."${pkgs.system}";
+  nvim = nixvim'.makeNixvimWithModule { inherit module pkgs; };
+in
+{
   home.packages = [
     (pkgs.makeDesktopItem {
       name = "nvim";
       desktopName = "nvim";
       terminal = true;
-      categories = ["Utility" "TextEditor" "Development" "IDE"];
+      categories = [ "Utility" "TextEditor" "Development" "IDE" ];
       mimeTypes = [
         "inode/directory"
         "text/english"
@@ -29,5 +38,7 @@
       exec = "${pkgs.neovim}/bin/nvim %F";
       icon = "nvim";
     })
+    nvim
+    # neovim
   ];
 }

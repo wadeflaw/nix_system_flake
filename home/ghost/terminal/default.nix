@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   imports = [
     ./tools
@@ -27,7 +26,6 @@
     libnotify
     lolcat
     socat
-    neovim
     ffmpeg
     yt-dlp
     # playerctl

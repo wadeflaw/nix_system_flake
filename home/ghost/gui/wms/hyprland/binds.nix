@@ -1,9 +1,9 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  ...
-}: let
+{ lib
+, pkgs
+, inputs
+, ...
+}:
+let
   getExe = lib.getExe;
 
   grimblast = "${inputs.hypr-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast --notify --scale 1 ";
@@ -11,7 +11,8 @@
   gamemode = pkgs.writeShellScriptBin "gamemode" (builtins.readFile ./scripts/gamemode);
 
   nightmode = pkgs.writeShellScriptBin "nightmode" (builtins.readFile ./scripts/nightmode);
-in {
+in
+{
   xdg.configFile."hypr/binds.conf".text = ''
      input {
        kb_layout = us,ru
@@ -43,6 +44,7 @@ in {
      bind = $mod,		       Y, togglesplit, # dwindle
      bind = $mod,		       B, exec, $term -e ${pkgs.bluetuith}/bin/bluetuith
     #bind = $modSHIFT,     P, exec, $scripts/waylogout
+     bind = $mod,          P, exec, ${pkgs.pavucontrol}/bin/pavucontrol
      bind = CTRLSHIFT,     L, exec, ${getExe pkgs.gtklock}
      bind = $modSHIFT,		 E, exec, rofi -show emoji
      bind = $modSHIFT,		 C, exec, rofi -show calc
