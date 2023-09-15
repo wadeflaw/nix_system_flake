@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   inherit (config.colorscheme) colors;
-in {
+in
+{
   programs.zsh.initExtra = ''
     set -k
 
@@ -79,7 +81,7 @@ in {
     zstyle ':fzf-tab:complete:ls:*' popup-pad 30 0
     zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
     zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
-    zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'exa -1 --color=always $realpath'
+    zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'if [[ -d $realpath ]] then exa -1 --color=always $realpath else bat $realpath'
     zstyle ':fzf-tab:complete:nvim:*' popup-pad 30 0
 
     zstyle ':fzf-tab:*' switch-group ',' '.'

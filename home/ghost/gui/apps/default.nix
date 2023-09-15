@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   imports = [
     inputs.schizofox.homeManagerModule
 
@@ -7,7 +7,7 @@
     ./firefox
     # ./schizofox
     ./telegram
-    ./webcord
+    # ./webcord
     # ./spotify
   ];
 }
