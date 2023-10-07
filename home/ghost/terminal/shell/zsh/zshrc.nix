@@ -77,17 +77,17 @@ in
     zstyle ':fzf-tab:complete:kill:argument-rest' fzf-preview 'ps --pid=$word -o cmd --no-headers -w -w'
     zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3:wrap'
     zstyle ':fzf-tab:complete:kill:*' popup-pad 0 3
-    zstyle ':fzf-tab:complete:ls:*' fzf-preview 'exa -1 --color=always $realpath'
+    zstyle ':fzf-tab:complete:ls:*' fzf-preview 'eza -1 --color=always $realpath'
     zstyle ':fzf-tab:complete:ls:*' popup-pad 30 0
-    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
     zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
-    zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'if [[ -d $realpath ]] then exa -1 --color=always $realpath else bat $realpath'
+    zstyle ':fzf-tab:complete:nvim:*' fzf-preview '[[ -d $realpath ]] && exa $realpath || bat $realpath'
     zstyle ':fzf-tab:complete:nvim:*' popup-pad 30 0
 
     zstyle ':fzf-tab:*' switch-group ',' '.'
     zstyle ":completion:*:git-checkout:*" sort false
     zstyle ':completion:*' file-sort modification
-    zstyle ':completion:*:exa' sort false
+    zstyle ':completion:*:eza' sort false
     zstyle ':completion:files' sort false
 
     # Autosuggest

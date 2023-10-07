@@ -50,7 +50,7 @@ in
     # };
 
     packages = with pkgs; [
-      (wrapFirefox firefox-esr-unwrapped
+      (wrapFirefox firefox-bin-unwrapped
         {
           # see {https://github.com/mozilla/policy-templates/blob/master/README.md}
           extraPolicies = {

@@ -1,12 +1,13 @@
 { config
+, conf
 , pkgs
 , lib
 , inputs
 , ...
 }:
 let
-  monitors = [ "eDP-1" "HDMI-A-1" ];
-
+  monitors = [ "eDP-1" ];
+  #  "HDMI-A-1"
   hyprpaper = inputs.hyprpaper.packages.${pkgs.system}.default;
   wallpkgs = inputs.wallpkgs.packages.${pkgs.system};
 in
@@ -27,7 +28,8 @@ in
     xdg.configFile."hypr/hyprpaper.conf" = {
       text =
         let
-          wallpaper = "${wallpkgs.catppuccin}/share/wallpapers/catppuccin/01.png";
+          # wallpaper = "${wallpkgs.catppuccin}/share/wallpapers/catppuccin/01.png";
+          wallpaper = "${config.xdg.userDirs.pictures}/wallpapers/1.jpg";
         in
         ''
           preload=${wallpaper}

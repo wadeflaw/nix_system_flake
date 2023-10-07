@@ -7,6 +7,7 @@
     dconf.enable = true;
     zsh.enable = true;
     neovim.enable = false;
+    adb.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -18,6 +19,7 @@
       git
       btrfs-snap
       wl-clipboard
+      distrobox
 
       # not work if subvolumes name isn't start with @, ex: @ - /, @home - /home
       # timeshift

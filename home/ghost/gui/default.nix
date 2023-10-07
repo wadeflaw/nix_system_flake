@@ -1,7 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }: {
   imports = [
     ./imv
@@ -21,6 +20,7 @@
     keepassxc
     gparted
     pavucontrol
+    distrobox
 
     # TODO
     # ayuagram
@@ -33,7 +33,7 @@
     # invidtui
     # mpvpaper
     # mousai
-    # spotify
+    spotify
     # discord
     gajim
     # transmission-gtk

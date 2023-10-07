@@ -24,12 +24,12 @@ alias record="wf-recorder --audio=alsa_output.pci-0000_08_00.6.analog-stereo.mon
 
 # Alias 
 # Replacement Icons for ls 
-alias -g  ls="exa --color always "
-alias -g  ll="exa --color always -l"
-alias -g  la="exa --color always -la"
-alias -g  lt="exa --color always -lT"
-alias -g lta="exa --color always -lTa"
-alias -g l="exa -lF --time-style=long-iso"
+alias -g  ls="eza --color always "
+alias -g  ll="eza --color always -l"
+alias -g  la="eza --color always -la"
+alias -g  lt="eza --color always -lT"
+alias -g lta="eza --color always -lTa"
+alias -g l="eza -lF --time-style=long-iso"
 alias -g cl="clear"
 alias -g nv="nvim"
 

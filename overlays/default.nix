@@ -20,12 +20,13 @@ let
     grimblast = inputs.hypr-contrib.packages.${prev.system}.grimblast;
     hyprprop = inputs.hypr-contrib.packages.${prev.system}.hyprprop;
     zellij = inputs.stable.legacyPackages.${prev.system}.zellij;
+    telegram-desktop = inputs.stable.legacyPackages.${prev.system}.telegram-desktop;
 
     kotatogram-desktop = inputs.shlyupa-nur.packages.${prev.system}.kotatogram-desktop;
 
-    xdg-desktop-portal-hyprland = inputs.xdph.packages.${prev.system}.default.override {
-      hyprland-share-picker = inputs.xdph.packages.${prev.system}.hyprland-share-picker.override { hyprland = inputs.hyprland.packages.${prev.system}.default; };
-    };
+    xdg-desktop-portal-hyprland = inputs.xdph.packages.${prev.system}.default; #.override {
+    # hyprland-share-picker = inputs.xdph.packages.${prev.system}.hyprland-share-picker.override { hyprland = inputs.hyprland.packages.${prev.system}.default; };
+    # };
 
     amdvlk = inputs.stable.legacyPackages.${prev.system}.amdvlk;
     driversi686Linux.amdvlk = inputs.stable.legacyPackages.${prev.system}.driversi686Linux.amdvlk;

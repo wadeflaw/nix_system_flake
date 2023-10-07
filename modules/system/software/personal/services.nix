@@ -1,4 +1,4 @@
-{conf, ...}: {
+{ conf, ... }: {
   services = {
     btrbk = {
       instances."files" = {
@@ -39,7 +39,17 @@
     systemd-timesyncd.enable = false;
   };
 
-  virtualisation.waydroid.enable = true;
+  virtualisation = {
+    waydroid.enable = true;
+    podman.enable = true;
+    # docker = {
+    #   rootless = {
+    #     enable = true;
+    #     # setSocketVariable = true;
+    #   };
+    #   enable = true;
+    # };
+  };
   # console = {
   #   useXkbConfig = true;
   # font = "";

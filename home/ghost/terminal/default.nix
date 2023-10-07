@@ -14,7 +14,7 @@
     # invidtui
     timer
     ripgrep
-    exa
+    eza
     bat
     slides
     wget

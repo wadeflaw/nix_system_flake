@@ -18,7 +18,7 @@
 
         # parts and modules from inputs
         inputs.flake-parts.flakeModules.easyOverlay
-        inputs.treefmt-nix.flakeModule
+        # inputs.treefmt-nix.flakeModule
 
         # parts of the flake
         # ./pkgs

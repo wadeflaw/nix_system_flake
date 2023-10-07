@@ -7,7 +7,7 @@
     ./firefox
     # ./schizofox
     ./telegram
-    # ./webcord
+    ./webcord
     # ./spotify
   ];
 }

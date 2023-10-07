@@ -1,9 +1,8 @@
-{
-  pkgs,
-  conf,
-  config,
-  lib,
-  ...
+{ pkgs
+, conf
+, config
+, lib
+, ...
 }: {
   users.users = {
     "${conf.user}" = {
@@ -23,6 +22,7 @@
           "tss"
           "power"
           "nix"
+          "docker"
         ]
         ++ lib.ifTheyExist config [
           "network"
