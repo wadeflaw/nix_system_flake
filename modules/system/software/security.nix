@@ -1,14 +1,13 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   security = {
     rtkit.enable = true;
-    sudo.enable = false;
+    sudo.enable = true;
     pam = {
-      services.gtklock = {};
+      services.gtklock = { };
       loginLimits = [
         {
           domain = "@wheel";
@@ -34,35 +33,6 @@
         permit nopass :wheel cmd reboot
         permit nopass :wheel cmd rfkill
       '';
-
-      # TODO extra rules won't keep env, fix that
-      # extraRules = [
-      #   {
-      #     groups = ["wheel"];
-      #     persist = true;
-      #     keepEnv = true;
-      #   }
-      #   {
-      #     groups = ["wheel"];
-      #     noPass = true;
-      #     cmd = "${pkgs.systemd}/bin/poweroff";
-      #   }
-      #   {
-      #     groups = ["wheel"];
-      #     noPass = true;
-      #     cmd = "${pkgs.systemd}/bin/reboot";
-      #   }
-      #   {
-      #     groups = ["wheel"];
-      #     cmd = "${pkgs.brillo}/bin/brillo";
-      #     noPass = true;
-      #   }
-      #   {
-      #     groups = ["wheel"];
-      #     cmd = "rfkill";
-      #     noPass = true;
-      #   }
-      # ];
     };
     #   protectKernelImage = true;
   };

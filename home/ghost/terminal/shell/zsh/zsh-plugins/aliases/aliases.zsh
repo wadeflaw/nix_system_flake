@@ -47,11 +47,12 @@ alias -g v="nvim"
 alias notes="cd ~/Documents/learn/notes;nv \$(fzf)"
 # alias pac='yay'
 alias lsblk='lsblk -o NAME,FSTYPE,SIZE,TYPE,MOUNTPOINTS,STATE,FSSIZE,FSAVAIL'
-alias doo='doas'
+sudo="sudo"
+alias doo='$sudo'
 alias -g cl='clear'
-alias -g ds='doas'
-alias -g sudo='doas'
-alias sudoedit='doas nvim'
+alias -g ds='$sudo'
+# alias -g sudo='$sudo'
+alias sudoedit='$sudo nvim'
 alias zel='zellij'
 # alias nvim='lvim'
 alias ytdlp='yt-dlp --audio-quality 10'
@@ -61,8 +62,8 @@ alias cat="bat --style=plain"
 alias grep="rg"
 alias mp="mkdir -p"
 # system aliases
-alias sc="sudo systemctl"
-alias jc="sudo journalctl"
+alias sc="$sudo systemctl"
+alias jc="$sudo journalctl"
 alias scu="systemctl --user "
 alias jcu="journalctl --user"
 alias burn="pkill -9"
@@ -72,8 +73,8 @@ alias killall="pkill"
 # nixos
 FLAKE_PATH="/etc/nixos/stable/"
 
-alias -g ncg="nix-collect-garbage && nix-collect-garbage -d && doas nix-collect-garbage && doas nix-collect-garbage -d && doas rm /nix/var/nix/gcroots/auto/*"
-alias -g nrf="doas nixos-rebuild switch --flake $FLAKE_PATH"
+alias -g ncg="nix-collect-garbage && nix-collect-garbage -d && $sudo nix-collect-garbage && $sudo nix-collect-garbage -d && $sudo rm /nix/var/nix/gcroots/auto/*"
+alias -g nrf="$sudo nixos-rebuild switch --flake $FLAKE_PATH"
 alias -g hrf="home-manager switch --flake $FLAKE_PATH$1"
 alias -g nsp="nix search flake:n"
 alias -g fl="cd $FLAKE_PATH"

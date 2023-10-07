@@ -92,6 +92,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming/d10b39b3e525907d904854b86803cf4b102daed9";
       inputs.nixpkgs.follows = "nixpkgs";
