@@ -1,12 +1,15 @@
-{ pkgs
-, config
-, inputs
-, ...
+{
+  pkgs,
+  config,
+  inputs,
+  ...
 }: {
   environment.packages = with pkgs; [
     # neovim
     # ranger
     # tmux
+    vim
+    git
     neofetch
     # gcc
     # openssh
@@ -15,16 +18,19 @@
     # lua
   ];
 
-  # home-manager = {
-  #   backupFileExtension = "bak";
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   extraSpecialArgs = {inherit inputs;};
-  # };
-  #
+  home-manager = {
+    backupFileExtension = "bak";
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {inherit inputs;};
+  };
+
   time.timeZone = "Europa/Kyiv";
   user.shell = "${pkgs.zsh}/bin/zsh";
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
   system.stateVersion = "23.05";
 
   # home-manager.config =
