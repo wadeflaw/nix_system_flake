@@ -3,7 +3,6 @@
 , inputs
 , ...
 }: {
-  services.sshd.enable = true;
   environment = {
     packages = with pkgs; [
       neovim
@@ -59,6 +58,7 @@
   home-manager.config = { pkgs, ... }: {
     home.stateVersion = "22.05";
     programs.ssh.enable = true;
+    services.sshd.enable = true;
     # imports = [
     #   # ../../home/misato/programs/shell
     #   # ../../home/misato/programs/neofetch
