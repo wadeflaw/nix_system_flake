@@ -40,7 +40,7 @@
   system.stateVersion = "23.05";
 
   home-manager.config = { pkgs, ... }: {
-    home.stateVersion = "23.05";
+    home.stateVersion = "22.11";
     programs.ssh.enable = true;
     # imports = [
     #   # ../../home/misato/programs/shell
