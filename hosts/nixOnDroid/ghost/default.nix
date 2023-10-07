@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
+{ pkgs
+, config
+, inputs
+, ...
 }: {
   environment.packages = with pkgs; [
     # neovim
@@ -18,19 +17,28 @@
     # lua
   ];
 
+  programs.ssh.enable = true;
+
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
   };
 
   time.timeZone = "Europa/Kyiv";
   user.shell = "${pkgs.zsh}/bin/zsh";
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    registry = {
+      n.flake = inputs.nixpkgs;
+      m.flake = inputs.master;
+      s.flake = inputs.stable;
+    };
+  };
   system.stateVersion = "23.05";
 
   # home-manager.config =
