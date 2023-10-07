@@ -3,34 +3,36 @@
 , inputs
 , ...
 }: {
-  environment.packages = with pkgs; [
-    neovim
-    tmux
-    git
-    neofetch
-    gcc
-    openssh
-    # python312
-    # lua
+  environment = {
+    services.sshd.enable = true;
+    packages = with pkgs; [
+      neovim
+      tmux
+      git
+      neofetch
+      gcc
+      openssh
+      # python312
+      # lua
 
-    # Some common stuff that people expect to have
-    diffutils
-    findutils
-    utillinux
-    tzdata
-    hostname
-    man
-    gnugrep
-    gnupg
-    gnused
-    gnutar
-    bzip2
-    gzip
-    xz
-    zip
-    unzip
-  ];
-  services.sshd.enable = true;
+      # Some common stuff that people expect to have
+      diffutils
+      findutils
+      utillinux
+      tzdata
+      hostname
+      man
+      gnugrep
+      gnupg
+      gnused
+      gnutar
+      bzip2
+      gzip
+      xz
+      zip
+      unzip
+    ];
+  };
 
   home-manager = {
     backupFileExtension = "bak";
