@@ -4,18 +4,33 @@
 , ...
 }: {
   environment.packages = with pkgs; [
-    # neovim
-    # ranger
-    # tmux
-    vim
+    neovim
+    tmux
     git
     neofetch
-    # gcc
-    # openssh
-    # git
+    gcc
+    openssh
     # python312
     # lua
+
+    # Some common stuff that people expect to have
+    diffutils
+    findutils
+    utillinux
+    tzdata
+    hostname
+    man
+    gnugrep
+    gnupg
+    gnused
+    gnutar
+    bzip2
+    gzip
+    xz
+    zip
+    unzip
   ];
+  services.sshd.enable = true;
 
   home-manager = {
     backupFileExtension = "bak";
@@ -40,7 +55,7 @@
   system.stateVersion = "23.05";
 
   home-manager.config = { pkgs, ... }: {
-    home.stateVersion = "22.11";
+    home.stateVersion = "22.05";
     programs.ssh.enable = true;
     # imports = [
     #   # ../../home/misato/programs/shell
