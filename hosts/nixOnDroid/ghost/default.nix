@@ -17,8 +17,6 @@
     # lua
   ];
 
-  programs.ssh.enable = true;
-
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;
@@ -41,15 +39,14 @@
   };
   system.stateVersion = "23.05";
 
-  # home-manager.config =
-  #   { pkgs, ... }:
-  #   {
-  #     home.stateVersion = "22.05";
-  #     imports = [
-  #       # ../../home/misato/programs/shell
-  #       # ../../home/misato/programs/neofetch
-  #       # ../../home/misato/programs/ranger
-  #       # ../../home/misato/programs/tmux
-  #     ];
-  #   };
+  home-manager.config = { pkgs, ... }: {
+    home.stateVersion = "23.05";
+    programs.ssh.enable = true;
+    # imports = [
+    #   # ../../home/misato/programs/shell
+    #   # ../../home/misato/programs/neofetch
+    #   # ../../home/misato/programs/ranger
+    #   # ../../home/misato/programs/tmux
+    # ];
+  };
 }
