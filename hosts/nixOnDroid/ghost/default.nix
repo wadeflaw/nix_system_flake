@@ -3,8 +3,8 @@
 , inputs
 , ...
 }: {
+  services.sshd.enable = true;
   environment = {
-    services.sshd.enable = true;
     packages = with pkgs; [
       neovim
       tmux
