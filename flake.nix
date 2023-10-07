@@ -107,7 +107,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-conf = {
-      url = "git+file:/etc/nixos/nixvim";
+      url = "git+https://codeberg.org/ghosty/nixvim_flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixvim = {
         follows = "nixvim";

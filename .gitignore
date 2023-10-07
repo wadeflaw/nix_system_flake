@@ -1,5 +1,4 @@
 .direnv/
 flake.lock
-
 *.qcow2
-result
+result/
