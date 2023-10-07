@@ -33,6 +33,7 @@
     ];
   };
 
+  imports = [ ./ssh ];
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;
