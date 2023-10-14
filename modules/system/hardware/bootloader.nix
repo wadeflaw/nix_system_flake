@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   boot = {
     kernelPackages = pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor pkgs.linuxKernel.kernels.linux_xanmod_latest);
     #linux_lqx);
@@ -12,7 +12,7 @@
       grub = {
         enable = true;
         device = "nodev";
-        useOSProber = true;
+        useOSProber = false;
         efiSupport = true;
         configurationLimit = 3;
         # extraEntries = ''

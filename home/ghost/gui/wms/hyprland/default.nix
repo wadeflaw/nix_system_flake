@@ -83,8 +83,7 @@ in
         else ''
           screen_shader       = $HOME/.config/hypr/themes/shader_def.frag
         ''
-
-        }
+      }
            blur {
                enabled        = true
                size           = 3

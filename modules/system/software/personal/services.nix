@@ -24,6 +24,7 @@
     gvfs.enable = true;
     fstrim.enable = true;
     gpm.enable = true;
+    fwupd.enable = true;
     dbus = {
       enable = true;
       implementation = "broker";

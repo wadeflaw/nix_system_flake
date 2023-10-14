@@ -4,7 +4,7 @@ nrf:
 		
 hrf:
 		git add . 
-		home-manager switch --flake ".#${USER}"
+		home-manager switch --flake ".#${user}"
 
 hyr:
 		git add . 

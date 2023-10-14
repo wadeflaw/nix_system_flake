@@ -1,13 +1,25 @@
-{ conf, ... }: {
+{ conf
+, config
+, lib
+, ...
+}: {
   systemd.network = {
     enable = true;
     wait-online.enable = false;
   };
+  
+  services.resolved.extraConfig = "
+    ${lib.concatStringsSep "\n" (map (s: "nameserver " + s) config.networking.nameservers)}
+  ";
+
   networking = {
     hostName = "${conf.host}";
 
-    networkmanager.enable = true;
-
+    networkmanager = {
+      enable = true;
+      # dns = "";
+    };
+    resolvconf.useLocalResolver = false;
     nameservers = [
       "9.9.9.9"
       "8.8.8.8"
@@ -20,7 +32,7 @@
     };
 
     wireguard = {
-      enable = true;
+      enable = false;
     };
     wg-quick = {
       interfaces = {

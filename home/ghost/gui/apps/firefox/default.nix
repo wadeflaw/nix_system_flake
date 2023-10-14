@@ -230,7 +230,7 @@ in
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
               "browser.uidensity" = 1;
-              "browser.startup.homepage" = "file://${./index.html}";
+              "browser.startup.homepage" = "file://${./startpage}/index.html";
               # "general.useragent.override" = cfg.userAgent;
 
               # remove useless stuff from the bar

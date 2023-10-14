@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     gimp
+    vscodium
     plasma5Packages.kamoso
     deluge-gtk
 
@@ -29,17 +30,16 @@
     obs-studio
     mpv
     imv
+    obsidian
     logseq
     # invidtui
     # mpvpaper
     # mousai
-    spotify
+    # spotify
     # discord
-    gajim
+    # gajim
     # transmission-gtk
     # libreoffice-fresh
     # element-desktop-wayland
-    # nur.repos.aleksana.gtkcord4
-    # nur.repos.aleksana.go-musicfox
   ];
 }
