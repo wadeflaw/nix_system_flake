@@ -55,7 +55,7 @@
   }
 
   ytmpv() {
-    mpv $(ytdlp -f best --get-url "$1")
+    mpv $(ytdlp -f --get-url "$1")
   }
 
   lyall() {
