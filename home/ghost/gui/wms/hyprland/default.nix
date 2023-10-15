@@ -34,7 +34,7 @@ in
     #   hidpi = true;
     # };
     enableNvidiaPatches = false;
-    systemdIntegration = false;
+    systemd.enable = false;
     extraConfig = ''
       exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd PATH DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprland-session.target
 
@@ -60,8 +60,6 @@ in
          border_size             = 1
          col.active_border       = 0xff${colors.base0E} 0xff${colors.base0E} 0xff${colors.base07} 45deg
          col.inactive_border     = 0xff${colors.base03}
-         col.group_border_active = 0xff${colors.base0E}
-         col.group_border        = 0xff${colors.base02}
 
          # no_focus_fallback = true
          cursor_inactive_timeout = 5
@@ -91,6 +89,15 @@ in
                ignore_opacity = true
            }
       }
+
+      group { 
+             col.border_active   = 0xff${colors.base0E}
+             col.border_inactive = 0xff${colors.base02}
+#         groupbar {
+#                   render_titles = false
+#         }
+      }
+
 
       # animations {
       #   enabled = true
@@ -157,8 +164,7 @@ in
       }
 
       misc {
-         render_titles_in_groupbar = false
-         groupbar_gradients        = false
+         # groupbar_gradients        = false
          disable_hyprland_logo     = true
          disable_splash_rendering  = true
          vrr                       = 1

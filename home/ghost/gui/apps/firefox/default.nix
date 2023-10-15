@@ -44,13 +44,13 @@ in
         StartWithLastProfile=1
         Version=2
       '';
-      "${defaultProfilePath}/chrome/userChrome.css".text = import ./userChrome.nix { inherit config; };
+      # "${defaultProfilePath}/chrome/userChrome.css".text = import ./userChrome.nix { inherit config; };
       # "${defaultProfile}/chrome/userContent.css".text = import ./firefox/userContent.nix {};
     };
     # };
 
     packages = with pkgs; [
-      (wrapFirefox firefox-bin-unwrapped
+      (wrapFirefox firefox-esr-115-unwrapped
         {
           # see {https://github.com/mozilla/policy-templates/blob/master/README.md}
           extraPolicies = {

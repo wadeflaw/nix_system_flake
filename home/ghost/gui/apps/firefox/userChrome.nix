@@ -65,8 +65,8 @@ in ''
   }
 
   .tab-background[selected="true"] {
-    background-color: var(--color2) !important;
-    background-image: none !important;
+    background-color: var(--color2) important;
+    background-image: none important;
   }
 
   :root:not([customizing]) #nav-bar {

@@ -102,6 +102,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+     astronvim = {
+      url = "github:AstroNvim/AstroNvim/v3.36.0";
+      flake = false;
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

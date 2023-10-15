@@ -10,8 +10,8 @@
         # drivers
         amdvlk
         mesa
-        rocm-opencl-icd
-        rocm-opencl-runtime
+        rocmPackages.clr.icd
+        rocmPackages.clr
       ];
       extraPackages32 = with pkgs; [
         driversi686Linux.amdvlk

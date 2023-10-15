@@ -12,11 +12,9 @@ stdenv.mkDerivation rec {
   };
   installPhase = ''
     mkdir -p $out
-    cp -r src/catppuccin-mocha-grub-theme/* $out/  
+    cp -r src/catppuccin-mocha-grub-theme/* $out/
   '';
   meta = {
     description = "catppuccin-grub";
   };
 }
-
-

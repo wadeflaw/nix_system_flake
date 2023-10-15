@@ -6,17 +6,19 @@
   gtk = {
     enable = true;
     iconTheme = {
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "pink";
-      };
+      package = pkgs.catppuccin-papirus-folders;
+      # .override {
+      #   flavor = "mocha";
+      #   accent = "pink";
+      # };
       name = "Papirus-Dark";
     };
     theme = {
-      name = "Catppuccin-Mocha-Compact-Mauve-dark";
+      name = "Catppuccin-Mocha-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
+        accents = [ "pink" ];
         size = "compact";
+        # tweaks = [ "rimless" "black" ];
         variant = "mocha";
       };
     };
@@ -46,15 +48,15 @@
   home = {
     packages = with pkgs; [
       glib # gsettings
-      (catppuccin-gtk.override {
-        size = "compact";
-        accents = ["pink"];
-        variant = "mocha";
-      })
-      (catppuccin-papirus-folders.override {
-        accent = "pink";
-        flavor = "mocha";
-      })
+      # (catppuccin-gtk.override {
+      #   size = "compact";
+      #   accents = ["pink"];
+      #   variant = "mocha";
+      # })
+      # (catppuccin-papirus-folders.override {
+      #   accent = "pink";
+      #   flavor = "mocha";
+      # })
       # font
       twemoji-color-font
       noto-fonts
