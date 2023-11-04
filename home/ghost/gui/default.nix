@@ -1,24 +1,21 @@
-{ pkgs
-, inputs
-, ...
+{ 
+# pkgs
+# , inputs
+# , ...
+...
 }: {
   imports = [
     ./apps
     ./wms
     ./xdg
+    ./dev
   ];
 
-  home.packages = with pkgs; [
-    # TODO
-    # ayuagram
-    obsidian
-    logseq
+  # home.packages = with pkgs; [
     # invidtui
     # mpvpaper
     # mousai
-    # spotify
     # gajim
     # libreoffice-fresh
-    # element-desktop-wayland
-  ];
+  # ];
 }

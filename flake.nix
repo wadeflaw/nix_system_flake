@@ -1,10 +1,10 @@
 {
-  outputs =
-    { self
-    , flake-parts
-    , ...
-    } @ inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = {
+    self,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         # systems for which you want to build the `perSystem` attributes
         "x86_64-linux"
@@ -14,7 +14,7 @@
 
       imports = [
         # add self back to inputs, I depend on inputs.self at least once
-        { config._module.args._inputs = inputs // { inherit (inputs) self; }; }
+        {config._module.args._inputs = inputs // {inherit (inputs) self;};}
 
         # parts and modules from inputs
         inputs.flake-parts.flakeModules.easyOverlay
@@ -24,49 +24,46 @@
         # ./pkgs
       ];
 
-      flake =
-        let
-          conf = import ./modules/config;
+      flake = let
+        conf = import ./modules/config;
 
-          lib = import ./lib/nixpkgs { inherit inputs; };
-        in
-        {
-          # my overlay with custom pkgs
-          overlays = import ./overlays { inherit inputs; };
+        lib = import ./lib/nixpkgs {inherit inputs;};
+      in {
+        # my overlay with custom pkgs
+        overlays = import ./overlays {inherit inputs;};
 
-          # entry-point for nixos configurations
-          nixosConfigurations = import ./hosts {
-            inherit lib conf inputs;
-          };
-
-          # hm cfg
-          homeConfigurations = import ./home {
-            inherit lib conf inputs;
-          };
-
-          nixOnDroidConfigurations = import ./hosts/nixOnDroid {
-            inherit lib conf inputs;
-          };
+        # entry-point for nixos configurations
+        nixosConfigurations = import ./hosts {
+          inherit lib conf inputs;
         };
 
-      perSystem =
-        { config
-        , inputs'
-        , pkgs
-        , system
-        , nixvim
-        , ...
-        }: {
-          imports = [
-            {
-              _module.args.pkgs = import inputs.nixpkgs {
-                config.allowUnfree = true;
-                config.allowUnsupportedSystem = true;
-                inherit system;
-              };
-            }
-          ];
+        # hm cfg
+        homeConfigurations = import ./home {
+          inherit lib conf inputs;
         };
+
+        nixOnDroidConfigurations = import ./hosts/nixOnDroid {
+          inherit lib conf inputs;
+        };
+      };
+
+      perSystem = {
+        config,
+        # inputs',
+        pkgs,
+        system,
+        ...
+      }: {
+        imports = [
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              config.allowUnfree = true;
+              config.allowUnsupportedSystem = true;
+              inherit system;
+            };
+          }
+        ];
+      };
     };
 
   inputs = {
@@ -102,7 +99,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-     astronvim = {
+    astronvim = {
       url = "github:AstroNvim/AstroNvim/v3.36.0";
       flake = false;
     };
@@ -168,6 +165,12 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # hycov = {
+    #   url = "github:DreamMaoMao/hycov";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+
     hyprpicker.url = "github:hyprwm/hyprpicker";
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
@@ -201,10 +204,10 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # chaotic = {
+    #   url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   nixConfig = {

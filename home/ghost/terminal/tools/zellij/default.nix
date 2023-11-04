@@ -2,6 +2,7 @@
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;
+    # enableNushellIntegration = true;
   };
   xdg.configFile."zellij/config.kdl".text = let
     inherit (config.colorscheme) colors;

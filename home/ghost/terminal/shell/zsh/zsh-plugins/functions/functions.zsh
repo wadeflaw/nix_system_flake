@@ -46,14 +46,6 @@
     alias wo="pomodoro 'work'"
     alias br="pomodoro 'break'"
 
-  cpfile() {
-    cat $1 | wl-copy && echo ${wl-paste}
-  }
-
-  wgc() {
-      doas wg-quick $2 $1
-  }
-
   ytmpv() {
     mpv $(ytdlp -f --get-url "$1")
   }

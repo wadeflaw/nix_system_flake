@@ -109,6 +109,11 @@ in
     bindkey "^A" vi-beginning-of-line
     bindkey "^E" vi-end-of-line
 
+    if command -v fzf-share >/dev/null; then    
+      source "$(fzf-share)/key-bindings.zsh"
+      source "$(fzf-share)/completion.zsh"  
+    fi
+
     path+="$HOME/.config/zsh-plugins/*"
     fpath+="$HOME/.config/zsh-plugins/*"
 

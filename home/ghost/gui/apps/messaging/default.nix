@@ -1,6 +1,10 @@
-_:{
+{pkgs}:{
   imports = [
-    ./webcord
+    # ./webcord
     ./telegram
   ];
+
+  # home.packages = with pkgs; [
+        # element-desktop-wayland
+  # ];
 }

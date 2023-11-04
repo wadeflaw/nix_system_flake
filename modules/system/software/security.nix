@@ -5,7 +5,12 @@
 }: {
   security = {
     rtkit.enable = true;
-    sudo.enable = true;
+    sudo = {
+      enable = true;
+      # extraConfig = ''
+      #   Defaults env_keep="XAUTHORIZATION XAUTHORITY TZ PS2 PS1 PATH LS_COLORS KRB5CCNAME HOSTNAME HOME DISPLAY COLORS"
+      # '';
+    };
     pam = {
       services.gtklock = { };
       loginLimits = [
@@ -24,7 +29,9 @@
       ];
     };
     doas = {
-      enable = lib.mkDefault (!config.security.sudo.enable);
+      enable = true;
+      
+      # lib.mkDefault (!config.security.sudo.enable);
       extraConfig = ''
         permit persist keepenv :wheel
         permit nopass root

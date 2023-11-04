@@ -20,8 +20,7 @@ truncation_length = 3
 truncate_to_repo = false
 
 [git_branch]
-format = "($style)[[ ](bg:none fg:pink bold)$branch](bg:none fg:pink)($style)"
-style = "bg:none fg:base"
+format = "($style)[[ ](bg:none fg:pink bold)$branch](bg:none fg:pink)($style)" style = "bg:none fg:base"
 
 [git_status]
 # $all status$ahead_behind

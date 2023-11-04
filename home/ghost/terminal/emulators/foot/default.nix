@@ -37,7 +37,7 @@ in {
         locked-title = "no";
 
         term = "xterm-256color";
-        font = "JetBrains Mono NL ExtraLight:size=12";
+        font = "JetBrains Mono:size=12";
         pad = "5x5";
         # dpi-aware = "yes";
         vertical-letter-offset = "-0.75";

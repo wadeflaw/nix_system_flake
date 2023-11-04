@@ -44,7 +44,7 @@ in
         StartWithLastProfile=1
         Version=2
       '';
-      # "${defaultProfilePath}/chrome/userChrome.css".text = import ./userChrome.nix { inherit config; };
+      "${defaultProfilePath}/chrome/userChrome.css".text = import ./userChrome.nix { inherit config; };
       # "${defaultProfile}/chrome/userContent.css".text = import ./firefox/userContent.nix {};
     };
     # };

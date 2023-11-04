@@ -28,6 +28,8 @@ in
     plugins = [
       # inputs.hy3.packages.${pkgs.system}.hy3
       # inputs.hypr-plugins.packages.${pkgs.system}.hyprbars
+      
+      # inputs.hycov.packages.${pkgs.system}.hycov
     ];
     # xwayland = {
     #   enable = true;
@@ -126,7 +128,8 @@ in
          animation = workspaces,  1, 2,  default
       }
 
-      # plugin { hyprbars {
+      # plugin { 
+      # hyprbars {
       #     bar_color = 0xff${colors.base02}
       #     bar_height = 19
       #     col.text = 0xff${colors.base05}
@@ -148,6 +151,12 @@ in
       #       trigger_height = 0
       #     }
       #   }
+        # hycov {
+        #   overview_gappo = 60 # gas width from screen
+        #   overview_gappi = 24 # gas width from clients
+	       #  hotarea_size = 10   # hotarea size in bottom left,10x10
+	       #  enable_hotarea = 1  # move cursor to bottom-left can toggle overview
+        # }
       # }
       dwindle {
          pseudotile        = yes

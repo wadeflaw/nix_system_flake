@@ -1,17 +1,20 @@
-{ inputs, ... }: {
+{ inputs
+, pkgs
+, ... 
+}: {
   imports = [
-    inputs.schizofox.homeManagerModule
 
     ./games
-    ./firefox
-    # ./schizofox
+    ./browsers
+    ./messaging
+    ./note_taking
     # ./spotify
   ];
 
   home.packages = with pkgs; [
     gimp
     vscodium
-    plasma5Packages.kamoso
+    # plasma5Packages.kamoso
     deluge-gtk
     # transmission-gtk
 
@@ -22,7 +25,7 @@
     pavucontrol
     distrobox
     # cinnamon.nemo
-    obs-studio
+    # obs-studio
     mpv
   ];
 }

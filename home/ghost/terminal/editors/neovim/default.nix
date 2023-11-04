@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }:
@@ -58,12 +59,14 @@
         #-- python
         nodePackages.pyright # python language server
         python311Packages.black # python formatter
-        # toPythonModule.python311Packages.ruff-lsp
+        ruff-lsp
 
         #-- rust
+        # ] ++ lib.mkIf (config.editor.rust) [
         rust-analyzer
         cargo # rust package manager
         rustfmt
+        # ] ++ [
 
         #-- zig
         zls
@@ -95,11 +98,11 @@
         shfmt
 
         #-- javascript/typescript --#
-#       nodePackages.typescript
-#       nodePackages.typescript-language-server
+      nodePackages.typescript
+      nodePackages.typescript-language-server
         # HTML/CSS/JSON/ESLint language servers extracted from vscode
-#       nodePackages.vscode-langservers-extracted
-#       nodePackages."@tailwindcss/language-server"
+      nodePackages.vscode-langservers-extracted
+      nodePackages."@tailwindcss/language-server"
 
         #-- CloudNative
 #       nodePackages.dockerfile-language-server-nodejs

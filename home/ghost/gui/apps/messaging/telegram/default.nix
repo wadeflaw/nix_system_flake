@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./config.nix ];
+  # imports = [ ./config.nix ];
   home = {
     packages = with pkgs; let
       kotatogram-desktop-unwrapped = symlinkJoin {
@@ -25,6 +25,7 @@
       # kotatogram-desktop
       kotatogram-desktop-unwrapped
       telegram-desktop-unwrapped
+      # ayuagram
     ];
   };
 }

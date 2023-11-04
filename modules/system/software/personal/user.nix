@@ -35,9 +35,9 @@
           "libvirtd"
         ];
       shell = pkgs.zsh;
-      packages = with pkgs; [
-        zsh
-      ];
+      # packages = with pkgs; [
+      #   zsh
+      # ];
     };
     root = {
       shell = pkgs.zsh;

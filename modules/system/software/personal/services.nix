@@ -23,15 +23,26 @@
     };
     gvfs.enable = true;
     fstrim.enable = true;
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "weekly";
+      fileSystems = [
+        "/"
+        "/home/${conf.user}/Disc"
+        "/nix"
+      ];
+    };
     gpm.enable = true;
     fwupd.enable = true;
+    ntp.enable = true;
+    flatpak.enable = true;
     dbus = {
       enable = true;
       implementation = "broker";
     };
-    xserver = {
-      xkbOptions = "grp:alt_shift_toggle,caps:swapescape";
-    };
+    # xserver = {
+    #   xkbOptions = "grp:alt_shift_toggle,caps:swapescape";
+    # };
     ananicy.enable = true;
     irqbalance.enable = true;
   };
@@ -41,18 +52,8 @@
   };
 
   virtualisation = {
-    waydroid.enable = true;
+    # waydroid.enable = true;
     podman.enable = true;
-    # docker = {
-    #   rootless = {
-    #     enable = true;
-    #     # setSocketVariable = true;
-    #   };
-    #   enable = true;
-    # };
+    # docker.enable = true;
   };
-  # console = {
-  #   useXkbConfig = true;
-  # font = "";
-  # };
 }

@@ -1,3 +1,4 @@
+{...}:''
 {
   "layer": "top",
   "height": 30,
@@ -6,6 +7,7 @@
   "modules-center": ["clock"],
 
   "modules-right": [
+    "battery",
     "wireplumber",
     "cpu",
     "memory",
@@ -60,3 +62,4 @@
     "tooltip": false
   }
 }
+''

@@ -8,6 +8,7 @@
   };
 
   programs.starship = {
+    enableNushellIntegration = true;
     enable = true;
 
     settings = {

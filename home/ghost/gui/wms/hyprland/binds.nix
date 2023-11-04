@@ -18,7 +18,8 @@ in
        kb_layout = us,ru
        kb_variant =
        kb_model =
-       kb_options = grp:alt_shift_toggle,caps:swapescape
+       kb_options = grp:alt_shift_toggle
+     # ,caps:swapescape
      # altwin:swap_alt_win
        kb_rules =
        follow_mouse = 1

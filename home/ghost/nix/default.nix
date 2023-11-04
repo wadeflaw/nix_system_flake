@@ -23,9 +23,11 @@
 
     config = {
       permittedInsecurePackages = [
-        "openssl-1.1.1u"
-        "openssl-1.1.1v"
-        "openssl_1_1"
+      #   "electron"                                                                                                                                                              
+      #   "openssl-1.1.1u"
+      #   "openssl-1.1.1v"
+      #   "openssl_1_1"
+      "electron-24.8.6"
       ];
       allowUnfree = true;
       allowUnfreePredicate = _: true;
