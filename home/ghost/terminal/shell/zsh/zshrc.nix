@@ -36,7 +36,7 @@ in
              "
 
     zstyle ':completion:*' use-cache on
-    zstyle ':completion:*' cache-path '"$XDG_CACHE_HOME"/zsh/.zcompcache'
+    zstyle ':completion:*' cache-path $XDG_CACHE_HOME"/zsh/.zcompcache
     zstyle ':completion:*' sort false
     zstyle ':completion:complete:*:options' sort false
     zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
