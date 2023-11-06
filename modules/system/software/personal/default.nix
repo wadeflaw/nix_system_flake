@@ -4,7 +4,7 @@ _: {
     ./user.nix
     ./wayland.nix
     # ./xdg.nix
-    ./services.nix
+    ./services
     ./dev.nix
   ];
 }
