@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.zathura = {
     enable = true;
     extraConfig = ''
@@ -7,6 +7,7 @@
       set scroll-page-aware "true"
       set scroll-full-overlap 0.01
       set scroll-step 100
+      set selection-clipboard clipboard
 
       set zoom-min 10
       set guioptions ""

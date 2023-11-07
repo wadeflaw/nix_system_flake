@@ -8,6 +8,7 @@
     ./btop
     ./cava
     ./zathura
+    ./comodoro
     # ./zoxide
   ];
     # extra packages

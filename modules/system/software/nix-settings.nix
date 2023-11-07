@@ -1,6 +1,6 @@
 {
   self,
-  pkgs,
+  # pkgs,
   conf,
   inputs,
   ...
@@ -41,6 +41,8 @@
         "root"
       ];
       substituters = [
+        # other substituters
+        "https://nyx.cachix.org"
         "https://ilya-fedin.cachix.org"
         "https://helix.cachix.org"
 
@@ -54,6 +56,8 @@
         # china mirror "https://mirrors.bfsu.edu.cn/nix-channels/store"
       ];
       trusted-public-keys = [
+        # other trusted keys
+        "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
         "ilya-fedin.cachix.org-1:QveU24a5ePPMh82mAFSxLk1P+w97pRxqe9rh+MJqlag="
 
         "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="

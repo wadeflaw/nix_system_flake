@@ -5,7 +5,7 @@
   ...
 }: let
   browser = ["${config.defaultApplications.browser.desktop}.desktop"];
-  pdfreader = ["org.pwmt.zathura.desktop.desktop"];
+  pdfreader = ["org.pwmt.zathura.desktop"];
   telegram = ["kotatogram-desktop.desktop"];
   filemanager = ["nemo.desktop"];
   torrent = ["transmission.desktop"];
